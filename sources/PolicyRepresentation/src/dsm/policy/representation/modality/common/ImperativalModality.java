@@ -11,4 +11,9 @@ package dsm.policy.representation.modality.common;
 public abstract class ImperativalModality implements IModality{
     public ImperativalModality() {
     }
+
+    @Override
+    public PolicyModalityType GetModalityType() {
+        return PolicyModalityType.Imperatival;
+    }
 }

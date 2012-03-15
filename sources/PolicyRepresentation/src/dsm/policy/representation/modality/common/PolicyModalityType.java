@@ -8,6 +8,7 @@ package dsm.policy.representation.modality.common;
  *
  * @author morteza
  */
-public interface IModality {
-    PolicyModalityType GetModalityType();
+public enum PolicyModalityType {
+    Imperatival,
+    Authority
 }

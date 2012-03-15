@@ -11,4 +11,9 @@ package dsm.policy.representation.modality.common;
 public abstract class AuthorityModality implements IModality{
     public AuthorityModality() {
     }
+
+    @Override
+    public PolicyModalityType GetModalityType() {
+        return PolicyModalityType.Authority;
+    }
 }
