@@ -1,13 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dsm.policy.representation.modality.common;
 
 /**
- *
- * @author morteza
+ * IModality Interface to standardize Policy Modality concept
+ * @author Morteza Alizadeh
  */
 public interface IModality {
-    PolicyModalityType GetModalityType();
+    /**
+     * Return policy modality friendly name
+     * @return Policy modality name
+     */
+    String getModalityName();
+
+    /**
+     * Return policy modality type
+     * @return Policy modality type
+     */
+    ModalityType getModalityType();
 }

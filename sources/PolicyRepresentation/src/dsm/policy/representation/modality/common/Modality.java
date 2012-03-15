@@ -1,25 +1,26 @@
 package dsm.policy.representation.modality.common;
 
+import dsm.common.DSMObject;
 import java.util.UUID;
 
 /**
- * Abstract class to define general authority modality behavior
+ * Abstract class to define general policy modality behavior
  * @author Morteza Alizadeh
  */
-public abstract class AuthorityModality extends Modality{
+public abstract class Modality extends DSMObject implements IModality{
     /**
-     * AuthorityModality Constructor
+     * Modality Constructor
      * @param  nUniqueId DSM object unique identifier
      */
-    public AuthorityModality(UUID nUniqueId) {
+    public Modality(UUID nUniqueId) {
         super(nUniqueId);
     }
 
     /**
-     * AuthorityModality Constructor
+     * Modality Constructor
      * @param  szUniqueId DSM object unique identifier
      */
-    public AuthorityModality(String szUniqueId) {
+    public Modality(String szUniqueId) {
         super(szUniqueId);
     }
 
@@ -29,7 +30,7 @@ public abstract class AuthorityModality extends Modality{
      */
     @Override
     public String getModalityName() {
-        throw new UnsupportedOperationException("getModalityName method is not defined in Authority Modality definition level.");
+        throw new UnsupportedOperationException("getModalityName method is not defined in Modality definition level.");
     }
 
     /**
@@ -38,6 +39,6 @@ public abstract class AuthorityModality extends Modality{
      */
     @Override
     public ModalityType getModalityType() {
-        return ModalityType.Authority;
+        throw new UnsupportedOperationException("getModalityType method is not defined in Modality definition level.");
     }
 }
