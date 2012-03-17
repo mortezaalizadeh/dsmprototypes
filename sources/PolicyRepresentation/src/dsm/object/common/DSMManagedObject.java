@@ -24,10 +24,15 @@ public abstract class DSMManagedObject extends DSMManifest implements DSMObject 
     protected String dsmObjectName = "No name specified yet!!!";
 
     /**
+     * DSM object type
+     */
+    protected DSMObjectType dsmObjectType = DSMObjectType.ManagedObject;
+
+    /**
      * DSMManagedObject Constructor
-     * @param  nUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
-     * @param  szDSMObjectName DSM object name
+     * @param nUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
+     * @param szDSMObjectName DSM object name
      */
     public DSMManagedObject(UUID nUniqueId, String szFriendlyName, String szDSMObjectName) {
         super(nUniqueId, szFriendlyName);
@@ -37,9 +42,9 @@ public abstract class DSMManagedObject extends DSMManifest implements DSMObject 
 
     /**
      * DSMManagedObject Constructor
-     * @param  szUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
-     * @param  szDSMObjectName DSM object name
+     * @param szUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
+     * @param szDSMObjectName DSM object name
      */
     public DSMManagedObject(String szUniqueId, String szFriendlyName, String szDSMObjectName) {
         super(szUniqueId, szFriendlyName);
@@ -54,5 +59,14 @@ public abstract class DSMManagedObject extends DSMManifest implements DSMObject 
     @Override
     public String getDSMObjectName() {
         return dsmObjectName;
+    }
+
+    /**
+     * Returns DSM object type.
+     * @return DSM object type
+     */
+    @Override
+    public DSMObjectType getDSMObjectType() {
+        return dsmObjectType;
     }
 }

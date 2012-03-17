@@ -27,7 +27,7 @@ public class DSMManifest extends Object {
     
     /**
      * DSMManifest Constructor
-     * @param  nUniqueId DSM object unique identifier
+     * @param nUniqueId DSM object unique identifier
      */
     public DSMManifest(UUID nUniqueId) {
         uniqueId = nUniqueId;
@@ -35,8 +35,8 @@ public class DSMManifest extends Object {
 
     /**
      * DSMManifest Constructor
-     * @param  nUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
+     * @param nUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
      */
     public DSMManifest(UUID nUniqueId, String szFriendlyName) {
         uniqueId = nUniqueId;
@@ -45,8 +45,8 @@ public class DSMManifest extends Object {
 
     /**
      * DSMManifest Constructor
-     * @param  szUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
+     * @param szUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
      */
     public DSMManifest(String szUniqueId, String szFriendlyName) {
         uniqueId = UUID.fromString(szUniqueId);

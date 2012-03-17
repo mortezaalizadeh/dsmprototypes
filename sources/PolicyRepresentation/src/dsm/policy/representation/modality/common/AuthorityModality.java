@@ -19,20 +19,20 @@ import java.util.UUID;
 public abstract class AuthorityModality extends DSMManifest implements Modality {
 
     /**
-     * Modality type
-     */
-    protected ModalityType modalityType = ModalityType.Authority;
-
-    /**
      * Modality name
      */
     protected String modalityName = "No name specified yet!!!";
 
     /**
+     * Modality type
+     */
+    protected ModalityType modalityType = ModalityType.Authority;
+
+    /**
      * AuthorityModality Constructor
-     * @param  nUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
-     * @param  szModalityName Modality name
+     * @param nUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
+     * @param szModalityName Modality name
      */
     public AuthorityModality(UUID nUniqueId, String szFriendlyName, String szModalityName) {
         super(nUniqueId, szFriendlyName);
@@ -42,9 +42,9 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
 
     /**
      * AuthorityModality Constructor
-     * @param  szUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
-     * @param  szModalityName Modality name
+     * @param szUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
+     * @param szModalityName Modality name
      */
     public AuthorityModality(String szUniqueId, String szFriendlyName, String szModalityName) {
         super(szUniqueId, szFriendlyName);

@@ -19,20 +19,20 @@ import java.util.UUID;
 public abstract class ImperativalModality extends DSMManifest implements Modality {
 
     /**
-     * Modality type
-     */
-    protected ModalityType modalityType = ModalityType.Imperatival;
-
-    /**
      * Modality name
      */
     protected String modalityName = "No name specified yet!!!";
 
     /**
+     * Modality type
+     */
+    protected ModalityType modalityType = ModalityType.Imperatival;
+
+    /**
      * ImperativalModality Constructor
-     * @param  nUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
-     * @param  szModalityName Modality name
+     * @param nUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
+     * @param szModalityName Modality name
      */
     public ImperativalModality(UUID nUniqueId, String szFriendlyName, String szModalityName) {
         super(nUniqueId, szFriendlyName);
@@ -42,9 +42,9 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
 
     /**
      * ImperativalModality Constructor
-     * @param  szUniqueId DSM object unique identifier
-     * @param  szFriendlyName DSM object friendly name
-     * @param  szModalityName Modality name
+     * @param szUniqueId DSM object unique identifier
+     * @param szFriendlyName DSM object friendly name
+     * @param szModalityName Modality name
      */
     public ImperativalModality(String szUniqueId, String szFriendlyName, String szModalityName) {
         super(szUniqueId, szFriendlyName);

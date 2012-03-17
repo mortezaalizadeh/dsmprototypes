@@ -20,4 +20,10 @@ public interface DSMObject {
      * @return DSM object name
      */
     String getDSMObjectName();
+
+    /**
+     * Returns DSM object type.
+     * @return DSM object type
+     */
+    DSMObjectType getDSMObjectType();
 }
