@@ -7,16 +7,16 @@ import dsm.common.DSMManifest;
 import java.util.UUID;
 
 /**
- * DSMManagedObject abstract class provides basic operations and attributes to
- * all DSM managed object classes.
+ * Manager abstract class provides basic operations and attributes to all
+ * manager classes.
  * 
- * This class must be inherited by all DSM managed object classes in order to
- * use standardized operations and attributes for them.
+ * This class must be inherited by all manager classes in order to use 
+ * standardized operations and attributes for them.
  * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public abstract class DSMManagedObject extends DSMManifest implements DSMObject {
+public abstract class Manager extends DSMManifest implements DSMObject {
 
     /**
      * DSM object name
@@ -26,30 +26,38 @@ public abstract class DSMManagedObject extends DSMManifest implements DSMObject 
     /**
      * DSM object type
      */
-    protected DSMObjectType dsmObjectType = DSMObjectType.ManagedObject;
+    protected DSMObjectType dsmObjectType = DSMObjectType.Manager;
 
     /**
-     * DSMManagedObject Constructor
+     * DSM manager type
+     */
+    protected ManagerType dsmManagerType;
+
+    /**
+     * Manager Constructor
      * @param nUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szDSMObjectName DSM object name
+     * @param nDSMManagerType DSM Manager Type
      */
-    public DSMManagedObject(UUID nUniqueId, String szFriendlyName, String szDSMObjectName) {
+    public Manager(UUID nUniqueId, String szFriendlyName, String szDSMObjectName, ManagerType nDSMManagerType) {
         super(nUniqueId, szFriendlyName);
         
         dsmObjectName = szDSMObjectName;
+        dsmManagerType = nDSMManagerType;
     }
 
     /**
-     * DSMManagedObject Constructor
+     * Manager Constructor
      * @param szUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szDSMObjectName DSM object name
      */
-    public DSMManagedObject(String szUniqueId, String szFriendlyName, String szDSMObjectName) {
+    public Manager(String szUniqueId, String szFriendlyName, String szDSMObjectName, ManagerType nDSMManagerType) {
         super(szUniqueId, szFriendlyName);
 
         dsmObjectName = szDSMObjectName;
+        dsmManagerType = nDSMManagerType;
     }
 
     /**
@@ -68,5 +76,13 @@ public abstract class DSMManagedObject extends DSMManifest implements DSMObject 
     @Override
     public DSMObjectType getDSMObjectType() {
         return dsmObjectType;
+    }
+
+    /**
+     * Returns DSM manager type.
+     * @return DSM manager type
+     */
+    public ManagerType getDSMManagerType() {
+        return dsmManagerType;
     }
 }

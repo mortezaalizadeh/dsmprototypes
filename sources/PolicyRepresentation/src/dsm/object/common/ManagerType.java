@@ -4,12 +4,12 @@
 package dsm.object.common;
 
 /**
- * DSMManagerType defines different DSM manager types.
+ * ManagerType defines different DSM manager types.
  * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public enum DSMManagerType {
+public enum ManagerType {
     
     /**
      * Human type of manager.
