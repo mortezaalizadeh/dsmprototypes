@@ -13,6 +13,7 @@ package dsm.policy.representation.modality.common;
  * @author Morteza Alizadeh
  */
 public interface Modality {
+
     /**
      * Returns policy modality friendly name.
      * @return Policy modality friendly name

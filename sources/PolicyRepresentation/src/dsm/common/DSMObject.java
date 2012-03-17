@@ -14,6 +14,7 @@ import java.util.UUID;
  * @author Morteza Alizadeh
  */
 public class DSMObject extends Object {
+
     protected UUID uniqueId = null;
 
     /**

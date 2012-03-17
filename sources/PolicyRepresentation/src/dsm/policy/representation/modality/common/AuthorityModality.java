@@ -17,6 +17,7 @@ import java.util.UUID;
  * @author Morteza Alizadeh
  */
 public abstract class AuthorityModality extends DSMObject implements Modality {
+
     /**
      * AuthorityModality Constructor
      * @param  nUniqueId DSM object unique identifier

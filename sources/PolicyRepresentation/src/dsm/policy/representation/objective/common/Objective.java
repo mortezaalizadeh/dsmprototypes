@@ -21,10 +21,10 @@ package dsm.policy.representation.objective.common;
  * @author Morteza Alizadeh
  */
 public interface Objective {
+
     /**
      * Returns policy objective friendly name.
      * @return Policy objective friendly name
      */
     String getObjectiveName();
-   
 }

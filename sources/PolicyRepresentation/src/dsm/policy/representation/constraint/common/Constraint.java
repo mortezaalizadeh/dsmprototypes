@@ -17,6 +17,12 @@ package dsm.policy.representation.constraint.common;
  * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
- */public interface Constraint {
-    
+ */
+public interface Constraint {
+
+    /**
+     * Returns policy constraint friendly name.
+     * @return Policy constraint friendly name
+     */
+    String getConstraintName();
 }

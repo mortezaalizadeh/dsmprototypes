@@ -17,6 +17,7 @@ import java.util.UUID;
  * @author Morteza Alizadeh
  */
 public abstract class ImperativalModality extends DSMObject implements Modality {
+
     /**
      * ImperativalModality Constructor
      * @param  nUniqueId DSM object unique identifier

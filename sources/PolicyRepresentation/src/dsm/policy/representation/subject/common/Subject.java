@@ -19,6 +19,7 @@ package dsm.policy.representation.subject.common;
  * @author Morteza Alizadeh
  */
 public interface Subject {
+
     /**
      * Returns policy subject friendly name.
      * @return Policy subject friendly name

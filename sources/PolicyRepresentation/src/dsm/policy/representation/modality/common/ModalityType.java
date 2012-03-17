@@ -10,6 +10,7 @@ package dsm.policy.representation.modality.common;
  * @author Morteza Alizadeh
  */
 public enum ModalityType {
+
     /**
      * Imperatival policy gives an agent the imperative to carry out an action
      * provided he has the power to do so.

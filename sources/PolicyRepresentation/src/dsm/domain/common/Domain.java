@@ -12,5 +12,10 @@ package dsm.domain.common;
  * @author Morteza Alizadeh
  */
 public interface Domain {
-    
+
+    /**
+     * Returns policy domain friendly name.
+     * @return Policy domain friendly name
+     */
+    String getDomainName();
 }
