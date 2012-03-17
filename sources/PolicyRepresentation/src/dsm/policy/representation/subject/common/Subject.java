@@ -21,8 +21,8 @@ package dsm.policy.representation.subject.common;
 public interface Subject {
 
     /**
-     * Returns policy subject name.
-     * @return Policy subject name
+     * Returns subject name.
+     * @return Subject name
      */
     String getSubjectName();
 }

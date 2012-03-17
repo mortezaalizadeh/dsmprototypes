@@ -17,7 +17,7 @@ import java.util.UUID;
 public class DSMManifest extends Object {
 
     protected UUID uniqueId = UUID.fromString("00000000-0000-0000-0000-000000000000");
-    protected String friendlyName = "No name specified!!!";
+    protected String friendlyName = "No name specified yet!!!";
 
     /**
      * DSMManifest Constructor

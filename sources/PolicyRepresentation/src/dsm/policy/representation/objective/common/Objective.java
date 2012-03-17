@@ -23,8 +23,8 @@ package dsm.policy.representation.objective.common;
 public interface Objective {
 
     /**
-     * Returns policy objective name.
-     * @return Policy objective name
+     * Returns objective name.
+     * @return Objective name
      */
     String getObjectiveName();
 }

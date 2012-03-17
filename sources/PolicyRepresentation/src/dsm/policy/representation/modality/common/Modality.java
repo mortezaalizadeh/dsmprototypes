@@ -13,16 +13,16 @@ package dsm.policy.representation.modality.common;
  * @author Morteza Alizadeh
  */
 public interface Modality {
-
+    
     /**
-     * Returns policy modality name.
-     * @return Policy modality name
+     * Returns modality name.
+     * @return Modality name
      */
     String getModalityName();
 
     /**
-     * Returns policy modality type.
-     * @return Policy modality type
+     * Returns modality type.
+     * @return Modality type
      */
     ModalityType getModalityType();
 }

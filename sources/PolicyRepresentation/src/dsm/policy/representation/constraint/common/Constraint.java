@@ -21,8 +21,8 @@ package dsm.policy.representation.constraint.common;
 public interface Constraint {
 
     /**
-     * Returns policy constraint name.
-     * @return Policy constraint name
+     * Returns constraint name.
+     * @return Constraint name
      */
     String getConstraintName();
 }

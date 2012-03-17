@@ -14,8 +14,8 @@ package dsm.domain.common;
 public interface Domain {
 
     /**
-     * Returns domain friendly name.
-     * @return Domain friendly name
+     * Returns domain name.
+     * @return Domain name
      */
     String getDomainName();
 }
