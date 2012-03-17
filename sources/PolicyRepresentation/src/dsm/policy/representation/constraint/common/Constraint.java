@@ -4,10 +4,10 @@
 package dsm.policy.representation.constraint.common;
 
 /**
- * Interface Constraint defines general operations and attributes for a policy
+ * Constraint interface defines general operations and attributes for a policy
  * constraint.
  * 
- * This interface must be implemented by all Policy Constraint classes.
+ * This interface must be implemented by all policy constraint classes.
  * 
  * Constraints are a set of predicates which constrain the applicability of the
  * policy. They may be expressed in terms of general system properties, such as

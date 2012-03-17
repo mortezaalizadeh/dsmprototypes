@@ -6,14 +6,14 @@ package dsm.common;
 import java.util.UUID;
 
 /**
- * Class DMSObject defines basic operations and attributes for DSM classes.
+ * DMSObject class defines basic operations and attributes for DSM classes.
  * 
  * This class must be inherited by all DSM classes.
  * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public class DSMObject extends Object{
+public class DSMObject extends Object {
     protected UUID uniqueId = null;
 
     /**
@@ -40,10 +40,10 @@ public class DSMObject extends Object{
     }
 
     /**
-     * Returns policy modality unique identifier.
-     * @return Policy modality name
+     * Returns DSM object unique identifier.
+     * @return DSM object unique identifier
      */
-    UUID getModalityUniqueId(){
+    UUID getUniqueId() {
         return uniqueId;
     }
 }

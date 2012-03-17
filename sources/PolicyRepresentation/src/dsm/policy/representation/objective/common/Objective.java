@@ -4,10 +4,10 @@
 package dsm.policy.representation.objective.common;
 
 /**
- * Interface Objective defines general operations and attributes for a policy
+ * Objective interface defines general operations and attributes for a policy
  * objective.
  * 
- * This interface must be implemented by all Policy Objective classes.
+ * This interface must be implemented by all policy objective classes.
  * 
  * We use the term policy objectives for the aims of a policy. Objectives are
  * expressed as a pair of goals and target objects. The policy goal defines
@@ -21,5 +21,10 @@ package dsm.policy.representation.objective.common;
  * @author Morteza Alizadeh
  */
 public interface Objective {
+    /**
+     * Returns policy objective friendly name.
+     * @return Policy objective friendly name
+     */
+    String getObjectiveName();
    
 }

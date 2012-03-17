@@ -4,10 +4,10 @@
 package dsm.policy.representation.subject.common;
 
 /**
- * Interface Subject defines general operations and attributes for a policy
+ * Subject interface defines general operations and attributes for a policy
  * subject.
  * 
- * This interface must be implemented by all Policy Subject classes.
+ * This interface must be implemented by all policy subject classes.
  * 
  * The policy subjects are the entities to whom the policy is directed, i.e.
  * who are authorized or obliged to carry out the policy objective. The subjects
@@ -19,5 +19,9 @@ package dsm.policy.representation.subject.common;
  * @author Morteza Alizadeh
  */
 public interface Subject {
-    
+    /**
+     * Returns policy subject friendly name.
+     * @return Policy subject friendly name
+     */
+    String getSubjectName();
 }

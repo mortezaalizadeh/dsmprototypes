@@ -8,15 +8,15 @@ import java.util.UUID;
 
 /**
  * ImperativalModality abstract class provides basic operations and
- * attributes to Imperatival Modality classes.
+ * attributes to imperatival modality classes.
  * 
- * This class must be inherited by all Imperatival Modality classes in order to
+ * This class must be inherited by all imperatival modality classes in order to
  * use standardized operations and attributes for it.
  * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public abstract class ImperativalModality extends DSMObject implements Modality{
+public abstract class ImperativalModality extends DSMObject implements Modality {
     /**
      * ImperativalModality Constructor
      * @param  nUniqueId DSM object unique identifier
@@ -35,7 +35,7 @@ public abstract class ImperativalModality extends DSMObject implements Modality{
 
     /**
      * Returns policy modality friendly name.
-     * @return Policy modality name
+     * @return Policy modality friendly name
      */
     @Override
     public String getModalityName() {
