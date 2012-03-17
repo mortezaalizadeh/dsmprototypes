@@ -9,8 +9,10 @@ import java.util.UUID;
 /**
  * AuthorityModality abstract class provides basic operations and
  * attributes to Authority Modality classes.
+ * 
  * This class must be inherited by all Authority Modality classes in order to
  * use standardized operations and attributes for it.
+ * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */

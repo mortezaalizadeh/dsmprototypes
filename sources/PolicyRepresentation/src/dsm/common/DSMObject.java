@@ -7,7 +7,9 @@ import java.util.UUID;
 
 /**
  * Class DMSObject defines basic operations and attributes for DSM classes.
+ * 
  * This class must be inherited by all DSM classes.
+ * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */

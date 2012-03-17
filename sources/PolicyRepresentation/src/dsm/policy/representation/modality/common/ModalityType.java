@@ -5,6 +5,7 @@ package dsm.policy.representation.modality.common;
 
 /**
  * ModalityType represents different policy modality types.
+ * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
