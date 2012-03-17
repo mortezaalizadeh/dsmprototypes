@@ -1,12 +1,20 @@
+/**
+ * @author Morteza Alizadeh
+ */
 package dsm.policy.representation.modality.common;
 
+import dsm.common.DSMObject;
 import java.util.UUID;
 
 /**
- * Abstract class to define general imperatival modality behavior
+ * ImperativalModality abstract class provides basic operations and
+ * attributes to Imperatival Modality classes.
+ * This class must be inherited by all Imperatival Modality classes in order to
+ * use standardized operations and attributes for it.
+ * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public abstract class ImperativalModality extends Modality{
+public abstract class ImperativalModality extends DSMObject implements Modality{
     /**
      * ImperativalModality Constructor
      * @param  nUniqueId DSM object unique identifier
@@ -22,9 +30,9 @@ public abstract class ImperativalModality extends Modality{
     public ImperativalModality(String szUniqueId) {
         super(szUniqueId);
     }
-    
+
     /**
-     * Return policy modality friendly name
+     * Returns policy modality friendly name.
      * @return Policy modality name
      */
     @Override
@@ -33,7 +41,7 @@ public abstract class ImperativalModality extends Modality{
     }
 
     /**
-     * Return policy modality type
+     * Returns policy modality type.
      * @return Policy modality type
      */
     @Override
