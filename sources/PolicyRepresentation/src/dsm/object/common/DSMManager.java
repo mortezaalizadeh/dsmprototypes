@@ -77,4 +77,12 @@ public abstract class DSMManager extends DSMManifest implements DSMObject {
     public DSMObjectType getDSMObjectType() {
         return dsmObjectType;
     }
+
+    /**
+     * Returns DSM manager type.
+     * @return DSM manager type
+     */
+    public DSMManagerType getDSMManagerType() {
+        return dsmManagerType;
+    }
 }
