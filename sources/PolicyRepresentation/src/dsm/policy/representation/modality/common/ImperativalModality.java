@@ -3,7 +3,7 @@
  */
 package dsm.policy.representation.modality.common;
 
-import dsm.common.DSMObject;
+import dsm.common.DSMManifest;
 import java.util.UUID;
 
 /**
@@ -16,27 +16,29 @@ import java.util.UUID;
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public abstract class ImperativalModality extends DSMObject implements Modality {
+public abstract class ImperativalModality extends DSMManifest implements Modality {
 
     /**
      * ImperativalModality Constructor
      * @param  nUniqueId DSM object unique identifier
+     * @param  szFriendlyName DSM object friendly name
      */
-    public ImperativalModality(UUID nUniqueId) {
-        super(nUniqueId);
+    public ImperativalModality(UUID nUniqueId, String szFriendlyName) {
+        super(nUniqueId, szFriendlyName);
     }
 
     /**
      * ImperativalModality Constructor
      * @param  szUniqueId DSM object unique identifier
+     * @param  szFriendlyName DSM object friendly name
      */
-    public ImperativalModality(String szUniqueId) {
-        super(szUniqueId);
+    public ImperativalModality(String szUniqueId, String szFriendlyName) {
+        super(szUniqueId, szFriendlyName);
     }
 
     /**
-     * Returns policy modality friendly name.
-     * @return Policy modality friendly name
+     * Returns policy modality name.
+     * @return Policy modality name
      */
     @Override
     public String getModalityName() {

@@ -15,8 +15,8 @@ package dsm.policy.representation.modality.common;
 public interface Modality {
 
     /**
-     * Returns policy modality friendly name.
-     * @return Policy modality friendly name
+     * Returns policy modality name.
+     * @return Policy modality name
      */
     String getModalityName();
 

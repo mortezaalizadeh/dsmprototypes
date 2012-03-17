@@ -3,7 +3,7 @@
  */
 package dsm.policy.representation.modality.common;
 
-import dsm.common.DSMObject;
+import dsm.common.DSMManifest;
 import java.util.UUID;
 
 /**
@@ -16,22 +16,24 @@ import java.util.UUID;
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public abstract class AuthorityModality extends DSMObject implements Modality {
+public abstract class AuthorityModality extends DSMManifest implements Modality {
 
     /**
      * AuthorityModality Constructor
      * @param  nUniqueId DSM object unique identifier
+     * @param  szFriendlyName DSM object friendly name
      */
-    public AuthorityModality(UUID nUniqueId) {
-        super(nUniqueId);
+    public AuthorityModality(UUID nUniqueId, String szFriendlyName) {
+        super(nUniqueId, szFriendlyName);
     }
 
     /**
      * AuthorityModality Constructor
      * @param  szUniqueId DSM object unique identifier
+     * @param  szFriendlyName DSM object friendly name
      */
-    public AuthorityModality(String szUniqueId) {
-        super(szUniqueId);
+    public AuthorityModality(String szUniqueId, String szFriendlyName) {
+        super(szUniqueId, szFriendlyName);
     }
 
     /**
