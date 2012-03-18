@@ -12,16 +12,26 @@ package dsm.object.common;
 public enum DSMObjectType {
     
     /**
-     * A managed object is one which supports a management interface. Management
-     * entails obtaining information on the current state of a managed object,
-     * making decisions and performing control operations on the object to
-     * modify its behavior.
+     * A managed object is one which supports a management interface.
+     * 
+     * Management entails obtaining information on the current state of a
+     * managed object, making decisions and performing control operations on the
+     * object to modify its behavior.
      */
     ManagedObject,
 
     /**
-     * A manager is one which manages managed objects. A manager itself can be
-     * managed by other managers.
+     * A manager is one which manages managed objects.
+     * 
+     * A manager itself can be managed by other managers.
      */
     Manager,
+    
+    /**
+     * A domain is one which includes other DMS object.
+     * 
+     * A domain DSM object type may include objects of any type including
+     * itself.
+     */
+    Domain
 }
