@@ -30,6 +30,7 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
 
     /**
      * ImperativalModality Constructor
+     * 
      * @param nUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szModalityName Modality name
@@ -42,6 +43,7 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
 
     /**
      * ImperativalModality Constructor
+     * 
      * @param szUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szModalityName Modality name
@@ -54,6 +56,7 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
 
     /**
      * Returns modality name.
+     * 
      * @return Modality name
      */
     @Override
@@ -63,6 +66,7 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
 
     /**
      * Returns modality type.
+     * 
      * @return Modality type
      */
     @Override

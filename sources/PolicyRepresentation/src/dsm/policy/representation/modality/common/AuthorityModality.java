@@ -30,6 +30,7 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
 
     /**
      * AuthorityModality Constructor
+     * 
      * @param nUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szModalityName Modality name
@@ -42,6 +43,7 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
 
     /**
      * AuthorityModality Constructor
+     * 
      * @param szUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szModalityName Modality name
@@ -54,6 +56,7 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
 
     /**
      * Returns modality name.
+     * 
      * @return Modality name
      */
     @Override
@@ -63,6 +66,7 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
 
     /**
      * Returns modality type.
+     * 
      * @return Modality type
      */
     @Override

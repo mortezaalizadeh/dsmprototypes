@@ -24,6 +24,7 @@ public interface Objective {
 
     /**
      * Returns objective name.
+     * 
      * @return Objective name
      */
     String getObjectiveName();

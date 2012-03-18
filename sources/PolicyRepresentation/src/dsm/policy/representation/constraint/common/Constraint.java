@@ -22,6 +22,7 @@ public interface Constraint {
 
     /**
      * Returns constraint name.
+     * 
      * @return Constraint name
      */
     String getConstraintName();

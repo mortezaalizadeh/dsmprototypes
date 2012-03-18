@@ -30,6 +30,7 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
 
     /**
      * ManagedObject Constructor
+     * 
      * @param nUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szDSMObjectName DSM object name
@@ -42,6 +43,7 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
 
     /**
      * ManagedObject Constructor
+     * 
      * @param szUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szDSMObjectName DSM object name
@@ -54,6 +56,7 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
 
     /**
      * Returns DSM object name.
+     * 
      * @return DSM object name
      */
     @Override
@@ -63,6 +66,7 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
 
     /**
      * Returns DSM object type.
+     * 
      * @return DSM object type
      */
     @Override

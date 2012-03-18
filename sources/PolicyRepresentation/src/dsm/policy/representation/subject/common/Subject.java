@@ -22,6 +22,7 @@ public interface Subject {
 
     /**
      * Returns subject name.
+     * 
      * @return Subject name
      */
     String getSubjectName();

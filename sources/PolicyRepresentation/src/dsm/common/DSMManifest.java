@@ -27,6 +27,7 @@ public class DSMManifest extends Object {
     
     /**
      * DSMManifest Constructor
+     * 
      * @param nUniqueId DSM object unique identifier
      */
     public DSMManifest(UUID nUniqueId) {
@@ -35,6 +36,7 @@ public class DSMManifest extends Object {
 
     /**
      * DSMManifest Constructor
+     * 
      * @param nUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      */
@@ -45,6 +47,7 @@ public class DSMManifest extends Object {
 
     /**
      * DSMManifest Constructor
+     * 
      * @param szUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      */
@@ -55,6 +58,7 @@ public class DSMManifest extends Object {
 
     /**
      * Returns DSM object unique identifier.
+     * 
      * @return DSM object unique identifier
      */
     public UUID getDSMUniqueIdentifier() {
@@ -63,6 +67,7 @@ public class DSMManifest extends Object {
 
     /**
      * Returns DSM object friendly name.
+     * 
      * @return DSM object friendly name
      */
     public String getFriendlyName() {

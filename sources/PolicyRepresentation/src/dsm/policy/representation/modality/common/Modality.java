@@ -16,12 +16,14 @@ public interface Modality {
     
     /**
      * Returns modality name.
+     * 
      * @return Modality name
      */
     String getModalityName();
 
     /**
      * Returns modality type.
+     * 
      * @return Modality type
      */
     ModalityType getModalityType();
