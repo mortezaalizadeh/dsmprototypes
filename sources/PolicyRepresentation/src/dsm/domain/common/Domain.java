@@ -6,6 +6,7 @@ package dsm.domain.common;
 import dsm.common.DSMManifest;
 import dsm.object.common.DSMObject;
 import dsm.object.common.DSMObjectType;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -142,5 +143,14 @@ public abstract class Domain extends DSMManifest implements DSMObject {
      */
     public void removeDSMObjectFromDomain(DSMObject dsmObject) {
         throw new UnsupportedOperationException("removeDSMObjectFromDomain method is not implemented in abstract class level definition.");
+    }
+    
+    /**
+     * This returns list of DSM domain objects.
+     * 
+     * @return List of DSM domain objects.
+     */
+    public List<DSMObject> getDomainDSMObjectList(){
+        throw new UnsupportedOperationException("getDomainDSMObjectList method is not implemented in abstract class level definition.");
     }
 }
