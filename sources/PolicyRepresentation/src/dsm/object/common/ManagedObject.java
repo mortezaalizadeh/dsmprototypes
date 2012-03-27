@@ -4,7 +4,6 @@
 package dsm.object.common;
 
 import dsm.common.DSMManifest;
-import java.util.UUID;
 
 /**
  * ManagedObject abstract class provides basic operations and attributes to all
@@ -27,19 +26,6 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
      * DSM object type
      */
     protected DSMObjectType dsmObjectType = DSMObjectType.ManagedObject;
-
-    /**
-     * ManagedObject Constructor
-     * 
-     * @param nUniqueId DSM object unique identifier
-     * @param szFriendlyName DSM object friendly name
-     * @param szDSMObjectName DSM object name
-     */
-    public ManagedObject(UUID nUniqueId, String szFriendlyName, String szDSMObjectName) {
-        super(nUniqueId, szFriendlyName);
-        
-        dsmObjectName = szDSMObjectName;
-    }
 
     /**
      * ManagedObject Constructor

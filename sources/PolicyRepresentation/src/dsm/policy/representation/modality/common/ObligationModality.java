@@ -4,19 +4,18 @@
 package dsm.policy.representation.modality.common;
 
 import dsm.common.DSMManifest;
-import java.util.UUID;
 
 /**
  * ImperativalModality abstract class provides basic operations and attributes
- * to all imperatival modality classes.
+ * to all obligation modality classes.
  * 
- * This class must be inherited by all imperatival modality classes in order to
+ * This class must be inherited by all obligation modality classes in order to
  * use standardized operations and attributes for them.
  * 
  * @version 0.1, March 17th, 2012
  * @author Morteza Alizadeh
  */
-public abstract class ImperativalModality extends DSMManifest implements Modality {
+public abstract class ObligationModality extends DSMManifest implements Modality {
 
     /**
      * Modality name
@@ -26,20 +25,7 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
     /**
      * Modality type
      */
-    protected ModalityType modalityType = ModalityType.Imperatival;
-
-    /**
-     * ImperativalModality Constructor
-     * 
-     * @param nUniqueId DSM object unique identifier
-     * @param szFriendlyName DSM object friendly name
-     * @param szModalityName Modality name
-     */
-    public ImperativalModality(UUID nUniqueId, String szFriendlyName, String szModalityName) {
-        super(nUniqueId, szFriendlyName);
-        
-        modalityName = szModalityName;
-    }
+    protected ModalityType modalityType = ModalityType.Obligation;
 
     /**
      * ImperativalModality Constructor
@@ -48,7 +34,7 @@ public abstract class ImperativalModality extends DSMManifest implements Modalit
      * @param szFriendlyName DSM object friendly name
      * @param szModalityName Modality name
      */
-    public ImperativalModality(String szUniqueId, String szFriendlyName, String szModalityName) {
+    public ObligationModality(String szUniqueId, String szFriendlyName, String szModalityName) {
         super(szUniqueId, szFriendlyName);
 
         modalityName = szModalityName;

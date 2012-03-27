@@ -12,10 +12,10 @@ package dsm.policy.representation.modality.common;
 public enum ModalityType {
 
     /**
-     * Imperatival policy gives an agent the imperative to carry out an action
+     * Obligation policy gives an agent the imperative to carry out an action
      * provided he has the power to do so.
      */
-    Imperatival,
+    Obligation,
 
     /**
      * Authority policy provides an agent with the legitimate power to perform

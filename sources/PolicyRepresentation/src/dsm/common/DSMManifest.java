@@ -3,8 +3,6 @@
  */
 package dsm.common;
 
-import java.util.UUID;
-
 /**
  * DSMManifest class defines basic operations and attributes for all DSM
  * classes.
@@ -16,7 +14,7 @@ import java.util.UUID;
  */
 public class DSMManifest extends Object {
 
-    protected UUID uniqueId = UUID.fromString("00000000-0000-0000-0000-000000000000");
+    protected String uniqueId = "00000000-0000-0000-0000-000000000000";
     protected String friendlyName = "No name specified yet!!!";
 
     /**
@@ -30,19 +28,8 @@ public class DSMManifest extends Object {
      * 
      * @param nUniqueId DSM object unique identifier
      */
-    public DSMManifest(UUID nUniqueId) {
-        uniqueId = nUniqueId;
-    }
-
-    /**
-     * DSMManifest Constructor
-     * 
-     * @param nUniqueId DSM object unique identifier
-     * @param szFriendlyName DSM object friendly name
-     */
-    public DSMManifest(UUID nUniqueId, String szFriendlyName) {
-        uniqueId = nUniqueId;
-        friendlyName = szFriendlyName;
+    public DSMManifest(String szUniqueId) {
+        uniqueId = szUniqueId;
     }
 
     /**
@@ -52,7 +39,7 @@ public class DSMManifest extends Object {
      * @param szFriendlyName DSM object friendly name
      */
     public DSMManifest(String szUniqueId, String szFriendlyName) {
-        uniqueId = UUID.fromString(szUniqueId);
+        uniqueId = szUniqueId;
         friendlyName = szFriendlyName;
     }
 
@@ -61,7 +48,7 @@ public class DSMManifest extends Object {
      * 
      * @return DSM object unique identifier
      */
-    public UUID getDSMUniqueIdentifier() {
+    public String getDSMUniqueIdentifier() {
         return uniqueId;
     }
 

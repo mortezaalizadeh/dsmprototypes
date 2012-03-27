@@ -36,21 +36,6 @@ public abstract class Manager extends DSMManifest implements DSMObject {
     /**
      * Manager Constructor
      * 
-     * @param nUniqueId DSM object unique identifier
-     * @param szFriendlyName DSM object friendly name
-     * @param szDSMObjectName DSM object name
-     * @param nDSMManagerType DSM Manager Type
-     */
-    public Manager(UUID nUniqueId, String szFriendlyName, String szDSMObjectName, ManagerType nDSMManagerType) {
-        super(nUniqueId, szFriendlyName);
-        
-        dsmObjectName = szDSMObjectName;
-        dsmManagerType = nDSMManagerType;
-    }
-
-    /**
-     * Manager Constructor
-     * 
      * @param szUniqueId DSM object unique identifier
      * @param szFriendlyName DSM object friendly name
      * @param szDSMObjectName DSM object name

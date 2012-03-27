@@ -4,7 +4,6 @@
 package dsm.policy.representation.modality.common;
 
 import dsm.common.DSMManifest;
-import java.util.UUID;
 
 /**
  * AuthorityModality abstract class provides basic operations and attributes
@@ -27,19 +26,6 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
      * Modality type
      */
     protected ModalityType modalityType = ModalityType.Authority;
-
-    /**
-     * AuthorityModality Constructor
-     * 
-     * @param nUniqueId DSM object unique identifier
-     * @param szFriendlyName DSM object friendly name
-     * @param szModalityName Modality name
-     */
-    public AuthorityModality(UUID nUniqueId, String szFriendlyName, String szModalityName) {
-        super(nUniqueId, szFriendlyName);
-
-        modalityName = szModalityName;
-    }
 
     /**
      * AuthorityModality Constructor

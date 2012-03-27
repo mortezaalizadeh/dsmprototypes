@@ -7,7 +7,6 @@ import dsm.common.DSMManifest;
 import dsm.object.common.DSMObject;
 import dsm.object.common.DSMObjectType;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Domain abstract class provides basic operations and attributes to all domain
@@ -35,21 +34,6 @@ public abstract class Domain extends DSMManifest implements DSMObject {
      * Domain name
      */
     protected String domainName = "No name specified yet!!!";
-
-    /**
-     * Domain Constructor
-     * 
-     * @param nUniqueId DSM object unique identifier
-     * @param szFriendlyName DSM object friendly name
-     * @param szDSMObjectName DSM object name
-     * @param szDomainName Domain name
-     */
-    public Domain(UUID nUniqueId, String szFriendlyName, String szDSMObjectName, String szDomainName) {
-        super(nUniqueId, szFriendlyName);
-        
-        dsmObjectName = szDSMObjectName;
-        domainName = szDomainName;
-    }
 
     /**
      * Domain Constructor

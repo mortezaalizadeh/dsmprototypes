@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<header>
+    <Author>
+        Morteza Alizadeh
+    </Author>
+
+    <FriendlyName>
+        General Policy
+    </FriendlyName>
+    
+    <UniqueId>
+        b42228f1-9f9a-4476-9449-b4464f80d87b
+    </UniqueId>
+
+    <CreationDateTime>
+        2012.3.27 21:40:51
+    </CreationDateTime>
+    
+    <ValidityDateTime>
+        <From>
+            2013.2.5 15:25:33
+        </From>
+        <To>
+            2099.1.4 2:25:33
+        </To>
+    </ValidityDateTime>
+</header>
+<body>
+    <Constraint>
+    </Constraint>
+
+    <Modality>
+        Obligation
+    </Modality>
+
+    <Objective>
+    </Objective>
+
+    <Subject>
+    </Subject>
+</body>
