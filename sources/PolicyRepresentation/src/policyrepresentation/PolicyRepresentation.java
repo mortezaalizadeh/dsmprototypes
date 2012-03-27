@@ -4,6 +4,8 @@
  */
 package policyrepresentation;
 
+import java.util.Scanner;
+
 /**
  *
  * @author morteza
