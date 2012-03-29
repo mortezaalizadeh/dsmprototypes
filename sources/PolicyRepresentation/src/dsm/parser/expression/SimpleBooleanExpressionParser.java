@@ -40,11 +40,23 @@ public class SimpleBooleanExpressionParser extends DSMManifest implements Boolea
         
         try{
             do {
-                if(szExpression == null)
-                    throw new IllegalArgumentException("Error: Passed szExpression reference is NULL.");
+                if (szExpression == null) {
+                    if(errorInfo != null){
+                        errorInfo.setErrorMessage("Error: Passed szExpression reference is null.");
+                        errorInfo.setOccurredException(null);
+                    }
+                    
+                    break;
+                }
 
-                if(szExpression.length() == 0)
-                    throw new IllegalArgumentException("Error: Passed szExpression length is zero.");
+                if ((szExpression = szExpression.trim()).length() == 0) {
+                    if(errorInfo != null){
+                        errorInfo.setErrorMessage("Error: Passed szExpression string length is zero.");
+                        errorInfo.setOccurredException(null);
+                    }
+                    
+                    break;
+                }
 
                 bSuccess = true;
             } while(false);
