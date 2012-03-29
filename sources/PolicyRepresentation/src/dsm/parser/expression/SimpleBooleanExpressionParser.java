@@ -65,6 +65,8 @@ public class SimpleBooleanExpressionParser extends DSMManifest implements Boolea
                 errorInfo.setErrorMessage(e.getMessage());
                 errorInfo.setOccurredException(e);
             }
+            
+            bSuccess = false;
         }
         
         return bSuccess;
