@@ -53,7 +53,7 @@ public class DSMManifest extends Object {
     /**
      * Returns DSM object unique identifier.
      * 
-     * @return DSM object unique identifier
+     * @return Returns DSM object unique identifier
      */
     public String getDSMUniqueIdentifier() {
         return uniqueId;
@@ -62,7 +62,7 @@ public class DSMManifest extends Object {
     /**
      * Returns DSM object friendly name.
      * 
-     * @return DSM object friendly name
+     * @return Returns DSM object friendly name
      */
     public String getFriendlyName() {
         return friendlyName;
