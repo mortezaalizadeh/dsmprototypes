@@ -24,7 +24,8 @@ public interface BooleanExpressionParser {
      * @param errorInfo Contains error info if error occurs in return. To get
      * occurred error information, this parameter reference should not be null.
      * 
-     * @return boolean value representing the evaluation of boolean expression
+     * @return Returns true if evaluation is successfully done and the value is
+     * returned, otherwise return false and errorInfo contains occurred error info
      */
     boolean parseAndEvaluateExpression(String szExpression, BooleanExpressionResult result, DSMGeneralErrorInfo errorInfo);
 }

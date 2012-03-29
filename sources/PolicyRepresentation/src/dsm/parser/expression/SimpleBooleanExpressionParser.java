@@ -31,16 +31,30 @@ public class SimpleBooleanExpressionParser extends DSMManifest implements Boolea
      * @param errorInfo Contains error info if error occurs in return. To get
      * occurred error information, this parameter reference should not be null.
      * 
-     * @return boolean value representing the evaluation of boolean expression
+     * @return Returns true if evaluation is successfully done and the value is
+     * returned, otherwise return false and errorInfo contains occurred error info
      */
     @Override
     public boolean parseAndEvaluateExpression(String szExpression, BooleanExpressionResult result, DSMGeneralErrorInfo errorInfo) {
-        if(szExpression == null)
-            throw new IllegalArgumentException("Error: Passed szExpression reference is NULL.");
+        boolean bSuccess = false;
         
-        if(szExpression.length() == 0)
-            throw new IllegalArgumentException("Error: Passed szExpression length is zero.");
+        try{
+            do {
+                if(szExpression == null)
+                    throw new IllegalArgumentException("Error: Passed szExpression reference is NULL.");
+
+                if(szExpression.length() == 0)
+                    throw new IllegalArgumentException("Error: Passed szExpression length is zero.");
+
+                bSuccess = true;
+            } while(false);
+        } catch(Exception e) {
+            if(errorInfo != null){
+                errorInfo.setErrorMessage(e.getMessage());
+                errorInfo.setOccurredException(e);
+            }
+        }
         
-        return true;
+        return bSuccess;
     }
 }

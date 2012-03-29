@@ -35,7 +35,7 @@ public class BooleanExpressionResult {
     /**
      * Returns value of evaluatedResult
      * 
-     * @return Boolean value representing current object evaluatedResult value
+     * @return Returns boolean value representing current object evaluatedResult value
      */
     public boolean getEvaluatedResult(){
         return evaluatedResult;

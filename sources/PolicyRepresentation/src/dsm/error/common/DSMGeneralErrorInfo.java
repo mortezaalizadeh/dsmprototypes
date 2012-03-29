@@ -60,4 +60,40 @@ public class DSMGeneralErrorInfo extends Object{
         errorMessage = szErrorMessage;
         occurredException = exception;
     }
+
+    /**
+     * Sets error message
+     * 
+     * @param value error message to be set
+     */
+    public void setErrorMessage(String value){
+        errorMessage = value;
+    }
+
+    /**
+     * Returns error message
+     * 
+     * @return Returns error message
+     */
+    public String getErrorMessage(){
+        return errorMessage;
+    }
+
+    /**
+     * Sets occurred exception
+     * 
+     * @param value occurred exception to be set
+     */
+    public void setOccurredException(Exception value){
+        occurredException = value;
+    }
+
+    /**
+     * Returns occurred exception
+     * 
+     * @return Returns occurred exception
+     */
+    public Exception getOccurredException(){
+        return occurredException;
+    }
 }
