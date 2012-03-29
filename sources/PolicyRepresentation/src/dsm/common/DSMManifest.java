@@ -9,12 +9,19 @@ package dsm.common;
  * 
  * This class must be inherited by all DSM classes.
  * 
- * @version 0.1, March 17th, 2012
+ * @version 0.1, March 17, 2012
  * @author Morteza Alizadeh
  */
 public class DSMManifest extends Object {
 
+    /**
+     * DSM object unique ID
+     */
     protected String uniqueId = "00000000-0000-0000-0000-000000000000";
+
+    /**
+     * DSM object friendly name
+     */
     protected String friendlyName = "No name specified yet!!!";
 
     /**

@@ -15,7 +15,7 @@ package dsm.policy.representation.constraint.common;
  * authority policies expressed by access rules is the limits on the terminal
  * from which the operation may be performed, and/or limits on date or time.
  * 
- * @version 0.1, March 17th, 2012
+ * @version 0.1, March 17, 2012
  * @author Morteza Alizadeh
  */
 public interface Constraint {

@@ -6,7 +6,7 @@ package dsm.object.common;
 /**
  * ManagerType defines different DSM manager types.
  * 
- * @version 0.1, March 17th, 2012
+ * @version 0.1, March 17, 2012
  * @author Morteza Alizadeh
  */
 public enum ManagerType {

@@ -17,7 +17,7 @@ package dsm.policy.representation.objective.common;
  * procedure, otherwise it is to be regarded as a high-level goal, which
  * requires refinement in order to define the actions which will achieve it.
  * 
- * @version 0.1, March 17th, 2012
+ * @version 0.1, March 17, 2012
  * @author Morteza Alizadeh
  */
 public interface Objective {

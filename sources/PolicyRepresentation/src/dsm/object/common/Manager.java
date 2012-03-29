@@ -13,7 +13,7 @@ import java.util.UUID;
  * This class must be inherited by all manager classes in order to use 
  * standardized operations and attributes for them.
  * 
- * @version 0.1, March 17th, 2012
+ * @version 0.1, March 17, 2012
  * @author Morteza Alizadeh
  */
 public abstract class Manager extends DSMManifest implements DSMObject {

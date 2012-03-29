@@ -15,7 +15,7 @@ package dsm.policy.representation.subject.common;
  * because a policy is typically expressed in terms of organizational positions
  * and domains of objects, not individuals.
  * 
- * @version 0.1, March 17th, 2012
+ * @version 0.1, March 17, 2012
  * @author Morteza Alizadeh
  */
 public interface Subject {

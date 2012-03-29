@@ -4,14 +4,11 @@
  */
 package policyrepresentation;
 
-import java.util.Scanner;
-
 /**
  *
  * @author morteza
  */
 public class PolicyRepresentation {
-
     /**
      * @param args the command line arguments
      */
