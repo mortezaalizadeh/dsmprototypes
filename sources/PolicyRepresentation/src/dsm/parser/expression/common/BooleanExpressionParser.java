@@ -21,8 +21,9 @@ public interface BooleanExpressionParser {
      * 
      * @param szExpression Expression to be parsed and evaluated
      * @param result Contains result of expression in return
-     * @param errorInfo Contains error info if error occurs in return. To get
-     * occurred error information, this parameter reference should not be null.
+     * @param errorInfo Contains error info if any error or exception occurs in
+     * return. Passing null would not return occurred error and method only
+     * returns false
      * 
      * @return Returns true if evaluation is successfully done and the value is
      * returned, otherwise return false and errorInfo contains occurred error info
