@@ -4,6 +4,7 @@
 package dsm.action.common;
 
 import dsm.common.DSMManifest;
+import dsm.error.common.DSMGeneralErrorInfo;
 
 /**
  * DistributedAction abstract class provides basic operations and attributes
@@ -58,5 +59,27 @@ public abstract class DistributedAction extends DSMManifest implements Action {
     @Override
     public ActionType getActionType() {
         return actionType;
+    }
+
+    /**
+     * Executes distributed action.
+     * 
+     * This method is the call entry for other modules which intend to execute
+     * the distributed action.
+     * 
+     * @param errorInfo Contains error info if any error or exception occurs in
+     * return. Passing null would not return occurred error and method only
+     * returns false
+     * 
+     * @return Returns true if action execution is successfully done and the
+     * value is returned, otherwise return false and errorInfo contains occurred
+     * error info
+     */
+    @Override
+    public boolean executeAction(DSMGeneralErrorInfo errorInfo) {
+        errorInfo.setOccurredException(null);
+        errorInfo.setErrorMessage("Error: executeAction for DistributedAction class is not implemented!!!");
+        
+        return false;
     }
 }
