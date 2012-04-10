@@ -6,20 +6,20 @@ package dsm.common;
 import java.util.HashMap;
 
 /**
- * DSMArguments class defines a standard pair values to pass variable type and
+ * MultiArguments class defines a standard pair values to pass variable type and
  * number of parameters to a method.
  * 
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public class DSMArguments {
+public class MultiArguments {
 
     HashMap argumentList = null;
     
     /**
-     * DSMArguments Constructor
+     * MultiArguments Constructor
      */
-    public DSMArguments() {
+    public MultiArguments() {
     }
 
     /**

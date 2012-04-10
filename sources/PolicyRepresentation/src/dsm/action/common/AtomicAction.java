@@ -4,6 +4,7 @@
 package dsm.action.common;
 
 import dsm.common.DSMManifest;
+import dsm.common.MultiArguments;
 
 /**
  * AtomicAction abstract class provides basic operations and attributes to all
@@ -65,8 +66,10 @@ public abstract class AtomicAction extends DSMManifest implements Action {
      * 
      * This method is the call entry for other modules which intend to execute
      * the atomic action.
+     * 
+     * @param arguments Argument list
      */
     @Override
-    public void executeAction() {
+    public void executeAction(MultiArguments arguments) {
     }
 }

@@ -3,6 +3,8 @@
  */
 package dsm.action.common;
 
+import dsm.common.MultiArguments;
+
 /**
  * Action interface defines general operations and attributes for a policy
  * action.
@@ -33,6 +35,8 @@ public interface Action {
      * 
      * This method is the call entry for other modules which intend to execute
      * the action.
+     * 
+     * @param arguments Argument list
      */
-    void executeAction();
+    void executeAction(MultiArguments arguments);
 }
