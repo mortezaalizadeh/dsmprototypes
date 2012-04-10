@@ -24,6 +24,11 @@ public class ActionRepository extends DSMManifest {
         super("6a0df21c-ffe0-4fad-a402-a147afd7fd88", "Action Repository");
     }
 
+    /**
+     * Returns singleton instance of ActionRepository class.
+     * 
+     * @return Singleton instance of ActionRepository class
+     */
     public static synchronized ActionRepository getSingletonObject() {
         if (singletonInstance == null)
             singletonInstance = new ActionRepository();
@@ -34,5 +39,11 @@ public class ActionRepository extends DSMManifest {
     @Override
     public Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();
+    }
+
+    /**
+     * Initialize ActionRepository module and allocate all required resources.
+     */
+    public void init() {
     }
 }
