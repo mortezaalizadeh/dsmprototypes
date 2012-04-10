@@ -3,8 +3,6 @@
  */
 package dsm.action.common;
 
-import dsm.error.common.DSMGeneralErrorInfo;
-
 /**
  * Action interface defines general operations and attributes for a policy
  * action.
@@ -35,14 +33,6 @@ public interface Action {
      * 
      * This method is the call entry for other modules which intend to execute
      * the action.
-     * 
-     * @param errorInfo Contains error info if any error or exception occurs in
-     * return. Passing null would not return occurred error and method only
-     * returns false
-     * 
-     * @return Returns true if action execution is successfully done and the
-     * value is returned, otherwise return false and errorInfo contains occurred
-     * error info
      */
-    boolean executeAction(DSMGeneralErrorInfo errorInfo);
+    void executeAction();
 }

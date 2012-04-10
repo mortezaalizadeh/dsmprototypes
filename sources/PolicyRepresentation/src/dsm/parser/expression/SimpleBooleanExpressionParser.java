@@ -4,7 +4,6 @@
 package dsm.parser.expression;
 
 import dsm.common.DSMManifest;
-import dsm.error.common.DSMGeneralErrorInfo;
 import dsm.parser.expression.common.BooleanExpressionParser;
 import dsm.parser.expression.common.BooleanExpressionResult;
 
@@ -28,48 +27,15 @@ public class SimpleBooleanExpressionParser extends DSMManifest implements Boolea
      * 
      * @param szExpression Expression to be parsed and evaluated
      * @param result Contains result of expression in return
-     * @param errorInfo Contains error info if any error or exception occurs in
-     * return. Passing null would not return occurred error and method only
-     * returns false
-     * 
-     * @return Returns true if evaluation is successfully done and the value is
-     * returned, otherwise return false and errorInfo contains occurred error info
      */
     @Override
-    public boolean parseAndEvaluateExpression(String szExpression, BooleanExpressionResult result, DSMGeneralErrorInfo errorInfo) {
-        boolean bSuccess = false;
-        
-        try{
-            do {
-                if (szExpression == null) {
-                    if(errorInfo != null){
-                        errorInfo.setErrorMessage("Error: Passed szExpression reference is null.");
-                        errorInfo.setOccurredException(null);
-                    }
-                    
-                    break;
-                }
+    public void parseAndEvaluateExpression(String szExpression, BooleanExpressionResult result) {
+        if (szExpression == null)
+            throw new NullPointerException("Error: Passed szExpression reference is null.");
 
-                if ((szExpression = szExpression.trim()).length() == 0) {
-                    if(errorInfo != null){
-                        errorInfo.setErrorMessage("Error: Passed szExpression string length is zero.");
-                        errorInfo.setOccurredException(null);
-                    }
-                    
-                    break;
-                }
+        szExpression = szExpression.trim();
 
-                bSuccess = true;
-            } while(false);
-        } catch(Exception e) {
-            if(errorInfo != null){
-                errorInfo.setErrorMessage(e.getMessage());
-                errorInfo.setOccurredException(e);
-            }
-            
-            bSuccess = false;
-        }
-        
-        return bSuccess;
+        if (szExpression.length() == 0)
+            throw new IllegalArgumentException("Error: Passed szExpression string length is zero.");
     }
 }

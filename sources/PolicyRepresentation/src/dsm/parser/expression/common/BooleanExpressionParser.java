@@ -3,8 +3,6 @@
  */
 package dsm.parser.expression.common;
 
-import dsm.error.common.DSMGeneralErrorInfo;
-
 /**
  * BooleanExpressionParser interface defines general operations and attributes
  * for a boolean expression parser.
@@ -21,12 +19,6 @@ public interface BooleanExpressionParser {
      * 
      * @param szExpression Expression to be parsed and evaluated
      * @param result Contains result of expression in return
-     * @param errorInfo Contains error info if any error or exception occurs in
-     * return. Passing null would not return occurred error and method only
-     * returns false
-     * 
-     * @return Returns true if evaluation is successfully done and the value is
-     * returned, otherwise return false and errorInfo contains occurred error info
      */
-    boolean parseAndEvaluateExpression(String szExpression, BooleanExpressionResult result, DSMGeneralErrorInfo errorInfo);
+    void parseAndEvaluateExpression(String szExpression, BooleanExpressionResult result);
 }
