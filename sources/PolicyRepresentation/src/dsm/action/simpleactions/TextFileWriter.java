@@ -7,19 +7,19 @@ import dsm.action.common.AtomicAction;
 import dsm.common.MultiArguments;
 
 /**
- * FileWriter is a simple content saver which stores information into file.
+ * TextFileWriter is a simple content saver which stores information into file.
  * 
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public class FileWriter extends AtomicAction{
+public class TextFileWriter extends AtomicAction{
 
     /**
-     * FileWriter Constructor
+     * TextFileWriter Constructor
      * 
      */
-    public FileWriter() {
-        super("9ede7704-ae67-4d06-8a7a-b07d4aa8ba1b", "FileWriter Action", "FileWriter Action");
+    public TextFileWriter() {
+        super("9ede7704-ae67-4d06-8a7a-b07d4aa8ba1b", "TextFileWriter Action", "TextFileWriter Action");
     }
     
     /**

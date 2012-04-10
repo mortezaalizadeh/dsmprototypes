@@ -7,19 +7,19 @@ import dsm.action.common.AtomicAction;
 import dsm.common.MultiArguments;
 
 /**
- * FileReader is a simple content reader which read information from file.
+ * TextFileReader is a simple content reader which read information from file.
  * 
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public class FileReader extends AtomicAction{
+public class TextFileReader extends AtomicAction{
 
     /**
-     * FileReader Constructor
+     * TextFileReader Constructor
      * 
      */
-    public FileReader() {
-        super("44fb2802-5455-47a5-bcc6-e151fb80b38a", "FileReader Action", "FileReader Action");
+    public TextFileReader() {
+        super("44fb2802-5455-47a5-bcc6-e151fb80b38a", "TextFileReader Action", "TextFileReader Action");
     }
     
     /**
