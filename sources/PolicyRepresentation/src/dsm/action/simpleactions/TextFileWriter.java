@@ -12,7 +12,7 @@ import dsm.common.MultiArguments;
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public class TextFileWriter extends AtomicAction{
+public class TextFileWriter extends AtomicAction {
 
     /**
      * TextFileWriter Constructor
