@@ -1,7 +1,7 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.action.simpleactions;
+package dsm.action.distributed.simpleactions;
 
 import dsm.action.common.AtomicAction;
 import dsm.common.MultiArguments;
