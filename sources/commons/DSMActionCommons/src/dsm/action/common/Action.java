@@ -6,10 +6,9 @@ package dsm.action.common;
 import dsm.common.MultiArguments;
 
 /**
- * Action interface defines general operations and attributes for a policy
- * action.
+ * Action interface defines general operations and attributes for an action.
  * 
- * This interface must be implemented by all policy action classes.
+ * This interface must be implemented by all action classes.
  * 
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
