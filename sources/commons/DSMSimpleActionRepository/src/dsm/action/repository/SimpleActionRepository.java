@@ -12,15 +12,15 @@ import dsm.common.DSMManifest;
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public class ActionRepository extends DSMManifest {
+public class SimpleActionRepository extends DSMManifest {
     
-    private static ActionRepository singletonInstance;
+    private static SimpleActionRepository singletonInstance;
     
     /**
      * ActionRepository Constructor
      * 
      */
-    private ActionRepository() {
+    private SimpleActionRepository() {
         super("6a0df21c-ffe0-4fad-a402-a147afd7fd88", "Action Repository");
     }
 
@@ -29,9 +29,9 @@ public class ActionRepository extends DSMManifest {
      * 
      * @return Singleton instance of ActionRepository class
      */
-    public static synchronized ActionRepository getSingletonObject() {
+    public static synchronized SimpleActionRepository getSingletonObject() {
         if (singletonInstance == null)
-            singletonInstance = new ActionRepository();
+            singletonInstance = new SimpleActionRepository();
 
         return singletonInstance;
     }
