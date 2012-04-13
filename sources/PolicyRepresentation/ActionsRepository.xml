@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository>
+    <name>
+        Actions Repository
+    </name>
+    <actions>
+        <action>
+            <library_file>
+                
+            </library_file>
+            <class_name>
+                
+            </class_name>
+        </action>
+    </actions>
+</repository>
