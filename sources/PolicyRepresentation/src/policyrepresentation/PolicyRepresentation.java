@@ -4,8 +4,6 @@
  */
 package policyrepresentation;
 
-import dsm.action.repository.ActionRepository;
-
 /**
  *
  * @author morteza
@@ -16,7 +14,5 @@ public class PolicyRepresentation {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        ActionRepository.getSingletonObject().init();
     }
 }
