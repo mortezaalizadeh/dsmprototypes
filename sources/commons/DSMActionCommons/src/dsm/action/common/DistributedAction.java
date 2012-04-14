@@ -4,7 +4,7 @@
 package dsm.action.common;
 
 import dsm.common.DSMManifest;
-import dsm.common.MultiArguments;
+import dsm.common.argument.ArgumentContainer;
 
 /**
  * DistributedAction abstract class provides basic operations and attributes
@@ -67,9 +67,9 @@ public abstract class DistributedAction extends DSMManifest implements Action {
      * This method is the call entry for other modules which intend to execute
      * the distributed action.
      * 
-     * @param arguments Argument list
+     * @param arguments Argument container
      */
     @Override
-    public void executeAction(MultiArguments arguments) {
+    public void executeAction(ArgumentContainer argumentContainer) {
     }
 }

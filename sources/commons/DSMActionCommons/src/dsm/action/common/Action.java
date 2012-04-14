@@ -3,7 +3,7 @@
  */
 package dsm.action.common;
 
-import dsm.common.MultiArguments;
+import dsm.common.argument.ArgumentContainer;
 
 /**
  * Action interface defines general operations and attributes for an action.
@@ -35,7 +35,7 @@ public interface Action {
      * This method is the call entry for other modules which intend to execute
      * the action.
      * 
-     * @param arguments Argument list
+     * @param arguments Argument container
      */
-    void executeAction(MultiArguments arguments);
+    void executeAction(ArgumentContainer argumentContainer);
 }
