@@ -4,7 +4,7 @@
 package dsm.action.distributed.simpleactions;
 
 import dsm.action.common.AtomicAction;
-import dsm.common.MultiArguments;
+import dsm.common.argument.ArgumentContainer;
 
 /**
  * NetworkTextFileWriter is a simple content saver which stores information into
@@ -28,9 +28,9 @@ public class NetworkTextFileWriter extends AtomicAction {
      * This methods reads filename as a first argument and string content as a
      * second argument and save content into file.
      * 
-     * @param arguments Argument list
+     * @param arguments Argument container
      */
     @Override
-    public void executeAction(MultiArguments arguments) {
+    public void executeAction(ArgumentContainer argumentContainer) {
     }
 }
