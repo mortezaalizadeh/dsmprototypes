@@ -1,26 +1,26 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.common;
+package dsm.common.argument;
 
+import dsm.common.DSMManifest;
 import java.util.HashMap;
 
 /**
- * MultiArguments class defines a standard pair values to pass variable type and
- * number of parameters to a method.
+ * ArgumentContainer.
  * 
- * @version 0.1, April 10, 2012
+ * @version 0.1, April 14, 2012
  * @author Morteza Alizadeh
  */
-public class MultiArguments extends DSMManifest {
+public class ArgumentContainer extends DSMManifest {
 
     HashMap argumentList = null;
     
     /**
      * MultiArguments Constructor
      */
-    public MultiArguments() {
-        super("e5320f27-fcda-407e-9016-3c43c547ba80", "Multiple Arguments Contianter");
+    public ArgumentContainer() {
+        super("e5320f27-fcda-407e-9016-3c43c547ba80", "Argument Contianter");
     }
 
     /**
