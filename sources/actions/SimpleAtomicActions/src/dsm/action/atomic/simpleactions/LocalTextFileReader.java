@@ -4,7 +4,7 @@
 package dsm.action.atomic.simpleactions;
 
 import dsm.action.common.AtomicAction;
-import dsm.common.MultiArguments;
+import dsm.common.argument.ArgumentContainer;
 
 /**
  * LocalTextFileReader is a simple local content reader which read information
@@ -28,9 +28,9 @@ public class LocalTextFileReader extends AtomicAction {
      * This methods reads filename as a first argument and reads the entire
      * content and copy that into second argument as an string object.
      * 
-     * @param arguments Argument list
+     * @param arguments Argument container
      */
     @Override
-    public void executeAction(MultiArguments arguments) {
+    public void executeAction(ArgumentContainer argumentContainer) {
     }
 }

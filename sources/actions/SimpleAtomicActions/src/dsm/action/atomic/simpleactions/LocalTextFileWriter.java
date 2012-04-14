@@ -4,7 +4,7 @@
 package dsm.action.atomic.simpleactions;
 
 import dsm.action.common.AtomicAction;
-import dsm.common.MultiArguments;
+import dsm.common.argument.ArgumentContainer;
 
 /**
  * LocalTextFileWriter is a simple local content saver which stores information
@@ -28,9 +28,9 @@ public class LocalTextFileWriter extends AtomicAction {
      * This methods reads filename as a first argument and string content as a
      * second argument and save content into file.
      * 
-     * @param arguments Argument list
+     * @param arguments Argument container
      */
     @Override
-    public void executeAction(MultiArguments arguments) {
+    public void executeAction(ArgumentContainer argumentContainer) {
     }
 }
