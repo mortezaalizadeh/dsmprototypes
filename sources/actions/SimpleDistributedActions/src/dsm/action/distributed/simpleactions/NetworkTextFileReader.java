@@ -17,7 +17,6 @@ public class NetworkTextFileReader extends AtomicAction {
 
     /**
      * TextFileReader Constructor
-     * 
      */
     public NetworkTextFileReader() {
         super("ecae1f7f-b6fb-4c11-93de-060d98e9bdf2", "NetworkTextFileReader Action", "NetworkTextFileReader Action");

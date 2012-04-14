@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public class MultiArguments {
+public class MultiArguments extends DSMManifest {
 
     HashMap argumentList = null;
     
@@ -20,6 +20,7 @@ public class MultiArguments {
      * MultiArguments Constructor
      */
     public MultiArguments() {
+        super("e5320f27-fcda-407e-9016-3c43c547ba80", "Multiple Arguments Contianter");
     }
 
     /**

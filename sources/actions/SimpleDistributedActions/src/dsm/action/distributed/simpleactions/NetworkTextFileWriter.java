@@ -17,7 +17,6 @@ public class NetworkTextFileWriter extends AtomicAction {
 
     /**
      * TextFileWriter Constructor
-     * 
      */
     public NetworkTextFileWriter() {
         super("913c2e47-7cac-4831-b1c4-93caed52a4e6", "NetworkTextFileWriter Action", "NetworkTextFileWriter Action");

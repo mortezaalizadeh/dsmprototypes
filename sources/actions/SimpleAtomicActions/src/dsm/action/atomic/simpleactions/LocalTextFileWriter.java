@@ -17,7 +17,6 @@ public class LocalTextFileWriter extends AtomicAction {
 
     /**
      * TextFileWriter Constructor
-     * 
      */
     public LocalTextFileWriter() {
         super("9ede7704-ae67-4d06-8a7a-b07d4aa8ba1b", "LocalTextFileWriter Action", "LocalTextFileWriter Action");

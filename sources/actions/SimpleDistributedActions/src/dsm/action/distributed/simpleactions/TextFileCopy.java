@@ -16,7 +16,6 @@ public class TextFileCopy extends AtomicAction {
 
     /**
      * TextFileReader Constructor
-     * 
      */
     public TextFileCopy() {
         super("c2d1ce7b-d685-456f-9f0a-ec50729ac1e0", "TextFileCopy Action", "TextFileCopy Action");

@@ -17,7 +17,6 @@ public class LocalTextFileReader extends AtomicAction {
 
     /**
      * TextFileReader Constructor
-     * 
      */
     public LocalTextFileReader() {
         super("44fb2802-5455-47a5-bcc6-e151fb80b38a", "LocalTextFileReader Action", "LocalTextFileReader Action");
