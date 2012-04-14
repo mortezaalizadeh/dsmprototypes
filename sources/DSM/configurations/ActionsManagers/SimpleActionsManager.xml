@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions_manager>
+    <type>
+    </type>
+    <name>
+        Simple Actions Manager
+    </name>
+    <unique_identifier></unique_identifier>
+    <actions_repository_file_path>
+        Repositories.xml
+    </actions_repository_file_path>
+</actions_manager>
