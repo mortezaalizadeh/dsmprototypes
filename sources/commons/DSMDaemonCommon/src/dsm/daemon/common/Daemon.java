@@ -29,8 +29,10 @@ public interface Daemon {
 
     /**
      * Initializes daemon.
+     * 
+     * @param initializationParams Contains initializations parameters
      */
-    void init();
+    void init(String initializationParams);
 
     /**
      * Shutdown daemon.

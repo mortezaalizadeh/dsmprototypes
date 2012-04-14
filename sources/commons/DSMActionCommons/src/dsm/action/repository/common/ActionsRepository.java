@@ -30,8 +30,10 @@ public interface ActionsRepository {
 
     /**
      * Initializes actions repository.
+     * 
+     * @param initializationParams Contains initializations parameters
      */
-    void init();
+    public void init(String initializationParams);
 
     /**
      * Shutdown actions repository.

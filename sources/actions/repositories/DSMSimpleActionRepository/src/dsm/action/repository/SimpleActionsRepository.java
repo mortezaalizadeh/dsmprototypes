@@ -55,9 +55,11 @@ public class SimpleActionsRepository extends DSMManifest implements ActionsRepos
     /**
      * Initialize SimpleActionsRepository module and allocate all required
      * resources.
+     * 
+     * @param initializationParams Contains initializations parameters
      */
     @Override
-    public void init() {
+    public void init(String initializationParams) {
         inited = true;
     }
 

@@ -54,9 +54,11 @@ public class DSMDaemon extends DSMManifest implements Daemon {
 
     /**
      * Initializes daemon.
+     * 
+     * @param initializationParams Contains initializations parameters
      */
     @Override
-    public void init() {
+    public void init(String initializationParams) {
         inited = true;
     }
 
