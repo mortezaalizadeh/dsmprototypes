@@ -7,8 +7,7 @@ import dsm.action.repository.common.ActionsRepository;
 import dsm.common.DSMManifest;
 
 /**
- * ActionRepository is a singleton class keeps track of registered actions in
- * DSM.
+ * ActionRepository keeps track of registered actions in DSM.
  * 
  * @version 0.1, April 13, 2012
  * @author Morteza Alizadeh
@@ -21,7 +20,7 @@ public class SimpleActionsRepository extends DSMManifest implements ActionsRepos
     private String actionsRepositoryName = "Simple Actions Repository";
 
     /**
-     * Actions repository name
+     * Actions Repository initialization state
      */
     private boolean inited = false;
 
@@ -59,6 +58,7 @@ public class SimpleActionsRepository extends DSMManifest implements ActionsRepos
      */
     @Override
     public void init() {
+        inited = true;
     }
 
     /**
@@ -67,5 +67,6 @@ public class SimpleActionsRepository extends DSMManifest implements ActionsRepos
      */
     @Override
     public void shutdown() {
+        inited = false;
     }
 }
