@@ -4,11 +4,16 @@
 package dsm.common.repository;
 
 import dsm.common.DSMManifest;
+import dsm.common.file.DSMFileHelper;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.XMLReader;
 
 /**
- * RepositoryParser class parses repository file and extract information from it.
+ * RepositoryParser class parses repository file and extract information from
+ * it.
  * 
- * @version 0.1, April 14, 2012
+ * @version 0.1, April 15, 2012
  * @author Morteza Alizadeh
  */
 public class RepositoryParser extends DSMManifest {
@@ -25,14 +30,31 @@ public class RepositoryParser extends DSMManifest {
      * 
      * @param szRepositoryFilePath Repository file path
      */
-    public void loadRepositoryFromFile(String szRepositoryFilePath) {
-    }
+    public void loadRepositoryFromFile(String szRepositoryFilePath) throws Exception {
+        DSMFileHelper dsmFileHelper = new DSMFileHelper();
+        String szRepositoryFileContent = dsmFileHelper.readEntireTextFileContent(szRepositoryFilePath);
+        
+        loadRepositoryFromStringContent(szRepositoryFileContent);
+   }
 
     /**
      * Loads repository information from passed string content.
      * 
      * @param szStringContent String content
      */
-    public void loadRepositoryFromStringContent(String szStringContent) {
+    public void loadRepositoryFromStringContent(String szStringContent) throws Exception {
+        try {
+            SAXParserFactory spf = SAXParserFactory.newInstance();
+
+            spf.setValidating(true);
+            
+            SAXParser parser = spf.newSAXParser();
+            XMLReader reader = parser.getXMLReader();
+            
+            reader.setErrorHandler(new RepositoryParserSAXErrorHandler());
+            reader.setContentHandler(new RepositoryParserSAXContentHandler());
+            reader.parse(szStringContent);
+        } finally {
+        }
     }
 }

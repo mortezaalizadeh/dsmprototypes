@@ -4,6 +4,8 @@
  */
 package dsm;
 
+import dsm.common.repository.RepositoryParser;
+
 /**
  *
  * @author morteza
@@ -14,6 +16,13 @@ public class DSM {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            RepositoryParser rp = new RepositoryParser();
+            
+            rp.loadRepositoryFromFile("configurations/Repositories.xml");
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
     }
 }
