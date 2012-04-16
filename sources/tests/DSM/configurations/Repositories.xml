@@ -9,6 +9,10 @@
         <link></link>
         <dameons>
             <daemon>
+                <name>
+                    DSM Daemon
+                </name>
+                <unique_identifier></unique_identifier>
                 <library>
                     DSMDaemon.jar
                 </library>
@@ -34,6 +38,9 @@
         <link></link>
         <actions_managers>
             <actions_manager>
+                <name>
+                    DSM Simple Action Manager
+                </name>
                 <library>
                     DSMSimpleActionManager.jar
                 </library>

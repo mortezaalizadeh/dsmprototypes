@@ -68,7 +68,7 @@ public class RepositoryParser extends DSMManifest {
 
         SAXParserFactory spf = SAXParserFactory.newInstance();
 
-        spf.setValidating(true);
+        spf.setValidating(false);
 
         SAXParser parser = spf.newSAXParser();
         XMLReader reader = parser.getXMLReader();
