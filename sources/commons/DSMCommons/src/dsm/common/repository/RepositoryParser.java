@@ -4,8 +4,8 @@
 package dsm.common.repository;
 
 import dsm.common.DSMManifest;
-import dsm.common.file.DSMFileHelper;
 import java.io.StringReader;
+import java.util.LinkedList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
@@ -21,6 +21,11 @@ import org.xml.sax.XMLReader;
 public class RepositoryParser extends DSMManifest {
 
     /**
+     * Parsed repository info list
+     */
+    private LinkedList<RepositoryInfo> parsedRepositoryInfoList = null;
+    
+    /**
      * RepositoryParser Constructor
      */
     public RepositoryParser() {
@@ -33,10 +38,10 @@ public class RepositoryParser extends DSMManifest {
      * @param szRepositoryFilePath Repository file path
      */
     public void loadRepositoryFromFile(String szRepositoryFilePath) throws Exception {
-        if(szRepositoryFilePath == null)
+        if (szRepositoryFilePath == null)
             throw new NullPointerException("Error: Passed szRepositoryFilePath reference is null.");
 
-        if(szRepositoryFilePath.trim().isEmpty())
+        if (szRepositoryFilePath.trim().isEmpty())
             throw new NullPointerException("Error: Passed szRepositoryFilePath length is zero.");
 
         loadRepository(new InputSource(szRepositoryFilePath));
@@ -48,10 +53,10 @@ public class RepositoryParser extends DSMManifest {
      * @param szStringContent String content
      */
     public void loadRepository(String szStringContent) throws Exception {
-        if(szStringContent == null)
+        if (szStringContent == null)
             throw new NullPointerException("Error: Passed szStringContent reference is null.");
 
-        if(szStringContent.trim().isEmpty())
+        if (szStringContent.trim().isEmpty())
             throw new NullPointerException("Error: Passed szStringContent length is zero.");
 
         loadRepository(new InputSource(new StringReader(szStringContent)));
@@ -63,7 +68,7 @@ public class RepositoryParser extends DSMManifest {
      * @param inputSource Input source contains XML message
      */
     public void loadRepository(InputSource inputSource) throws Exception {
-        if(inputSource == null)
+        if (inputSource == null)
             throw new NullPointerException("Error: Passed inputSource reference is null.");
 
         SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -73,8 +78,24 @@ public class RepositoryParser extends DSMManifest {
         SAXParser parser = spf.newSAXParser();
         XMLReader reader = parser.getXMLReader();
 
-        reader.setErrorHandler(new RepositoryParserSAXErrorHandler());
-        reader.setContentHandler(new RepositoryParserSAXContentHandler());
+        reader.setErrorHandler(new RepositoryParserSAXErrorHandler(this));
+        reader.setContentHandler(new RepositoryParserSAXContentHandler(this));
         reader.parse(inputSource);
+    }
+    
+    /**
+     * Adds new repository info to list of repositories.
+     * 
+     * @param repositoryInfo new repository info to add
+     */
+    public void addParsedRepositoryInfo(RepositoryInfo repositoryInfo)
+    {
+        if (repositoryInfo == null)
+            throw new NullPointerException("Error: Passed repositoryInfo reference is null.");
+        
+        if (parsedRepositoryInfoList==null)
+            parsedRepositoryInfoList = new LinkedList<RepositoryInfo>();
+        
+        parsedRepositoryInfoList.add(repositoryInfo);
     }
 }

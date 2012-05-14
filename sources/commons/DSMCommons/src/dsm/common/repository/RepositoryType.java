@@ -12,6 +12,11 @@ package dsm.common.repository;
 public enum RepositoryType {
 
     /**
+     * Unknown repository type.
+     */
+    Unknown,
+
+    /**
      * Daemon repository type.
      */
     Daemon,

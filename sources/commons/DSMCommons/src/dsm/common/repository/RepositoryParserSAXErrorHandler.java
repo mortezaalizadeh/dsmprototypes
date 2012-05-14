@@ -17,23 +17,34 @@ import org.xml.sax.SAXParseException;
 public class RepositoryParserSAXErrorHandler implements ErrorHandler {
 
     /**
-     * RepositoryParserSAXErrorHandler constructor
+     * Reference to repository parser object
      */
-    public RepositoryParserSAXErrorHandler() {
+    private RepositoryParser repositoryParser;
+    
+    /**
+     * RepositoryParserSAXErrorHandler constructor
+     * 
+     * @param refRepositoryParser reference to repository parser object
+     */
+    public RepositoryParserSAXErrorHandler(RepositoryParser refRepositoryParser) {
+        if (refRepositoryParser == null)
+            throw new NullPointerException("Error: Passed refRepositoryParser reference is null.");
+        
+        repositoryParser = refRepositoryParser;
     }
     
     @Override
-    public void warning(SAXParseException saxpe) throws SAXException {
-        throw(saxpe);
+    public void warning(SAXParseException exception) throws SAXException {
+        throw(exception);
     }
 
     @Override
-    public void error(SAXParseException saxpe) throws SAXException {
-        throw(saxpe);
+    public void error(SAXParseException exception) throws SAXException {
+        throw(exception);
     }
 
     @Override
-    public void fatalError(SAXParseException saxpe) throws SAXException {
-        throw(saxpe);
+    public void fatalError(SAXParseException exception) throws SAXException {
+        throw(exception);
     }
 }

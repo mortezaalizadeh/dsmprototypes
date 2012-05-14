@@ -36,6 +36,13 @@ public class RepositoryInfo extends DSMManifest {
 
     /**
      * RepositoryInfo constructor.
+     */
+    public RepositoryInfo() {
+        this(RepositoryType.Unknown);
+    }
+    
+    /**
+     * RepositoryInfo constructor.
      * 
      * @param nRepositoryType Repository type
      */
@@ -44,7 +51,7 @@ public class RepositoryInfo extends DSMManifest {
         
         repositoryType = nRepositoryType;
     }
-    
+
     /**
      * Returns repository type.
      * 

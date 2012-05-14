@@ -44,19 +44,19 @@ public class DSMFileHelper extends DSMManifest {
             return szFileContent;
         } finally {
             try {
-                if(br != null)
+                if (br != null)
                     br.close();
             }finally {
             }
 
             try {
-                if(dis != null)
+                if (dis != null)
                     dis.close();
             }finally {
             }
 
             try {
-                if(fis != null)
+                if (fis != null)
                     fis.close();
             }finally {
             }
