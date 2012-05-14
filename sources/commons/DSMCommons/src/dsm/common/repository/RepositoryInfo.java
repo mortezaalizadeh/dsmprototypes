@@ -4,6 +4,7 @@
 package dsm.common.repository;
 
 import dsm.common.DSMManifest;
+import java.util.LinkedList;
 
 /**
 * RepositoryInfo class is an entity class represent a repository of any defined
@@ -17,39 +18,39 @@ public class RepositoryInfo extends DSMManifest {
     /**
      * Repository type
      */
-    protected RepositoryType repositoryType;
+    protected RepositoryType type;
     
     /**
      * Repository name
      */
-    protected String repositoryName = "";
+    protected String name = "";
 
     /**
      * Repository unique identifier
      */
-    protected String repositoryUniqueIdentifier = "";
+    protected String uniqueIdentifier = "";
 
     /**
      * Repository link
      */
-    protected String repositoryLink = "";
+    protected String link = "";
+
+    /**
+     * Parsed daemon info list
+     */
+    private LinkedList<DaemonInfo> parsedDaemonInfoList = null;
 
     /**
      * RepositoryInfo constructor.
      */
     public RepositoryInfo() {
-        this(RepositoryType.Unknown);
-    }
-    
-    /**
-     * RepositoryInfo constructor.
-     * 
-     * @param nRepositoryType Repository type
-     */
-    public RepositoryInfo(RepositoryType nRepositoryType) {
         super("3400bc81-d2c1-4a9f-9ca8-97cedcbe515b", "Repository Info");
         
-        repositoryType = nRepositoryType;
+        type = RepositoryType.Unknown;
+        name = "";
+        uniqueIdentifier = "";
+        link = "";
+        parsedDaemonInfoList = null;
     }
 
     /**
@@ -57,17 +58,17 @@ public class RepositoryInfo extends DSMManifest {
      * 
      * @return Repository type
      */
-    public RepositoryType getRepositoryType() {
-        return repositoryType;
+    public RepositoryType getType() {
+        return type;
     }
 
     /**
      * Set repository type.
      * 
-     * @param nRepositoryType New repository type to set
+     * @param nType New repository type to set
      */
-    public void setRepositoryType(RepositoryType nRepositoryType) {
-        repositoryType = nRepositoryType;
+    public void setType(RepositoryType nType) {
+        type = nType;
     }
 
     /**
@@ -75,17 +76,17 @@ public class RepositoryInfo extends DSMManifest {
      * 
      * @return Repository unique identifier
      */
-    public String getRepositoryName() {
-        return repositoryName;
+    public String getName() {
+        return name;
     }
 
     /**
      * Set repository name.
      * 
-     * @param szRepositoryName New repository name to set
+     * @param szName New repository name to set
      */
-    public void setRepositoryName(String szRepositoryName) {
-        repositoryName = szRepositoryName;
+    public void setName(String szName) {
+        name = szName;
     }
 
     /**
@@ -93,17 +94,17 @@ public class RepositoryInfo extends DSMManifest {
      * 
      * @return Repository unique identifier
      */
-    public String getRepositoryUniqueIdentifier() {
-        return repositoryUniqueIdentifier;
+    public String getUniqueIdentifier() {
+        return uniqueIdentifier;
     }
 
     /**
      * Set repository unique identifier.
      * 
-     * @param szRepositoryUniqueIdentifier New repository unique identifier to set
+     * @param szUniqueIdentifier New repository unique identifier to set
      */
-    public void setRepositoryUniqueIdentifier(String szRepositoryUniqueIdentifier) {
-        repositoryUniqueIdentifier = szRepositoryUniqueIdentifier;
+    public void setUniqueIdentifier(String szUniqueIdentifier) {
+        uniqueIdentifier = szUniqueIdentifier;
     }
 
     /**
@@ -111,16 +112,16 @@ public class RepositoryInfo extends DSMManifest {
      * 
      * @return Repository link
      */
-    public String getRepositoryLink() {
-        return repositoryLink;
+    public String getLink() {
+        return link;
     }
 
     /**
      * Set repository link.
      * 
-     * @param szRepositoryLink New repository link to set
+     * @param szLink New repository link to set
      */
-    public void setRepositoryLink(String szRepositoryLink) {
-        repositoryLink = szRepositoryLink;
+    public void setLink(String szLink) {
+        link = szLink;
     }
 }

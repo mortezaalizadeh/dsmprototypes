@@ -27,7 +27,10 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
      */
     private RepositoryInfo cachedRepositoryInfo;
     
-    private int hitDepth;
+    /**
+     * XML Repository parsing depth
+     */
+    private int parsedDepth;
 
     private Locator saxLocator = null;
     
@@ -43,7 +46,7 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         repositoryParser = refRepositoryParser;
         cachedRepositoryInfo = null;
 
-        hitDepth = 0;
+        parsedDepth = 0;
     }
     
     @Override
@@ -81,7 +84,7 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         qName = qName.trim();
 
         if (qName.equalsIgnoreCase("repository")) {
-            if (hitDepth != 0)
+            if (parsedDepth != 0)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
             cachedRepositoryInfo = new RepositoryInfo();
@@ -92,11 +95,11 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
                 throw new RepositoryFileParsingException("Error: type tag is not defined for repository.");
             else {
                 if (value.equalsIgnoreCase("Daemon")) {
-                    cachedRepositoryInfo.setRepositoryType(RepositoryType.Daemon);
+                    cachedRepositoryInfo.setType(RepositoryType.Daemon);
                 } else if (value.equalsIgnoreCase("ActionsManager")) {
-                    cachedRepositoryInfo.setRepositoryType(RepositoryType.ActionsManager);
+                    cachedRepositoryInfo.setType(RepositoryType.ActionsManager);
                 } else if (value.equalsIgnoreCase("Actions")) {
-                    cachedRepositoryInfo.setRepositoryType(RepositoryType.Actions);
+                    cachedRepositoryInfo.setType(RepositoryType.Actions);
                 } else {
                     throw new RepositoryFileParsingException(String.format("Error: Repository of type \"%s\" is not supported", value));
                 }
@@ -105,26 +108,26 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
             if ((value = atts.getValue("name")) == null)
                 throw new RepositoryFileParsingException("Error: name tag is not defined for repository.");
             else
-                cachedRepositoryInfo.setRepositoryName(value.trim());
+                cachedRepositoryInfo.setName(value.trim());
 
             if ((value = atts.getValue("unique_identifier")) == null)
                 throw new RepositoryFileParsingException("Error: unique_identifier tag is not defined for repository.");
             else
-                cachedRepositoryInfo.setRepositoryUniqueIdentifier(value.trim());
+                cachedRepositoryInfo.setUniqueIdentifier(value.trim());
 
             if ((value = atts.getValue("link")) == null)
-                cachedRepositoryInfo.setRepositoryLink("");
+                cachedRepositoryInfo.setLink("");
             else
-                cachedRepositoryInfo.setRepositoryLink(value.trim());
+                cachedRepositoryInfo.setLink(value.trim());
             
-            hitDepth++;
+            parsedDepth++;
         } else if (qName.equalsIgnoreCase("dameon")) {
-            if (hitDepth != 1)
+            if (parsedDepth != 1)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
-            hitDepth++;
+            parsedDepth++;
 
-            if (cachedRepositoryInfo.getRepositoryType() != RepositoryType.Daemon)
+            if (cachedRepositoryInfo.getType() != RepositoryType.Daemon)
                 return;
             
             String value;
@@ -175,20 +178,20 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         qName = qName.trim();
         
         if (qName.equalsIgnoreCase("repository")) {
-            if (hitDepth != 1)
+            if (parsedDepth != 1)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
-            hitDepth--;
+            parsedDepth--;
 
             if (repositoryParser != null)
                 repositoryParser.addParsedRepositoryInfo(cachedRepositoryInfo);
 
             cachedRepositoryInfo = null;
         } else if (qName.equalsIgnoreCase("dameon")) {
-            if (hitDepth != 2)
+            if (parsedDepth != 2)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
-            hitDepth--;
+            parsedDepth--;
         }
     }
 
