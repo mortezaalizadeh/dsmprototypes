@@ -28,10 +28,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
     private RepositoryInfo cachedRepositoryInfo;
     
     private int repositoryTagHitCount;
-    private int repositoryTypeTagHitCount;
-    private int repositoryNameTagHitCount;
-    private int repositoryUniqueIdentifierTagHitCount;
-    private int repositoryLinkTagHitCount;
 
     private Locator saxLocator = null;
     
@@ -48,10 +44,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         cachedRepositoryInfo = null;
 
         repositoryTagHitCount = 0;
-        repositoryTypeTagHitCount = 0;
-        repositoryNameTagHitCount = 0;
-        repositoryUniqueIdentifierTagHitCount = 0;
-        repositoryLinkTagHitCount = 0;
     }
     
     @Override
@@ -93,11 +85,25 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
             
             if (repositoryTagHitCount == 1) {
                 cachedRepositoryInfo = new RepositoryInfo();
+
+                String type = atts.getValue("type").trim();
+                
+                if (type.equalsIgnoreCase("Daemon")) {
+                    cachedRepositoryInfo.setRepositoryType(RepositoryType.Daemon);
+                } else if (type.equalsIgnoreCase("ActionsManager")) {
+                    cachedRepositoryInfo.setRepositoryType(RepositoryType.ActionsManager);
+                } else if (type.equalsIgnoreCase("Actions")) {
+                    cachedRepositoryInfo.setRepositoryType(RepositoryType.Actions);
+                } else {
+                    throw new SAXException(String.format("Error: Repository %s type is not supported", type));
+                }
+                
+                cachedRepositoryInfo.setRepositoryName(atts.getValue("name").trim());
+                cachedRepositoryInfo.setRepositoryUniqueIdentifier(atts.getValue("unique_identifier").trim());
+                cachedRepositoryInfo.setRepositoryLink(atts.getValue("link").trim());
             } else {
                 throw new SAXException("Error: Repository XML file contains wrong tags.");
             }
-        } else if (qName.equalsIgnoreCase("type")) {
-            repositoryTypeTagHitCount++;
         }
     }
 
@@ -126,8 +132,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
                 throw new SAXException("Error: Repository XML file contains wrong tags.");
             }
 
-        } else if (qName.equalsIgnoreCase("type")) {
-            repositoryTypeTagHitCount--;
         }
     }
 
@@ -141,17 +145,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         value = value.trim();
 
         if (cachedRepositoryInfo != null) {
-            if (repositoryTypeTagHitCount == 1) {
-                if (value.equalsIgnoreCase("Daemon")) {
-                    cachedRepositoryInfo.setRepositoryType(RepositoryType.Daemon);
-                } else if (value.equalsIgnoreCase("ActionsManager")) {
-                    cachedRepositoryInfo.setRepositoryType(RepositoryType.ActionsManager);
-                } else if (value.equalsIgnoreCase("Actions")) {
-                    cachedRepositoryInfo.setRepositoryType(RepositoryType.Actions);
-                } else {
-                    throw new SAXException(String.format("Error: Repository %s type is not supported", value));
-                }
-            }
         }
     }
 
