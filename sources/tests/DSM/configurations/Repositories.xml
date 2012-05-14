@@ -1,130 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repositories>
-    <repository>
-        <type>
-            Daemon
-        </type>
-        <name></name>
-        <unique_identifier></unique_identifier>
-        <link></link>
+    <repository type="Daemon" name="" unique_identifier="" link="">
         <dameons>
-            <daemon>
-                <name>
-                    DSM Daemon
-                </name>
-                <unique_identifier></unique_identifier>
-                <library>
-                    DSMDaemon.jar
-                </library>
-                <namespace>
-                    dsm.daemon.dsmdaemon
-                </namespace>
-                <class_name>
-                    DSMDaemon
-                </class_name>
-                <configuration_file_full_path>
-                    DSMDaemonConfigurationFile.xml
-                </configuration_file_full_path>
-            </daemon>
+            <daemon name="DSM Daemon"
+                    unique_identifier=""
+                    library="DSMDaemon.jar"
+                    namespace="dsm.daemon.dsmdaemon"
+                    class_name="DSMDaemon"
+                    configuration_file_full_path="DSMDaemonConfigurationFile.xml" />
         </dameons>
     </repository>
 
-    <repository>
-        <type>
-            ActionsManager
-        </type>
-        <name></name>
-        <unique_identifier></unique_identifier>
-        <link></link>
+    <repository type="ActionsManager" name="" unique_identifier="" link="">
         <actions_managers>
-            <actions_manager>
-                <name>
-                    DSM Simple Action Manager
-                </name>
-                <library>
-                    DSMSimpleActionManager.jar
-                </library>
-                <namespace>
-                    dsm.action.manager
-                </namespace>
-                <class_name>
-                    SimpleActionsManager
-                </class_name>
-                <configuration_file_full_path>
-                    SimpleActionsManager.xml
-                </configuration_file_full_path>
-            </actions_manager>
+            <actions_manager name="DSM Simple Action Manager"
+                    unique_identifier=""
+                    library="DSMSimpleActionManager.jar"
+                    namespace="dsm.action.manager"
+                    class_name="SimpleActionsManager"
+                    configuration_file_full_path="SimpleActionsManager.xml" />
         </actions_managers>
     </repository>
 
-    <repository>
-        <type>
-            Actions
-        </type>
-        <name></name>
-        <unique_identifier></unique_identifier>
-        <link></link>
+    <repository type="Actions" name="" unique_identifier="" link="">
         <actions>
-            <action>
-                <library>
-                    SimpleAtomicActions.jar
-                </library>
-                <namespace>
-                    dsm.action.atomic.simpleactions
-                </namespace>
-                <class_name>
-                    LocalTextFileReader
-                </class_name>
-            </action>
+            <action library="SimpleAtomicActions.jar"
+                    namespace="dsm.action.atomic.simpleactions"
+                    class_name="LocalTextFileReader" />
 
-            <action>
-                <library>
-                    SimpleAtomicActions.jar
-                </library>
-                <namespace>
-                    dsm.action.atomic.simpleactions
-                </namespace>
-                <class_name>
-                    LocalTextFileWriter
-                </class_name>
-            </action>
+            <action library="SimpleAtomicActions.jar"
+                    namespace="dsm.action.atomic.simpleactions"
+                    class_name="LocalTextFileWriter" />
 
-            <action>
-                <library>
-                    SimpleDistributedActions.jar
-                </library>
-                <namespace>
-                    dsm.action.distributed.simpleactions
-                </namespace>
-                <class_name>
-                    NetworkTextFileReader
-                </class_name>
-            </action>
+            <action library="SimpleDistributedActions.jar"
+                    namespace="dsm.action.distributed.simpleactions"
+                    class_name="NetworkTextFileReader" />
 
-            <action>
-                <library>
-                    SimpleDistributedActions.jar
-                </library>
-                <namespace>
-                    dsm.action.distributed.simpleactions
-                </namespace>
-                <class_name>
-                    NetworkTextFileWriter
-                </class_name>
-            </action>
+            <action library="SimpleDistributedActions.jar"
+                    namespace="dsm.action.distributed.simpleactions"
+                    class_name="NetworkTextFileWriter" />
 
-            <action>
-                <library>
-                    SimpleDistributedActions.jar
-                </library>
-                <namespace>
-                    dsm.action.distributed.simpleactions
-                </namespace>
-                <class_name>
-                    TextFileCopy
-                </class_name>
-            </action>
-
+            <action library="SimpleDistributedActions.jar"
+                    namespace="dsm.action.distributed.simpleactions"
+                    class_name="TextFileCopy" />
         </actions>
     </repository>
 
