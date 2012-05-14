@@ -4,6 +4,7 @@
 package dsm.common.repository;
 
 import dsm.common.DSMManifest;
+import dsm.common.daemon.DaemonInfo;
 import java.util.LinkedList;
 
 /**

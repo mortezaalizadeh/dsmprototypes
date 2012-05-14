@@ -1,7 +1,7 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.common.repository;
+package dsm.common.daemon;
 
 import dsm.common.DSMManifest;
 
