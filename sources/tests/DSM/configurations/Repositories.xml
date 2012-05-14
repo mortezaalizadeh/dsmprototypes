@@ -4,7 +4,7 @@
         <daemon name="DSM Daemon"
                 unique_identifier=""
                 library="DSMDaemon.jar"
-                namespace="dsm.daemon.dsmdaemon"
+                packageName="dsm.daemon.dsmdaemon"
                 class_name="DSMDaemon"
                 configuration_file_full_path="DSMDaemonConfigurationFile.xml" />
     </repository>
@@ -13,30 +13,30 @@
         <actions_manager name="DSM Simple Action Manager"
                 unique_identifier=""
                 library="DSMSimpleActionManager.jar"
-                namespace="dsm.action.manager"
+                packageName="dsm.action.manager"
                 class_name="SimpleActionsManager"
                 configuration_file_full_path="SimpleActionsManager.xml" />
     </repository>
 
     <repository type="Actions" name="" unique_identifier="" link="">
         <action library="SimpleAtomicActions.jar"
-                namespace="dsm.action.atomic.simpleactions"
+                packageName="dsm.action.atomic.simpleactions"
                 class_name="LocalTextFileReader" />
 
         <action library="SimpleAtomicActions.jar"
-                namespace="dsm.action.atomic.simpleactions"
+                packageName="dsm.action.atomic.simpleactions"
                 class_name="LocalTextFileWriter" />
 
         <action library="SimpleDistributedActions.jar"
-                namespace="dsm.action.distributed.simpleactions"
+                packageName="dsm.action.distributed.simpleactions"
                 class_name="NetworkTextFileReader" />
 
         <action library="SimpleDistributedActions.jar"
-                namespace="dsm.action.distributed.simpleactions"
+                packageName="dsm.action.distributed.simpleactions"
                 class_name="NetworkTextFileWriter" />
 
         <action library="SimpleDistributedActions.jar"
-                namespace="dsm.action.distributed.simpleactions"
+                packageName="dsm.action.distributed.simpleactions"
                 class_name="TextFileCopy" />
         </actions>
     </repository>
