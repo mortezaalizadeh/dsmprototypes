@@ -10,7 +10,7 @@ import dsm.common.repository.RepositoryParser;
  *
  * @author morteza
  */
-public class DSM {
+public class DSM{
 
     /**
      * @param args the command line arguments
