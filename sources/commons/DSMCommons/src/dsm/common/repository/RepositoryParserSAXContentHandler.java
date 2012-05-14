@@ -27,7 +27,7 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
      */
     private RepositoryInfo cachedRepositoryInfo;
     
-    private int repositoryTagHitCount;
+    private int hitDepth;
 
     private Locator saxLocator = null;
     
@@ -43,7 +43,7 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         repositoryParser = refRepositoryParser;
         cachedRepositoryInfo = null;
 
-        repositoryTagHitCount = 0;
+        hitDepth = 0;
     }
     
     @Override
@@ -71,38 +71,92 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
     public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
         if (uri == null)
             throw new NullPointerException("Error: Passed uri reference is null.");
-            
+
         if (localName == null)
             throw new NullPointerException("Error: Passed localName reference is null.");
-        
+
         if (qName == null)
             throw new NullPointerException("Error: Passed qName reference is null.");
-        
+
         qName = qName.trim();
 
         if (qName.equalsIgnoreCase("repository")) {
-            repositoryTagHitCount++;
-            
-            if (repositoryTagHitCount == 1) {
-                cachedRepositoryInfo = new RepositoryInfo();
+            if (hitDepth != 0)
+                throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
-                String type = atts.getValue("type").trim();
-                
-                if (type.equalsIgnoreCase("Daemon")) {
+            cachedRepositoryInfo = new RepositoryInfo();
+
+            String value;
+
+            if ((value = atts.getValue("type")) == null)
+                throw new RepositoryFileParsingException("Error: type tag is not defined for repository.");
+            else {
+                if (value.equalsIgnoreCase("Daemon")) {
                     cachedRepositoryInfo.setRepositoryType(RepositoryType.Daemon);
-                } else if (type.equalsIgnoreCase("ActionsManager")) {
+                } else if (value.equalsIgnoreCase("ActionsManager")) {
                     cachedRepositoryInfo.setRepositoryType(RepositoryType.ActionsManager);
-                } else if (type.equalsIgnoreCase("Actions")) {
+                } else if (value.equalsIgnoreCase("Actions")) {
                     cachedRepositoryInfo.setRepositoryType(RepositoryType.Actions);
                 } else {
-                    throw new SAXException(String.format("Error: Repository %s type is not supported", type));
+                    throw new RepositoryFileParsingException(String.format("Error: Repository of type \"%s\" is not supported", value));
                 }
-                
-                cachedRepositoryInfo.setRepositoryName(atts.getValue("name").trim());
-                cachedRepositoryInfo.setRepositoryUniqueIdentifier(atts.getValue("unique_identifier").trim());
-                cachedRepositoryInfo.setRepositoryLink(atts.getValue("link").trim());
+            }
+
+            if ((value = atts.getValue("name")) == null)
+                throw new RepositoryFileParsingException("Error: name tag is not defined for repository.");
+            else
+                cachedRepositoryInfo.setRepositoryName(value.trim());
+
+            if ((value = atts.getValue("unique_identifier")) == null)
+                throw new RepositoryFileParsingException("Error: unique_identifier tag is not defined for repository.");
+            else
+                cachedRepositoryInfo.setRepositoryUniqueIdentifier(value.trim());
+
+            if ((value = atts.getValue("link")) == null)
+                cachedRepositoryInfo.setRepositoryLink("");
+            else
+                cachedRepositoryInfo.setRepositoryLink(value.trim());
+            
+            hitDepth++;
+        } else if (qName.equalsIgnoreCase("dameon")) {
+            if (hitDepth != 1)
+                throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+
+            hitDepth++;
+
+            if (cachedRepositoryInfo.getRepositoryType() != RepositoryType.Daemon)
+                return;
+            
+            String value;
+            
+            if ((value = atts.getValue("name")) == null) {
+                throw new RepositoryFileParsingException("Error: Name tag is not defined for daemon.");
             } else {
-                throw new SAXException("Error: Repository XML file contains wrong tags.");
+            }
+
+            if ((value = atts.getValue("unique_identifier")) == null) {
+                throw new RepositoryFileParsingException("Error: unique_identifier tag is not defined for daemon.");
+            } else {
+            }
+
+            if ((value = atts.getValue("library")) == null) {
+                throw new RepositoryFileParsingException("Error: library tag is not defined for daemon.");
+            } else {
+            }
+
+            if ((value = atts.getValue("namespace")) == null) {
+                throw new RepositoryFileParsingException("Error: namespace tag is not defined for daemon.");
+            } else {
+            }
+
+             if ((value = atts.getValue("class_name")) == null) {
+                throw new RepositoryFileParsingException("Error: class_name tag is not defined for daemon.");
+            } else {
+            }
+
+            if ((value = atts.getValue("configuration_file_full_path")) == null) {
+                throw new RepositoryFileParsingException("Error: configuration_file_full_path tag is not defined for daemon.");
+            } else {
             }
         }
     }
@@ -121,31 +175,25 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
         qName = qName.trim();
         
         if (qName.equalsIgnoreCase("repository")) {
-            repositoryTagHitCount--;
+            if (hitDepth != 1)
+                throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
-            if (repositoryTagHitCount == 0) {
-                if (repositoryParser != null)
-                    repositoryParser.addParsedRepositoryInfo(cachedRepositoryInfo);
+            hitDepth--;
 
-                cachedRepositoryInfo = null;
-            } else {
-                throw new SAXException("Error: Repository XML file contains wrong tags.");
-            }
+            if (repositoryParser != null)
+                repositoryParser.addParsedRepositoryInfo(cachedRepositoryInfo);
 
+            cachedRepositoryInfo = null;
+        } else if (qName.equalsIgnoreCase("dameon")) {
+            if (hitDepth != 2)
+                throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+
+            hitDepth--;
         }
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        if (ch == null)
-            throw new NullPointerException("Error: Passed ch reference is null.");
-
-        String value = new String(ch, start, length);
-
-        value = value.trim();
-
-        if (cachedRepositoryInfo != null) {
-        }
     }
 
     @Override
