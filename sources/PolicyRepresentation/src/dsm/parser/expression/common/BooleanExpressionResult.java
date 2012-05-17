@@ -24,7 +24,7 @@ public class BooleanExpressionResult extends DSMManifest {
     public BooleanExpressionResult() {
         super("31d7b03a-c8e7-4132-a11f-e5fb106f92b7", "Boolean Expression Result");
 
-        evaluatedResult = false;
+        this.evaluatedResult = false;
     }
     
     /**
@@ -33,7 +33,7 @@ public class BooleanExpressionResult extends DSMManifest {
      * @param value Value to be set
      */
     public void setEvaluatedResult(boolean value){
-        evaluatedResult = value;
+        this.evaluatedResult = value;
     }
 
     /**
@@ -42,6 +42,6 @@ public class BooleanExpressionResult extends DSMManifest {
      * @return Returns boolean value representing current object evaluatedResult value
      */
     public boolean getEvaluatedResult(){
-        return evaluatedResult;
+        return this.evaluatedResult;
     }
 }

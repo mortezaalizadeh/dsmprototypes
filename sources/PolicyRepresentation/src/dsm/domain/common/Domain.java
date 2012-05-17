@@ -46,8 +46,8 @@ public abstract class Domain extends DSMManifest implements DSMObject {
     public Domain(String szUniqueId, String szFriendlyName, String szDSMObjectName, String szDomainName) {
         super(szUniqueId, szFriendlyName);
 
-        dsmObjectName = szDSMObjectName;
-        domainName = szDomainName;
+        this.dsmObjectName = szDSMObjectName;
+        this.domainName = szDomainName;
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class Domain extends DSMManifest implements DSMObject {
      */
     @Override
     public String getDSMObjectName() {
-        return dsmObjectName;
+        return this.dsmObjectName;
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class Domain extends DSMManifest implements DSMObject {
      */
     @Override
     public DSMObjectType getDSMObjectType() {
-        return dsmObjectType;
+        return this.dsmObjectType;
     }
     
     /**
@@ -76,7 +76,7 @@ public abstract class Domain extends DSMManifest implements DSMObject {
      * @return Domain name
      */
     public String getDomainName() {
-        return domainName;
+        return this.domainName;
     }
     
     /**

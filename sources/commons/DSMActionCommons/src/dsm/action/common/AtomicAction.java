@@ -38,7 +38,7 @@ public abstract class AtomicAction extends DSMManifest implements Action {
     public AtomicAction(String szUniqueId, String szFriendlyName, String szActionName) {
         super(szUniqueId, szFriendlyName);
         
-        actionName = szActionName;
+        this.actionName = szActionName;
     }
 
     /**
@@ -48,7 +48,7 @@ public abstract class AtomicAction extends DSMManifest implements Action {
      */
     @Override
     public String getActionName() {
-        return actionName;
+        return this.actionName;
     }
 
     /**
@@ -58,7 +58,7 @@ public abstract class AtomicAction extends DSMManifest implements Action {
      */
     @Override
     public ActionType getActionType() {
-        return actionType;
+        return this.actionType;
     }
 
     /**

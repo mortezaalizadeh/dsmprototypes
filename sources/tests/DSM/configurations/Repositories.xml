@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repositories>
-    <repository type="Daemon" name="" unique_identifier="" link="">
+    <repository name="" unique_identifier="">
         <daemon name="DSM Daemon"
                 unique_identifier=""
                 library="DSMDaemon.jar"
-                packageName="dsm.daemon.dsmdaemon"
+                package_name="dsm.daemon.dsmdaemon"
                 class_name="DSMDaemon"
                 configuration_file_full_path="DSMDaemonConfigurationFile.xml" />
     </repository>
 
-    <repository type="ActionsManager" name="" unique_identifier="" link="">
+    <repository name="" unique_identifier="">
         <actions_manager name="DSM Simple Action Manager"
                 unique_identifier=""
                 library="DSMSimpleActionManager.jar"
-                packageName="dsm.action.manager"
+                package_name="dsm.action.manager"
                 class_name="SimpleActionsManager"
                 configuration_file_full_path="SimpleActionsManager.xml" />
     </repository>
 
-    <repository type="Actions" name="" unique_identifier="" link="">
+    <repository name="" unique_identifier="">
         <action library="SimpleAtomicActions.jar"
-                packageName="dsm.action.atomic.simpleactions"
+                package_name="dsm.action.atomic.simpleactions"
                 class_name="LocalTextFileReader" />
 
         <action library="SimpleAtomicActions.jar"
-                packageName="dsm.action.atomic.simpleactions"
+                package_name="dsm.action.atomic.simpleactions"
                 class_name="LocalTextFileWriter" />
 
         <action library="SimpleDistributedActions.jar"
-                packageName="dsm.action.distributed.simpleactions"
+                package_name="dsm.action.distributed.simpleactions"
                 class_name="NetworkTextFileReader" />
 
         <action library="SimpleDistributedActions.jar"
-                packageName="dsm.action.distributed.simpleactions"
+                package_name="dsm.action.distributed.simpleactions"
                 class_name="NetworkTextFileWriter" />
 
         <action library="SimpleDistributedActions.jar"
-                packageName="dsm.action.distributed.simpleactions"
-                class_name="TextFileCopy" />
+                package_name="dsm.action.distributed.simpleactions"
+                class_name="TextFileCopy`" />
         </actions>
     </repository>
-
 </repositories>

@@ -30,10 +30,10 @@ public class ArgumentContainer extends DSMManifest {
      * @param value Argument value
      */
     public void setArgument(String szName, Object value) {
-        if (argumentList == null)
-            argumentList = new HashMap();
+        if (this.argumentList == null)
+            this.argumentList = new HashMap();
         
-        argumentList.put(szName, value);
+        this.argumentList.put(szName, value);
     }
 
     /**
@@ -43,22 +43,22 @@ public class ArgumentContainer extends DSMManifest {
      * @return Returns argument value
      */
     public Object getArgument(String szName) {
-        if (argumentList == null)
+        if (this.argumentList == null)
             return null;
         
-        if (argumentList.isEmpty())
+        if (this.argumentList.isEmpty())
             return null;
         
-        return argumentList.get(szName);
+        return this.argumentList.get(szName);
     }
 
     /**
      * Clears all already stored arguments.
      */
     public void clear() {
-        if (argumentList != null)
-            argumentList.clear();
+        if (this.argumentList != null)
+            this.argumentList.clear();
         
-        argumentList = null;
+        this.argumentList = null;
     }
 }

@@ -30,7 +30,7 @@ public class RepositoryParserSAXErrorHandler implements ErrorHandler {
         if (refRepositoryParser == null)
             throw new NullPointerException("Error: Passed refRepositoryParser reference is null.");
         
-        repositoryParser = refRepositoryParser;
+        this.repositoryParser = refRepositoryParser;
     }
     
     @Override

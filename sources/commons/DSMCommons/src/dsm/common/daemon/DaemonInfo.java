@@ -49,12 +49,12 @@ public class DaemonInfo extends DSMManifest {
     public DaemonInfo() {
         super("70feef0d-bb9e-4bb2-998f-8bba70fbefe1", "Daemon Info");
         
-        name = "";
-        uniqueIdentifier = "";
-        library = "";
-        packageName = "";
-        className = "";
-        configurationFileFullPath = "";
+        this.name = "";
+        this.uniqueIdentifier = "";
+        this.library = "";
+        this.packageName = "";
+        this.className = "";
+        this.configurationFileFullPath = "";
     }
 
     /**
@@ -63,7 +63,7 @@ public class DaemonInfo extends DSMManifest {
      * @return Daemon unique identifier
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -72,7 +72,7 @@ public class DaemonInfo extends DSMManifest {
      * @param szName New daemon name to set
      */
     public void setName(String szName) {
-        name = szName;
+        this.name = szName;
     }
 
     /**
@@ -81,7 +81,7 @@ public class DaemonInfo extends DSMManifest {
      * @return Daemon unique identifier
      */
     public String getUniqueIdentifier() {
-        return uniqueIdentifier;
+        return this.uniqueIdentifier;
     }
 
     /**
@@ -90,7 +90,7 @@ public class DaemonInfo extends DSMManifest {
      * @param szUniqueIdentifier New daemon unique identifier to set
      */
     public void setUniqueIdentifier(String szUniqueIdentifier) {
-        uniqueIdentifier = szUniqueIdentifier;
+        this.uniqueIdentifier = szUniqueIdentifier;
     }
 
     /**
@@ -99,7 +99,7 @@ public class DaemonInfo extends DSMManifest {
      * @return Daemon library
      */
     public String getLibrary() {
-        return library;
+        return this.library;
     }
 
     /**
@@ -108,7 +108,7 @@ public class DaemonInfo extends DSMManifest {
      * @param szLibrary New daemon library to set
      */
     public void setLibrary(String szLibrary) {
-        library = szLibrary;
+        this.library = szLibrary;
     }
 
     /**
@@ -117,7 +117,7 @@ public class DaemonInfo extends DSMManifest {
      * @return Daemon package name
      */
     public String getPackageName() {
-        return packageName;
+        return this.packageName;
     }
 
     /**
@@ -126,7 +126,7 @@ public class DaemonInfo extends DSMManifest {
      * @param szPackageName New daemon package name to set
      */
     public void setPackageName(String szPackageName) {
-        packageName = szPackageName;
+        this.packageName = szPackageName;
     }
 
     /**
@@ -135,7 +135,7 @@ public class DaemonInfo extends DSMManifest {
      * @return Daemon class name
      */
     public String getClassName() {
-        return className;
+        return this.className;
     }
 
     /**
@@ -144,7 +144,7 @@ public class DaemonInfo extends DSMManifest {
      * @param szClassName New daemon class name to set
      */
     public void setClassName(String szClassName) {
-        className = szClassName;
+        this.className = szClassName;
     }
 
     /**
@@ -153,7 +153,7 @@ public class DaemonInfo extends DSMManifest {
      * @return Daemon configuration file full path
      */
     public String getConfigurationFileFullPath() {
-        return configurationFileFullPath;
+        return this.configurationFileFullPath;
     }
 
     /**
@@ -162,6 +162,6 @@ public class DaemonInfo extends DSMManifest {
      * @param szConfigurationFileFullPath New daemon configuration file full path to set
      */
     public void setConfigurationFileFullPath(String szConfigurationFileFullPath) {
-        configurationFileFullPath = szConfigurationFileFullPath;
+        this.configurationFileFullPath = szConfigurationFileFullPath;
     }
 }

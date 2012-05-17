@@ -17,11 +17,6 @@ import java.util.LinkedList;
 public class RepositoryInfo extends DSMManifest {
 
     /**
-     * Repository type
-     */
-    protected RepositoryType type;
-    
-    /**
      * Repository name
      */
     protected String name = "";
@@ -32,14 +27,9 @@ public class RepositoryInfo extends DSMManifest {
     protected String uniqueIdentifier = "";
 
     /**
-     * Repository link
+     * Daemon list
      */
-    protected String link = "";
-
-    /**
-     * Parsed daemon info list
-     */
-    private LinkedList<DaemonInfo> parsedDaemonInfoList = null;
+    private LinkedList<DaemonInfo> daemonList = null;
 
     /**
      * RepositoryInfo constructor.
@@ -47,29 +37,9 @@ public class RepositoryInfo extends DSMManifest {
     public RepositoryInfo() {
         super("3400bc81-d2c1-4a9f-9ca8-97cedcbe515b", "Repository Info");
         
-        type = RepositoryType.Unknown;
-        name = "";
-        uniqueIdentifier = "";
-        link = "";
-        parsedDaemonInfoList = null;
-    }
-
-    /**
-     * Returns repository type.
-     * 
-     * @return Repository type
-     */
-    public RepositoryType getType() {
-        return type;
-    }
-
-    /**
-     * Set repository type.
-     * 
-     * @param nType New repository type to set
-     */
-    public void setType(RepositoryType nType) {
-        type = nType;
+        this.name = "";
+        this.uniqueIdentifier = "";
+        this.daemonList = null;
     }
 
     /**
@@ -78,7 +48,7 @@ public class RepositoryInfo extends DSMManifest {
      * @return Repository unique identifier
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -87,7 +57,7 @@ public class RepositoryInfo extends DSMManifest {
      * @param szName New repository name to set
      */
     public void setName(String szName) {
-        name = szName;
+        this.name = szName;
     }
 
     /**
@@ -96,7 +66,7 @@ public class RepositoryInfo extends DSMManifest {
      * @return Repository unique identifier
      */
     public String getUniqueIdentifier() {
-        return uniqueIdentifier;
+        return this.uniqueIdentifier;
     }
 
     /**
@@ -105,24 +75,18 @@ public class RepositoryInfo extends DSMManifest {
      * @param szUniqueIdentifier New repository unique identifier to set
      */
     public void setUniqueIdentifier(String szUniqueIdentifier) {
-        uniqueIdentifier = szUniqueIdentifier;
+        this.uniqueIdentifier = szUniqueIdentifier;
     }
 
     /**
-     * Returns repository link.
+     * Adds new daemon to list of daemons.
      * 
-     * @return Repository link
+     * @param daemonInfo New daemon to add
      */
-    public String getLink() {
-        return link;
-    }
-
-    /**
-     * Set repository link.
-     * 
-     * @param szLink New repository link to set
-     */
-    public void setLink(String szLink) {
-        link = szLink;
+    public void addDaemon(DaemonInfo daemonInfo) {
+        if(this.daemonList == null)
+            this.daemonList = new LinkedList<DaemonInfo>();
+        
+        this.daemonList.add(daemonInfo);
     }
 }

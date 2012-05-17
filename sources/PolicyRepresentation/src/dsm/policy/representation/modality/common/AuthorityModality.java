@@ -37,7 +37,7 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
     public AuthorityModality(String szUniqueId, String szFriendlyName, String szModalityName) {
         super(szUniqueId, szFriendlyName);
         
-        modalityName = szModalityName;
+        this.modalityName = szModalityName;
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
      */
     @Override
     public String getModalityName() {
-        return modalityName;
+        return this.modalityName;
     }
 
     /**
@@ -57,6 +57,6 @@ public abstract class AuthorityModality extends DSMManifest implements Modality 
      */
     @Override
     public ModalityType getModalityType() {
-        return modalityType;
+        return this.modalityType;
     }
 }

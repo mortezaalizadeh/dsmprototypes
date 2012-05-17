@@ -37,7 +37,7 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
     public ManagedObject(String szUniqueId, String szFriendlyName, String szDSMObjectName) {
         super(szUniqueId, szFriendlyName);
 
-        dsmObjectName = szDSMObjectName;
+        this.dsmObjectName = szDSMObjectName;
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
      */
     @Override
     public String getDSMObjectName() {
-        return dsmObjectName;
+        return this.dsmObjectName;
     }
 
     /**
@@ -57,6 +57,6 @@ public abstract class ManagedObject extends DSMManifest implements DSMObject {
      */
     @Override
     public DSMObjectType getDSMObjectType() {
-        return dsmObjectType;
+        return this.dsmObjectType;
     }
 }

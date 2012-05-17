@@ -38,7 +38,7 @@ public class DSMDaemon extends DSMManifest implements Daemon {
      */
     @Override
     public String getDaemonName() {
-        return daemonName;
+        return this.daemonName;
     }
 
     /**
@@ -48,7 +48,7 @@ public class DSMDaemon extends DSMManifest implements Daemon {
      */
     @Override
     public boolean isInited() {
-        return inited;
+        return this.inited;
     }
 
     /**
@@ -58,7 +58,7 @@ public class DSMDaemon extends DSMManifest implements Daemon {
      */
     @Override
     public void init(String initializationParams) {
-        inited = true;
+        this.inited = true;
     }
 
     /**
@@ -66,6 +66,6 @@ public class DSMDaemon extends DSMManifest implements Daemon {
      */
     @Override
     public void shutdown() {
-        inited = false;
+        this.inited = false;
     }
 }

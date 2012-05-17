@@ -36,7 +36,7 @@ public class DSMManifest extends Object {
      * @param nUniqueId DSM object unique identifier
      */
     public DSMManifest(String szUniqueId) {
-        uniqueId = szUniqueId;
+        this.uniqueId = szUniqueId;
     }
 
     /**
@@ -46,8 +46,8 @@ public class DSMManifest extends Object {
      * @param szFriendlyName DSM object friendly name
      */
     public DSMManifest(String szUniqueId, String szFriendlyName) {
-        uniqueId = szUniqueId;
-        friendlyName = szFriendlyName;
+        this.uniqueId = szUniqueId;
+        this.friendlyName = szFriendlyName;
     }
 
     /**
@@ -56,7 +56,7 @@ public class DSMManifest extends Object {
      * @return Returns DSM object unique identifier
      */
     public String getDSMUniqueIdentifier() {
-        return uniqueId;
+        return this.uniqueId;
     }
 
     /**
@@ -65,7 +65,7 @@ public class DSMManifest extends Object {
      * @param szUniqueId Refers to DSM object unique identifier to be set
      */
     protected void setDSMUniqueIdentifier(String szUniqueId) {
-        uniqueId = szUniqueId;
+        this.uniqueId = szUniqueId;
     }
 
     /**
@@ -74,7 +74,7 @@ public class DSMManifest extends Object {
      * @return Returns DSM object friendly name
      */
     public String getFriendlyName() {
-        return friendlyName;
+        return this.friendlyName;
     }
 
     /**
@@ -83,6 +83,6 @@ public class DSMManifest extends Object {
      * @param szFriendlyName Refers to DSM object friendly name to be set
      */
     protected void setFriendlyName(String szFriendlyName) {
-        friendlyName = szFriendlyName;
+        this.friendlyName = szFriendlyName;
     }
 }

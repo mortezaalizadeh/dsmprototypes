@@ -43,8 +43,8 @@ public abstract class Manager extends DSMManifest implements DSMObject {
     public Manager(String szUniqueId, String szFriendlyName, String szDSMObjectName, ManagerType nDSMManagerType) {
         super(szUniqueId, szFriendlyName);
 
-        dsmObjectName = szDSMObjectName;
-        dsmManagerType = nDSMManagerType;
+        this.dsmObjectName = szDSMObjectName;
+        this.dsmManagerType = nDSMManagerType;
     }
 
     /**
@@ -54,7 +54,7 @@ public abstract class Manager extends DSMManifest implements DSMObject {
      */
     @Override
     public String getDSMObjectName() {
-        return dsmObjectName;
+        return this.dsmObjectName;
     }
 
     /**
@@ -64,7 +64,7 @@ public abstract class Manager extends DSMManifest implements DSMObject {
      */
     @Override
     public DSMObjectType getDSMObjectType() {
-        return dsmObjectType;
+        return this.dsmObjectType;
     }
 
     /**
@@ -73,6 +73,6 @@ public abstract class Manager extends DSMManifest implements DSMObject {
      * @return DSM manager type
      */
     public ManagerType getDSMManagerType() {
-        return dsmManagerType;
+        return this.dsmManagerType;
     }
 }
