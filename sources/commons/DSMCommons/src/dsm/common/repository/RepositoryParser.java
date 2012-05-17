@@ -81,6 +81,12 @@ public class RepositoryParser extends DSMManifest {
 
             reader.setErrorHandler(new RepositoryParserSAXErrorHandler(this));
             reader.setContentHandler(new RepositoryParserSAXContentHandler(this));
+
+            if (this.repositoryList == null)
+                this.repositoryList = new HashMap<String, RepositoryInfo>();
+            else
+                this.repositoryList.clear();
+            
             reader.parse(inputSource);
         } catch (Exception e) {
             this.repositoryList.clear();
@@ -98,9 +104,6 @@ public class RepositoryParser extends DSMManifest {
     {
         if (repositoryInfo == null)
             throw new NullPointerException("Error: Passed repositoryInfo reference is null.");
-        
-        if (this.repositoryList == null)
-            this.repositoryList = new HashMap<String, RepositoryInfo>();
         
         this.repositoryList.put(repositoryInfo.getUniqueIdentifier(), repositoryInfo);
     }

@@ -38,6 +38,5 @@
         <action library="SimpleDistributedActions.jar"
                 package_name="dsm.action.distributed.simpleactions"
                 class_name="TextFileCopy`" />
-        </actions>
     </repository>
 </repositories>
