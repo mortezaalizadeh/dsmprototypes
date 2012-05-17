@@ -5,8 +5,7 @@ package dsm.common.repository;
 
 import dsm.common.DSMManifest;
 import java.io.StringReader;
-import java.util.Hashtable;
-import java.util.LinkedList;
+import java.util.HashMap;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
@@ -24,7 +23,7 @@ public class RepositoryParser extends DSMManifest {
     /**
      * Repository list
      */
-    private Hashtable<String, RepositoryInfo> repositoryList = null;
+    private HashMap<String, RepositoryInfo> repositoryList = null;
     
     /**
      * RepositoryParser Constructor
@@ -101,7 +100,7 @@ public class RepositoryParser extends DSMManifest {
             throw new NullPointerException("Error: Passed repositoryInfo reference is null.");
         
         if (this.repositoryList == null)
-            this.repositoryList = new Hashtable<String, RepositoryInfo>();
+            this.repositoryList = new HashMap<String, RepositoryInfo>();
         
         this.repositoryList.put(repositoryInfo.getUniqueIdentifier(), repositoryInfo);
     }
