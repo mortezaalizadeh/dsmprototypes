@@ -69,19 +69,25 @@ public class RepositoryParser extends DSMManifest {
      * @param inputSource Input source contains XML message
      */
     public void loadRepository(InputSource inputSource) throws Exception {
-        if (inputSource == null)
-            throw new NullPointerException("Error: Passed inputSource reference is null.");
+        try {
+            if (inputSource == null)
+                throw new NullPointerException("Error: Passed inputSource reference is null.");
 
-        SAXParserFactory spf = SAXParserFactory.newInstance();
+            SAXParserFactory spf = SAXParserFactory.newInstance();
 
-        spf.setValidating(false);
+            spf.setValidating(false);
 
-        SAXParser parser = spf.newSAXParser();
-        XMLReader reader = parser.getXMLReader();
+            SAXParser parser = spf.newSAXParser();
+            XMLReader reader = parser.getXMLReader();
 
-        reader.setErrorHandler(new RepositoryParserSAXErrorHandler(this));
-        reader.setContentHandler(new RepositoryParserSAXContentHandler(this));
-        reader.parse(inputSource);
+            reader.setErrorHandler(new RepositoryParserSAXErrorHandler(this));
+            reader.setContentHandler(new RepositoryParserSAXContentHandler(this));
+            reader.parse(inputSource);
+        } catch (Exception e) {
+            this.repositoryList.clear();
+
+            throw e;
+        }
     }
     
     /**
