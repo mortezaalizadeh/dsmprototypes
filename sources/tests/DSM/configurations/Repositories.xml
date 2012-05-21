@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repositories>
     <repository name="" 
-                unique_identifier="00000000-0000-0000-0000-000000000001">
+                unique_identifier="0c876220-dcc1-4072-8ab8-b3539b51a155">
         <daemon name="DSM Daemon"
                 unique_identifier=""
                 library="DSMDaemon.jar"
@@ -11,17 +11,17 @@
     </repository>
 
     <repository name=""
-                unique_identifier="00000000-0000-0000-0000-000000000002">
-        <action_manager name="DSM Simple Action Manager"
+                unique_identifier="d55c2306-503d-4ac5-9497-26da703a4dde">
+        <action_manager name="Simple Action Manager"
                         unique_identifier=""
-                        library="DSMSimpleActionManager.jar"
-                        package_name="dsm.action.manager"
-                        class_name="SimpleActionsManager"
+                        library="SimpleActionManager.jar"
+                        package_name="dsm.actionmanager"
+                        class_name="SimpleActionManager"
                         configuration_file_full_path="SimpleActionsManager.xml" />
     </repository>
 
     <repository name=""
-                unique_identifier="00000000-0000-0000-0000-000000000003">
+                unique_identifier="7f165a75-c02d-4b30-ab22-37d6940fd715">
         <action name=""
                 unique_identifier=""
                 library="SimpleAtomicActions.jar"
