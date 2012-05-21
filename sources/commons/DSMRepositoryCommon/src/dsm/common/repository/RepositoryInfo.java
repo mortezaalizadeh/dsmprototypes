@@ -3,8 +3,10 @@
  */
 package dsm.common.repository;
 
+import dsm.action.common.ActionStartupInfo;
+import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.DSMManifest;
-import dsm.common.daemon.DaemonInfo;
+import dsm.daemon.common.DaemonStartupInfo;
 import java.util.LinkedList;
 
 /**
@@ -29,7 +31,17 @@ public class RepositoryInfo extends DSMManifest {
     /**
      * Daemon list
      */
-    private LinkedList<DaemonInfo> daemonList = null;
+    private LinkedList<DaemonStartupInfo> daemonList = null;
+
+    /**
+     * Action manager list
+     */
+    private LinkedList<ActionManagerStartupInfo> actionManagerList = null;
+
+    /**
+     * Action list
+     */
+    private LinkedList<ActionStartupInfo> actionList = null;
 
     /**
      * RepositoryInfo constructor.
@@ -40,6 +52,8 @@ public class RepositoryInfo extends DSMManifest {
         this.name = "";
         this.uniqueIdentifier = "";
         this.daemonList = null;
+        this.actionManagerList = null;
+        this.actionList = null;
     }
 
     /**
@@ -83,10 +97,34 @@ public class RepositoryInfo extends DSMManifest {
      * 
      * @param daemonInfo New daemon to add
      */
-    public void addDaemon(DaemonInfo daemonInfo) {
+    public void addDaemon(DaemonStartupInfo daemonInfo) {
         if(this.daemonList == null)
-            this.daemonList = new LinkedList<DaemonInfo>();
+            this.daemonList = new LinkedList<DaemonStartupInfo>();
         
         this.daemonList.add(daemonInfo);
+    }
+
+    /**
+     * Adds new action manager to list of daemons.
+     * 
+     * @param actionManagerInfo New action manager to add
+     */
+    public void addActionManager(ActionManagerStartupInfo actionManagerInfo) {
+        if(this.actionManagerList == null)
+            this.actionManagerList = new LinkedList<ActionManagerStartupInfo>();
+        
+        this.actionManagerList.add(actionManagerInfo);
+    }
+
+    /**
+     * Adds new action to list of daemons.
+     * 
+     * @param actionManagerInfo New action manager to add
+     */
+    public void addAction(ActionStartupInfo actionInfo) {
+        if(this.actionList == null)
+            this.actionList = new LinkedList<ActionStartupInfo>();
+        
+        this.actionList.add(actionInfo);
     }
 }

@@ -12,13 +12,13 @@ package dsm.action.common;
 public enum ActionType {
 
     /**
-     * Actions require to be run only on local device and not allowed to be
+     * Action require to be run only on local device and not allowed to be
      * distributed.
      */
     Atomic,
 
     /**
-     * Actions which can be run either on local machine or remote machine using
+     * Action which can be run either on local machine or remote machine using
      * action distribution engine.
      */
     Distributed

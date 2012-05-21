@@ -15,7 +15,7 @@ import dsm.daemon.common.Daemon;
 public class DSMDaemon extends DSMManifest implements Daemon {
     
     /**
-     * Actions repository name
+     * Daemon name
      */
     private String daemonName = "DSM Daemon";
 

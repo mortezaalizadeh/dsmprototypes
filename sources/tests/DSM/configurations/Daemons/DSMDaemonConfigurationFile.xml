@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<daemon type=""
-        name="DSM Daemon"
+<daemon name="DSM Daemon"
         unique_identifier=""
-        actions_managers_repository_file_path="Repositories.xml" />
+        action_managers_repository_file_path="Repositories.xml"
+        action_managers_repository_unique_identifier="" />

@@ -1,53 +1,53 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.common.daemon;
+package dsm.action.common;
 
 import dsm.common.DSMManifest;
 
 /**
-* DaemonInfo class is an entity class represent a daemon.
+* ActionInfo class is an entity class represent a action.
 * 
-* @version 0.1, April 16, 2012
+* @version 0.1, May 20, 2012
   * @author Morteza Alizadeh
  */
-public class DaemonInfo extends DSMManifest {
+public class ActionStartupInfo extends DSMManifest {
 
     /**
-     * Daemon name
+     * Action manager name
      */
     protected String name;
 
     /**
-     * Daemon unique identifier
+     * Action manager unique identifier
      */
     protected String uniqueIdentifier;
 
     /**
-     * Daemon library
+     * Action manager library
      */
     protected String library;
 
     /**
-     * Daemon package name
+     * Action manager package name
      */
     protected String packageName;
 
     /**
-     * Daemon class name
+     * Action manager class name
      */
     protected String className;
 
     /**
-     * Daemon configuration file full path
+     * Action manager configuration file full path
      */
     protected String configurationFileFullPath;
 
     /**
-     * DaemonInfo constructor.
+     * ActionManagerInfo constructor.
      */
-    public DaemonInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe1", "Daemon Info");
+    public ActionStartupInfo() {
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe4", "Action Info");
         
         this.name = "";
         this.uniqueIdentifier = "";
@@ -58,108 +58,108 @@ public class DaemonInfo extends DSMManifest {
     }
 
     /**
-     * Returns daemon unique identifier.
+     * Returns action manager unique identifier.
      * 
-     * @return Daemon unique identifier
+     * @return Action manager unique identifier
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Set daemon name.
+     * Set action manager name.
      * 
-     * @param szName New daemon name to set
+     * @param szName New action manager name to set
      */
     public void setName(String szName) {
         this.name = szName;
     }
 
     /**
-     * Returns daemon unique identifier.
+     * Returns action manager unique identifier.
      * 
-     * @return Daemon unique identifier
+     * @return Action manager unique identifier
      */
     public String getUniqueIdentifier() {
         return this.uniqueIdentifier;
     }
 
     /**
-     * Set daemon unique identifier.
+     * Set action manager unique identifier.
      * 
-     * @param szUniqueIdentifier New daemon unique identifier to set
+     * @param szUniqueIdentifier New action manager unique identifier to set
      */
     public void setUniqueIdentifier(String szUniqueIdentifier) {
         this.uniqueIdentifier = szUniqueIdentifier;
     }
 
     /**
-     * Returns daemon library.
+     * Returns action manager library.
      * 
-     * @return Daemon library
+     * @return Action manager library
      */
     public String getLibrary() {
         return this.library;
     }
 
     /**
-     * Set daemon library.
+     * Set action manager library.
      * 
-     * @param szLibrary New daemon library to set
+     * @param szLibrary New action manager library to set
      */
     public void setLibrary(String szLibrary) {
         this.library = szLibrary;
     }
 
     /**
-     * Returns daemon package name.
+     * Returns action manager package name.
      * 
-     * @return Daemon package name
+     * @return Action manager package name
      */
     public String getPackageName() {
         return this.packageName;
     }
 
     /**
-     * Set daemon package name.
+     * Set action manager package name.
      * 
-     * @param szPackageName New daemon package name to set
+     * @param szPackageName New action manager package name to set
      */
     public void setPackageName(String szPackageName) {
         this.packageName = szPackageName;
     }
 
     /**
-     * Returns daemon class name.
+     * Returns action manager class name.
      * 
-     * @return Daemon class name
+     * @return Action manager class name
      */
     public String getClassName() {
         return this.className;
     }
 
     /**
-     * Set daemon class name.
+     * Set action manager class name.
      * 
-     * @param szClassName New daemon class name to set
+     * @param szClassName New action manager class name to set
      */
     public void setClassName(String szClassName) {
         this.className = szClassName;
     }
 
     /**
-     * Returns daemon configuration file full path.
+     * Returns action manager configuration file full path.
      * 
-     * @return Daemon configuration file full path
+     * @return Action manager configuration file full path
      */
     public String getConfigurationFileFullPath() {
         return this.configurationFileFullPath;
     }
 
     /**
-     * Set daemon configuration file full path.
+     * Set action manager configuration file full path.
      * 
-     * @param szConfigurationFileFullPath New daemon configuration file full path to set
+     * @param szConfigurationFileFullPath New action manager configuration file full path to set
      */
     public void setConfigurationFileFullPath(String szConfigurationFileFullPath) {
         this.configurationFileFullPath = szConfigurationFileFullPath;
