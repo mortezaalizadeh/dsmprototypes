@@ -1,7 +1,7 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.repositoryparser;
+package dsm.common.repositoryparser.exceptions;
 
 import dsm.common.DSMException;
 
