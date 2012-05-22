@@ -6,7 +6,8 @@ package dsm.action.manager.common;
 import dsm.common.DSMManifest;
 
 /**
-* ActionManagerInfo class is an entity class represent a action manager.
+* ActionManagerInfo class is an entity class represent a action manager startup
+* info.
 * 
 * @version 0.1, May 20, 2012
   * @author Morteza Alizadeh
@@ -16,33 +17,33 @@ public class ActionManagerStartupInfo extends DSMManifest {
     /**
      * Action manager name
      */
-    protected String name;
+    private String name;
 
     /**
      * Action manager library
      */
-    protected String library;
+    private String library;
 
     /**
      * Action manager package name
      */
-    protected String packageName;
+    private String packageName;
 
     /**
      * Action manager class name
      */
-    protected String className;
+    private String className;
 
     /**
      * Action manager configuration file full path
      */
-    protected String configurationFileFullPath;
+    private String configurationFileFullPath;
 
     /**
      * ActionManagerInfo constructor.
      */
     public ActionManagerStartupInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe3", "Action Manager Info");
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe3", "Action Manager Startup Info");
         
         this.name = "";
         this.library = "";
@@ -52,9 +53,9 @@ public class ActionManagerStartupInfo extends DSMManifest {
     }
 
     /**
-     * Returns action manager unique identifier.
+     * Returns action manager name.
      * 
-     * @return Action manager unique identifier
+     * @return Action manager name
      */
     public String getName() {
         return this.name;

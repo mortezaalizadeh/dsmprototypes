@@ -45,7 +45,7 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
     /**
      * RepositoryParserSAXContentHandler constructor
      * 
-     * @param refRepositoryParser reference to simple repository parser object
+     * @param refRepositoryParser Reference to simple repository parser object
      */
     public RepositoryParserSAXContentHandler(SimpleRepositoryParser refSimpleRepositoryParser) {
         if (refSimpleRepositoryParser == null)

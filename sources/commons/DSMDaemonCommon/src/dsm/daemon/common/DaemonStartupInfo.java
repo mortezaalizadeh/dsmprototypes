@@ -16,33 +16,33 @@ public class DaemonStartupInfo extends DSMManifest {
     /**
      * Daemon name
      */
-    protected String name;
+    private String name;
 
     /**
      * Daemon library
      */
-    protected String library;
+    private String library;
 
     /**
      * Daemon package name
      */
-    protected String packageName;
+    private String packageName;
 
     /**
      * Daemon class name
      */
-    protected String className;
+    private String className;
 
     /**
      * Daemon configuration file full path
      */
-    protected String configurationFileFullPath;
+    private String configurationFileFullPath;
 
     /**
      * DaemonInfo constructor.
      */
     public DaemonStartupInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe1", "Daemon Info");
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe1", "Daemon Startup Info");
         
         this.name = "";
         this.library = "";
@@ -52,9 +52,9 @@ public class DaemonStartupInfo extends DSMManifest {
     }
 
     /**
-     * Returns daemon unique identifier.
+     * Returns daemon name.
      * 
-     * @return Daemon unique identifier
+     * @return Daemon name
      */
     public String getName() {
         return this.name;

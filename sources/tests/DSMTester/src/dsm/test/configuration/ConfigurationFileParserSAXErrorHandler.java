@@ -1,7 +1,7 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.repositoryparser;
+package dsm.test.configuration;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
@@ -11,26 +11,26 @@ import org.xml.sax.SAXParseException;
  * RepositoryParserSAXErrorHandler class implements required method to handle
  * errors occur during parsing repository XML file.
  * 
- * @version 0.1, April 15, 2012
+ * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public class RepositoryParserSAXErrorHandler implements ErrorHandler {
+public class ConfigurationFileParserSAXErrorHandler implements ErrorHandler {
 
     /**
-     * Reference to simple repository parser object
+     * Reference to DSM tester configuration reader object
      */
-    private SimpleRepositoryParser simpleRepositoryParser;
+    private DSMTesterConfigurationReader dsmTesterConfigurationReader;
     
     /**
      * RepositoryParserSAXErrorHandler constructor
      * 
-     * @param refRepositoryParser Reference to simple repository parser object
+     * @param refDSMTesterConfigurationReader Reference to DSM tester configuration reader object
      */
-    public RepositoryParserSAXErrorHandler(SimpleRepositoryParser refSimpleRepositoryParser) {
-        if (refSimpleRepositoryParser == null)
-            throw new NullPointerException("Error: Passed refSimpleRepositoryParser reference is null.");
+    public ConfigurationFileParserSAXErrorHandler(DSMTesterConfigurationReader refDSMTesterConfigurationReader) {
+        if (refDSMTesterConfigurationReader == null)
+            throw new NullPointerException("Error: Passed refDSMTesterConfigurationReader reference is null.");
 
-        this.simpleRepositoryParser = refSimpleRepositoryParser;
+        this.dsmTesterConfigurationReader = refDSMTesterConfigurationReader;
     }
     
     @Override
