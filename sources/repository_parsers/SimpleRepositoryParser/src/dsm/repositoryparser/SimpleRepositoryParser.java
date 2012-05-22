@@ -6,6 +6,7 @@ package dsm.repositoryparser;
 import dsm.common.DSMManifest;
 import dsm.common.repository.RepositoryInfo;
 import dsm.common.repositoryparser.RepositoryParser;
+import dsm.common.repositoryparser.exceptions.RepositoryFileParsingException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
@@ -96,10 +97,14 @@ public class SimpleRepositoryParser extends DSMManifest implements RepositoryPar
                 this.repositoryList.clear();
             
             reader.parse(inputSource);
-        } catch (NullPointerException | ParserConfigurationException | SAXException | IOException e) {
+        } catch (RepositoryFileParsingException e) {
             this.repositoryList.clear();
 
             throw e;
+        } catch (Exception e) {
+            this.repositoryList.clear();
+
+            throw new RepositoryFileParsingException(e.getMessage(), e);
         }
     }
     
