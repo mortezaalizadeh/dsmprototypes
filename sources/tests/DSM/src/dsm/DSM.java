@@ -4,7 +4,8 @@
  */
 package dsm;
 
-import dsm.repository.RepositoryParser;
+import dsm.repository.SimpleRepositoryParser;
+
 
 /**
  *
@@ -17,7 +18,7 @@ public class DSM {
      */
     public static void main(String[] args) {
         try {
-            RepositoryParser rp = new RepositoryParser();
+            SimpleRepositoryParser rp = new SimpleRepositoryParser();
             
             rp.loadRepositoryFromFile("configurations/Repositories.xml");
         } catch (Exception ex) {

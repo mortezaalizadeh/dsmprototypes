@@ -5,6 +5,7 @@ package dsm.repository;
 
 import dsm.common.DSMManifest;
 import dsm.common.repository.RepositoryInfo;
+import dsm.common.repositoryparser.RepositoryParser;
 import java.io.StringReader;
 import java.util.HashMap;
 import javax.xml.parsers.SAXParser;
@@ -13,13 +14,13 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 /**
- * RepositoryParser class parses repository file and extract information from
+ * SimpleRepositoryParser class parses repository file and extract information from
  * it.
  * 
  * @version 0.1, April 15, 2012
  * @author Morteza Alizadeh
  */
-public class RepositoryParser extends DSMManifest {
+public class SimpleRepositoryParser extends DSMManifest implements RepositoryParser {
 
     /**
      * Repository list
@@ -29,8 +30,8 @@ public class RepositoryParser extends DSMManifest {
     /**
      * RepositoryParser Constructor
      */
-    public RepositoryParser() {
-        super("f239604f-bf65-4d05-9ef1-2a34c8e6411a", "Repository Parser");
+    public SimpleRepositoryParser() {
+        super("f239604f-bf65-4d05-9ef1-2a34c8e6411a", "Simple Repository Parser");
     }
     
     /**
@@ -38,6 +39,7 @@ public class RepositoryParser extends DSMManifest {
      * 
      * @param szRepositoryFilePath Repository file path
      */
+    @Override
     public void loadRepositoryFromFile(String szRepositoryFilePath) throws Exception {
         if (szRepositoryFilePath == null)
             throw new NullPointerException("Error: Passed szRepositoryFilePath reference is null.");
@@ -53,6 +55,7 @@ public class RepositoryParser extends DSMManifest {
      * 
      * @param szStringContent String content
      */
+    @Override
     public void loadRepository(String szStringContent) throws Exception {
         if (szStringContent == null)
             throw new NullPointerException("Error: Passed szStringContent reference is null.");
@@ -68,6 +71,7 @@ public class RepositoryParser extends DSMManifest {
      * 
      * @param inputSource Input source contains XML message
      */
+    @Override
     public void loadRepository(InputSource inputSource) throws Exception {
         try {
             if (inputSource == null)

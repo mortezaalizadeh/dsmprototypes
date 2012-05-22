@@ -17,20 +17,20 @@ import org.xml.sax.SAXParseException;
 public class RepositoryParserSAXErrorHandler implements ErrorHandler {
 
     /**
-     * Reference to repository parser object
+     * Reference to simple repository parser object
      */
-    private RepositoryParser repositoryParser;
+    private SimpleRepositoryParser simpleRepositoryParser;
     
     /**
      * RepositoryParserSAXErrorHandler constructor
      * 
-     * @param refRepositoryParser reference to repository parser object
+     * @param refRepositoryParser reference to simple repository parser object
      */
-    public RepositoryParserSAXErrorHandler(RepositoryParser refRepositoryParser) {
-        if (refRepositoryParser == null)
-            throw new NullPointerException("Error: Passed refRepositoryParser reference is null.");
-        
-        this.repositoryParser = refRepositoryParser;
+    public RepositoryParserSAXErrorHandler(SimpleRepositoryParser refSimpleRepositoryParser) {
+        if (simpleRepositoryParser == null)
+            throw new NullPointerException("Error: Passed refSimpleRepositoryParser reference is null.");
+
+        this.simpleRepositoryParser = refSimpleRepositoryParser;
     }
     
     @Override

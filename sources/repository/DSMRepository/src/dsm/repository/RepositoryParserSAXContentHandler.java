@@ -22,9 +22,9 @@ import org.xml.sax.SAXException;
 public class RepositoryParserSAXContentHandler implements ContentHandler {
 
     /**
-     * Reference to repository parser object
+     * Reference to simple repository parser object
      */
-    private RepositoryParser repositoryParser;
+    private SimpleRepositoryParser simpleRepositoryParser;
 
     /**
      * Cached repository info
@@ -44,13 +44,13 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
     /**
      * RepositoryParserSAXContentHandler constructor
      * 
-     * @param refRepositoryParser reference to repository parser object
+     * @param refRepositoryParser reference to simple repository parser object
      */
-    public RepositoryParserSAXContentHandler(RepositoryParser refRepositoryParser) {
-        if (refRepositoryParser == null)
-            throw new NullPointerException("Error: Passed refRepositoryParser reference is null.");
+    public RepositoryParserSAXContentHandler(SimpleRepositoryParser refSimpleRepositoryParser) {
+        if (simpleRepositoryParser == null)
+            throw new NullPointerException("Error: Passed refSimpleRepositoryParser reference is null.");
 
-        this.repositoryParser = refRepositoryParser;
+        this.simpleRepositoryParser = refSimpleRepositoryParser;
         this.cachedRepositoryInfo = null;
 
         this.parsedDepth = 0;
@@ -260,8 +260,8 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
 
             this.parsedDepth--;
 
-            if (this.repositoryParser != null)
-                this.repositoryParser.addParsedRepositoryInfo(this.cachedRepositoryInfo);
+            if (this.simpleRepositoryParser != null)
+                this.simpleRepositoryParser.addParsedRepositoryInfo(this.cachedRepositoryInfo);
 
             this.cachedRepositoryInfo = null;
         } else if (qName.equalsIgnoreCase("daemon")) {
