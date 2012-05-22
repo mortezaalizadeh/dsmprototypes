@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <repository_files>
+        <repository_files repository_file_full_path="Repositories.xml" />
+    </repository_files>
+    <repository_parser name="Simple Repository Parser"
+                       library="SimpleRepositoryParser.jar"
+                       package_name="dsm.daemon.dsmdaemon"
+                       class_name="DSMDaemon"/>
+</configuration>
+
