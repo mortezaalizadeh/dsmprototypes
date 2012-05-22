@@ -29,6 +29,11 @@ public class RepositoryInfo extends DSMManifest {
     protected String uniqueIdentifier = "";
 
     /**
+     * Repository include in startup flag
+     */
+    protected boolean includeInStartup = false;
+
+    /**
      * Daemon list
      */
     private LinkedList<DaemonStartupInfo> daemonList = null;
@@ -90,6 +95,24 @@ public class RepositoryInfo extends DSMManifest {
      */
     public void setUniqueIdentifier(String szUniqueIdentifier) {
         this.uniqueIdentifier = szUniqueIdentifier;
+    }
+
+    /**
+     * Returns repository include in startup flag.
+     * 
+     * @return Repository include in startup flag
+     */
+    public boolean getIncludeInStartup() {
+        return this.includeInStartup;
+    }
+
+    /**
+     * Set repository include in startup flag.
+     * 
+     * @param bIncludeInStartup New repository include in startup flag to set
+     */
+    public void setIncludeInStartup(boolean bIncludeInStartup) {
+        this.includeInStartup = bIncludeInStartup;
     }
 
     /**

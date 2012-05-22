@@ -108,6 +108,15 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
             else
                 this.cachedRepositoryInfo.setUniqueIdentifier(value.trim());
 
+            if ((value = atts.getValue("include_in_startup")) == null)
+                this.cachedRepositoryInfo.setIncludeInStartup(false);
+            else {
+                if (value.equalsIgnoreCase("Yes") || value.equalsIgnoreCase("Y") || value.equalsIgnoreCase("True") || value.equalsIgnoreCase("T"))
+                    this.cachedRepositoryInfo.setIncludeInStartup(true);
+                else
+                    this.cachedRepositoryInfo.setIncludeInStartup(false);
+            }
+
             this.parsedDepth++;
         } else if (qName.equalsIgnoreCase("daemon")) {
             if (this.parsedDepth != 1)
@@ -122,12 +131,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
                 info.setName("");
             } else {
                 info.setName(value.trim());
-            }
-
-            if ((value = atts.getValue("unique_identifier")) == null) {
-                info.setUniqueIdentifier("");
-            } else {
-                info.setUniqueIdentifier(value.trim());
             }
 
             if ((value = atts.getValue("library")) == null) {
@@ -170,12 +173,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
                 info.setName(value.trim());
             }
 
-            if ((value = atts.getValue("unique_identifier")) == null) {
-                info.setUniqueIdentifier("");
-            } else {
-                info.setUniqueIdentifier(value.trim());
-            }
-
             if ((value = atts.getValue("library")) == null) {
                 throw new RepositoryFileParsingException("Error: \"library\" tag is not defined for action manager.");
             } else {
@@ -214,12 +211,6 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
                 info.setName("");
             } else {
                 info.setName(value.trim());
-            }
-
-            if ((value = atts.getValue("unique_identifier")) == null) {
-                info.setUniqueIdentifier("");
-            } else {
-                info.setUniqueIdentifier(value.trim());
             }
 
             if ((value = atts.getValue("library")) == null) {

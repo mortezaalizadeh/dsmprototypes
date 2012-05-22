@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions_manager name="Simple Action Manager"
                  unique_identifier=""
-                 action_repository_file_path="Repositories.xml"
-                 action_repository_unique_identifier="7f165a75-c02d-4b30-ab22-37d6940fd715" />
+                 repository_file_path="Repositories.xml">
+    <action_repositories>
+        <repository repository_unique_identifier="7f165a75-c02d-4b30-ab22-37d6940fd715"/>
+    </action_repositories>
+</actions_manager>

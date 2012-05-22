@@ -19,11 +19,6 @@ public class ActionStartupInfo extends DSMManifest {
     protected String name;
 
     /**
-     * Action manager unique identifier
-     */
-    protected String uniqueIdentifier;
-
-    /**
      * Action manager library
      */
     protected String library;
@@ -50,7 +45,6 @@ public class ActionStartupInfo extends DSMManifest {
         super("70feef0d-bb9e-4bb2-998f-8bba70fbefe4", "Action Info");
         
         this.name = "";
-        this.uniqueIdentifier = "";
         this.library = "";
         this.packageName = "";
         this.className = "";
@@ -73,24 +67,6 @@ public class ActionStartupInfo extends DSMManifest {
      */
     public void setName(String szName) {
         this.name = szName;
-    }
-
-    /**
-     * Returns action manager unique identifier.
-     * 
-     * @return Action manager unique identifier
-     */
-    public String getUniqueIdentifier() {
-        return this.uniqueIdentifier;
-    }
-
-    /**
-     * Set action manager unique identifier.
-     * 
-     * @param szUniqueIdentifier New action manager unique identifier to set
-     */
-    public void setUniqueIdentifier(String szUniqueIdentifier) {
-        this.uniqueIdentifier = szUniqueIdentifier;
     }
 
     /**

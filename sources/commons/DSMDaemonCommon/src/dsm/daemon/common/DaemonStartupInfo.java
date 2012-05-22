@@ -19,11 +19,6 @@ public class DaemonStartupInfo extends DSMManifest {
     protected String name;
 
     /**
-     * Daemon unique identifier
-     */
-    protected String uniqueIdentifier;
-
-    /**
      * Daemon library
      */
     protected String library;
@@ -50,7 +45,6 @@ public class DaemonStartupInfo extends DSMManifest {
         super("70feef0d-bb9e-4bb2-998f-8bba70fbefe1", "Daemon Info");
         
         this.name = "";
-        this.uniqueIdentifier = "";
         this.library = "";
         this.packageName = "";
         this.className = "";
@@ -73,24 +67,6 @@ public class DaemonStartupInfo extends DSMManifest {
      */
     public void setName(String szName) {
         this.name = szName;
-    }
-
-    /**
-     * Returns daemon unique identifier.
-     * 
-     * @return Daemon unique identifier
-     */
-    public String getUniqueIdentifier() {
-        return this.uniqueIdentifier;
-    }
-
-    /**
-     * Set daemon unique identifier.
-     * 
-     * @param szUniqueIdentifier New daemon unique identifier to set
-     */
-    public void setUniqueIdentifier(String szUniqueIdentifier) {
-        this.uniqueIdentifier = szUniqueIdentifier;
     }
 
     /**
