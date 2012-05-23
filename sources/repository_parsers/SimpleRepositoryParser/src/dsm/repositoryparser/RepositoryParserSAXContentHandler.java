@@ -26,6 +26,16 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
      * Reference to simple repository parser object
      */
     private SimpleRepositoryParser simpleRepositoryParser;
+    
+    /**
+     * Determines whether startup repositories should be loaded.
+     */
+    private boolean loadStartupRepositories = false;
+
+    /**
+     * Determines whether none startup repositories should be loaded.
+     */
+    private boolean loadNoneStartupRepositories = false;
 
     /**
      * Cached repository info
@@ -46,14 +56,19 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
      * RepositoryParserSAXContentHandler constructor
      * 
      * @param refRepositoryParser Reference to simple repository parser object
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
-    public RepositoryParserSAXContentHandler(SimpleRepositoryParser refSimpleRepositoryParser) {
+    public RepositoryParserSAXContentHandler(SimpleRepositoryParser refSimpleRepositoryParser,
+                                             boolean bLoadStartupRepositories,
+                                             boolean bLoadNoneStartupRepositories) {
         if (refSimpleRepositoryParser == null)
             throw new NullPointerException("Error: Passed refSimpleRepositoryParser reference is null.");
 
         this.simpleRepositoryParser = refSimpleRepositoryParser;
+        this.loadStartupRepositories = bLoadStartupRepositories;
+        this.loadNoneStartupRepositories = bLoadNoneStartupRepositories;
         this.cachedRepositoryInfo = null;
-
         this.parsedDepth = 0;
     }
     
@@ -95,36 +110,46 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
             if (this.parsedDepth != 0)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
-            this.cachedRepositoryInfo = new RepositoryInfo();
+            this.parsedDepth++;
 
+            RepositoryInfo tmpRepositoryInfo = new RepositoryInfo();
+            
             String value;
 
             if ((value = atts.getValue("name")) == null)
                 throw new RepositoryFileParsingException("Error: \"name\" tag is not defined for repository.");
             else
-                this.cachedRepositoryInfo.setName(value.trim());
+                tmpRepositoryInfo.setName(value.trim());
 
             if ((value = atts.getValue("unique_identifier")) == null)
                 throw new RepositoryFileParsingException("Error: \"unique_identifier\" tag is not defined for repository.");
             else
-                this.cachedRepositoryInfo.setUniqueIdentifier(value.trim());
+                tmpRepositoryInfo.setUniqueIdentifier(value.trim());
 
             if ((value = atts.getValue("include_in_startup")) == null)
-                this.cachedRepositoryInfo.setIncludeInStartup(false);
+                tmpRepositoryInfo.setIncludeInStartup(false);
             else {
                 if (value.equalsIgnoreCase("Yes") || value.equalsIgnoreCase("Y") || value.equalsIgnoreCase("True") || value.equalsIgnoreCase("T"))
-                    this.cachedRepositoryInfo.setIncludeInStartup(true);
+                    tmpRepositoryInfo.setIncludeInStartup(true);
                 else
-                    this.cachedRepositoryInfo.setIncludeInStartup(false);
+                    tmpRepositoryInfo.setIncludeInStartup(false);
             }
 
-            this.parsedDepth++;
+            if(this.loadStartupRepositories && tmpRepositoryInfo.getIncludeInStartup())
+                this.cachedRepositoryInfo = tmpRepositoryInfo;
+            else if(this.loadNoneStartupRepositories && !tmpRepositoryInfo.getIncludeInStartup())
+                this.cachedRepositoryInfo = tmpRepositoryInfo;
+            else
+                this.cachedRepositoryInfo = null;
         } else if (qName.equalsIgnoreCase("daemon")) {
             if (this.parsedDepth != 1)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
             this.parsedDepth++;
 
+            if(this.cachedRepositoryInfo == null)
+                return;
+            
             DaemonStartupInfo info = new DaemonStartupInfo();
             String value;
             
@@ -165,6 +190,9 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
 
             this.parsedDepth++;
 
+            if(this.cachedRepositoryInfo == null)
+                return;
+
             ActionManagerStartupInfo info = new ActionManagerStartupInfo();
             String value;
             
@@ -204,6 +232,9 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
 
             this.parsedDepth++;
+
+            if(this.cachedRepositoryInfo == null)
+                return;
 
             ActionStartupInfo info = new ActionStartupInfo();
             String value;
@@ -261,10 +292,11 @@ public class RepositoryParserSAXContentHandler implements ContentHandler {
 
             this.parsedDepth--;
 
-            if (this.simpleRepositoryParser != null)
+            if (this.simpleRepositoryParser != null) {
                 this.simpleRepositoryParser.addParsedRepositoryInfo(this.cachedRepositoryInfo);
+                this.cachedRepositoryInfo = null;
+            }
 
-            this.cachedRepositoryInfo = null;
         } else if (qName.equalsIgnoreCase("daemon")) {
             if (this.parsedDepth != 2)
                 throw new RepositoryFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");

@@ -20,20 +20,32 @@ public interface RepositoryParser {
      * Loads repository information from an repository file.
      * 
      * @param szRepositoryFilePath Repository file path
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
-    void loadRepositoryFromFile(String szRepositoryFilePath) throws Exception;
+    void loadRepositoryFromFile(String szRepositoryFilePath,
+                                boolean bLoadStartupRepositories,
+                                boolean bLoadNoneStartupRepositories) throws Exception;
 
     /**
      * Loads repository information from passed string content.
      * 
      * @param szStringContent String content
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
-    void loadRepository(String szStringContent) throws Exception;
+    void loadRepository(String szStringContent,
+                        boolean bLoadStartupRepositories,
+                        boolean bLoadNoneStartupRepositories) throws Exception;
 
     /**
      * Loads repository information from passed string content.
      * 
      * @param inputSource Input source contains XML message
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
-    void loadRepository(InputSource inputSource) throws Exception;
+    void loadRepository(InputSource inputSource,
+                        boolean bLoadStartupRepositories,
+                        boolean bLoadNoneStartupRepositories) throws Exception;
 }

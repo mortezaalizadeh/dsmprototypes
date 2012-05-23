@@ -19,14 +19,14 @@ public class ConfigurationFileParserSAXErrorHandler implements ErrorHandler {
     /**
      * Reference to DSM tester configuration reader object
      */
-    private DSMTesterConfigurationReader dsmTesterConfigurationReader;
+    private ConfigurationReader dsmTesterConfigurationReader;
     
     /**
      * RepositoryParserSAXErrorHandler constructor
      * 
      * @param refDSMTesterConfigurationReader Reference to DSM tester configuration reader object
      */
-    public ConfigurationFileParserSAXErrorHandler(DSMTesterConfigurationReader refDSMTesterConfigurationReader) {
+    public ConfigurationFileParserSAXErrorHandler(ConfigurationReader refDSMTesterConfigurationReader) {
         if (refDSMTesterConfigurationReader == null)
             throw new NullPointerException("Error: Passed refDSMTesterConfigurationReader reference is null.");
 

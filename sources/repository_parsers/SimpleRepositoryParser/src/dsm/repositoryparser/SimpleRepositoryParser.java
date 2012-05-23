@@ -7,14 +7,11 @@ import dsm.common.DSMManifest;
 import dsm.common.repository.RepositoryInfo;
 import dsm.common.repositoryparser.RepositoryParser;
 import dsm.common.repositoryparser.exceptions.RepositoryFileParsingException;
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 /**
@@ -42,41 +39,57 @@ public class SimpleRepositoryParser extends DSMManifest implements RepositoryPar
      * Loads repository information from an repository file.
      * 
      * @param szRepositoryFilePath Repository file path
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
     @Override
-    public void loadRepositoryFromFile(String szRepositoryFilePath) throws Exception {
+    public void loadRepositoryFromFile(String szRepositoryFilePath,
+                                       boolean bLoadStartupRepositories,
+                                       boolean bLoadNoneStartupRepositories) throws Exception {
         if (szRepositoryFilePath == null)
             throw new NullPointerException("Error: Passed szRepositoryFilePath reference is null.");
 
         if (szRepositoryFilePath.trim().isEmpty())
             throw new NullPointerException("Error: Passed szRepositoryFilePath length is zero.");
 
-        loadRepository(new InputSource(szRepositoryFilePath));
+        loadRepository(new InputSource(szRepositoryFilePath),
+                       bLoadStartupRepositories,
+                       bLoadNoneStartupRepositories);
    }
 
     /**
      * Loads repository information from passed string content.
      * 
      * @param szStringContent String content
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
     @Override
-    public void loadRepository(String szStringContent) throws Exception {
+    public void loadRepository(String szStringContent,
+                               boolean bLoadStartupRepositories,
+                               boolean bLoadNoneStartupRepositories) throws Exception {
         if (szStringContent == null)
             throw new NullPointerException("Error: Passed szStringContent reference is null.");
 
         if (szStringContent.trim().isEmpty())
             throw new NullPointerException("Error: Passed szStringContent length is zero.");
 
-        loadRepository(new InputSource(new StringReader(szStringContent)));
+        loadRepository(new InputSource(new StringReader(szStringContent)),
+                       bLoadStartupRepositories,
+                       bLoadNoneStartupRepositories);
     }
 
     /**
      * Loads repository information from passed string content.
      * 
      * @param inputSource Input source contains XML message
+     * @param bLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param bLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
     @Override
-    public void loadRepository(InputSource inputSource) throws Exception {
+    public void loadRepository(InputSource inputSource,
+                               boolean bLoadStartupRepositories,
+                               boolean bLoadNoneStartupRepositories) throws Exception {
         try {
             if (inputSource == null)
                 throw new NullPointerException("Error: Passed inputSource reference is null.");
@@ -89,7 +102,9 @@ public class SimpleRepositoryParser extends DSMManifest implements RepositoryPar
             XMLReader reader = parser.getXMLReader();
 
             reader.setErrorHandler(new RepositoryParserSAXErrorHandler(this));
-            reader.setContentHandler(new RepositoryParserSAXContentHandler(this));
+            reader.setContentHandler(new RepositoryParserSAXContentHandler(this,
+                                                                           bLoadStartupRepositories,
+                                                                           bLoadNoneStartupRepositories));
 
             if (this.repositoryList == null)
                 this.repositoryList = new HashMap<String, RepositoryInfo>();

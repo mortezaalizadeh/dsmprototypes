@@ -27,7 +27,7 @@ public class ConfigurationFileParserSAXContentHandler implements ContentHandler 
     /**
      * Reference to DSM tester configuration reader object
      */
-    private DSMTesterConfigurationReader dsmTesterConfigurationReader;
+    private ConfigurationReader dsmTesterConfigurationReader;
 
     /**
      * Cached repository info
@@ -49,7 +49,7 @@ public class ConfigurationFileParserSAXContentHandler implements ContentHandler 
      * 
      * @param refDSMTesterConfigurationReader Reference to DSM tester configuration reader object
      */
-    public ConfigurationFileParserSAXContentHandler(DSMTesterConfigurationReader refDSMTesterConfigurationReader) {
+    public ConfigurationFileParserSAXContentHandler(ConfigurationReader refDSMTesterConfigurationReader) {
         if (refDSMTesterConfigurationReader == null)
             throw new NullPointerException("Error: Passed refDSMTesterConfigurationReader reference is null.");
 

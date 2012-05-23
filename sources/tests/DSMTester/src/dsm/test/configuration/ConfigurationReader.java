@@ -14,13 +14,13 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 /**
- * DSMTesterConfigurationReader class parses repository file and extract information from
+ * ConfigurationReader class parses repository file and extract information from
  * it.
  * 
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public class DSMTesterConfigurationReader extends DSMManifest {
+public class ConfigurationReader extends DSMManifest {
 
     /**
      * Repository file full path list
@@ -33,10 +33,10 @@ public class DSMTesterConfigurationReader extends DSMManifest {
     private RepositoryParserStartupInfo repositoryParserStartupInfo = null;
     
     /**
-     * DSMTesterConfigurationReader Constructor
+     * ConfigurationReader Constructor
      */
-    public DSMTesterConfigurationReader() {
-        super("deb10709-8ac4-4ab7-8d61-beee2168a18f", "DSM Tester Configuration Reader");
+    public ConfigurationReader() {
+        super("deb10709-8ac4-4ab7-8d61-beee2168a18f", "Configuration Reader");
     }
     
     /**
