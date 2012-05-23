@@ -6,6 +6,8 @@ package dsm.test.configuration;
 import dsm.action.common.ActionStartupInfo;
 import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.repository.RepositoryInfo;
+import dsm.common.repositoryparser.RepositoryParserStartupInfo;
+import dsm.common.repositoryparser.exceptions.RepositoryFileParsingException;
 import dsm.daemon.common.DaemonStartupInfo;
 import dsm.test.exception.ConfigurationFileParsingException;
 import org.xml.sax.Attributes;
@@ -121,14 +123,35 @@ public class ConfigurationFileParserSAXContentHandler implements ContentHandler 
 
             this.parsedDepth++;
 
+            RepositoryParserStartupInfo repositoryParserStartupInfo = new RepositoryParserStartupInfo();
+            
             String value;
             
-            if ((value = atts.getValue("repository_file_full_path")) != null) {
-                value = value.trim();
-
-                if (!value.isEmpty())
-                    this.dsmTesterConfigurationReader.addRepositoryFileFullPath(value);
+            if ((value = atts.getValue("name")) == null) {
+                repositoryParserStartupInfo.setName("");
+            } else {
+                repositoryParserStartupInfo.setName(value.trim());
             }
+            
+            if ((value = atts.getValue("library")) == null) {
+                throw new RepositoryFileParsingException("Error: \"library\" tag is not defined for daemon.");
+            } else {
+                repositoryParserStartupInfo.setLibrary(value.trim());
+            }
+
+            if ((value = atts.getValue("package_name")) == null) {
+                throw new RepositoryFileParsingException("Error: \"package_name\" tag is not defined for daemon.");
+            } else {
+                repositoryParserStartupInfo.setPackageName(value.trim());
+            }
+
+             if ((value = atts.getValue("class_name")) == null) {
+                throw new RepositoryFileParsingException("Error: \"class_name\" tag is not defined for daemon.");
+            } else {
+                repositoryParserStartupInfo.setClassName(value.trim());
+            }
+             
+            this.dsmTesterConfigurationReader.setRepositoryParserStartupInfo(repositoryParserStartupInfo);
         }
     }
 

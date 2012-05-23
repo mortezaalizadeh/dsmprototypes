@@ -124,4 +124,16 @@ public class DSMTesterConfigurationReader extends DSMManifest {
         this.repositoryFileFullPathList.add(szRepositoryFileFullPath);
     }
     
+    /**
+     * Sets repository parser startup information.
+     * 
+     * @param newRepositoryParserStartupInfo New repository parser startup information
+     */
+    public void setRepositoryParserStartupInfo(RepositoryParserStartupInfo newRepositoryParserStartupInfo)
+    {
+        if (newRepositoryParserStartupInfo == null)
+            throw new NullPointerException("Error: Passed newRepositoryParserStartupInfo reference is null.");
+
+        this.repositoryParserStartupInfo = newRepositoryParserStartupInfo;
+    }
 }

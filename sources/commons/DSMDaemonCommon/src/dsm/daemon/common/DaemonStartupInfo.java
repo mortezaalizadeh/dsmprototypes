@@ -42,7 +42,7 @@ public class DaemonStartupInfo extends DSMManifest {
      * DaemonInfo constructor.
      */
     public DaemonStartupInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe1", "Daemon Startup Info");
+        super("634b7eab-c77f-494b-b10a-a646288ca16a", "Daemon Startup Info");
         
         this.name = "";
         this.library = "";
