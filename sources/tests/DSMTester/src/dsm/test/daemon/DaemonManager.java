@@ -4,6 +4,7 @@
 package dsm.test.daemon;
 
 import dsm.common.DSMManifest;
+import dsm.test.configuration.ConfigurationReader;
 
 /**
  * DaemonManager class launches daemons, manages their life cycle and keep track
@@ -18,6 +19,16 @@ public class DaemonManager extends DSMManifest {
      * Singleton object of DaemonManager class.
      */
     private static DaemonManager singletonObject = null;
+    
+    /**
+     * Daemon manager initialization state
+     */
+    private boolean inited = false;
+
+    /**
+     * Configuration reader
+     */
+    private ConfigurationReader configurationReader = null;
     
     /**
      * DaemonManager Constructor
@@ -41,5 +52,30 @@ public class DaemonManager extends DSMManifest {
     @Override
     public Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();
+    }
+
+    /**
+     * Returns whether daemon manager is initialized.
+     * 
+     * @return Daemon manager initialization status
+     */
+    public boolean isInited() {
+        return this.inited;
+    }
+
+    /**
+     * Initializes daemon manager.
+     * 
+     * @param initializationParams Contains initializations parameters
+     */
+    public void init(String initializationParams) {
+        this.inited = true;
+    }
+
+    /**
+     * Shutdown daemon manager.
+     */
+    public void shutdown() {
+        this.inited = false;
     }
 }
