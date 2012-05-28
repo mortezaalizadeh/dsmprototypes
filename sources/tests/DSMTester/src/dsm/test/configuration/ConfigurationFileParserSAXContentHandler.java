@@ -3,12 +3,9 @@
  */
 package dsm.test.configuration;
 
-import dsm.action.common.ActionStartupInfo;
-import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.repository.RepositoryInfo;
 import dsm.common.repositoryparser.RepositoryParserStartupInfo;
 import dsm.common.repositoryparser.exceptions.RepositoryFileParsingException;
-import dsm.daemon.common.DaemonStartupInfo;
 import dsm.test.exception.ConfigurationFileParsingException;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
