@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<daemon name="DSM Daemon"
+        unique_identifier=""
+        repository_file_path="Repositories.xml">
+    <action_manager_repositories>
+        <repository repository_unique_identifier="d55c2306-503d-4ac5-9497-26da703a4dde"/>
+    </action_manager_repositories>
+</daemon>
