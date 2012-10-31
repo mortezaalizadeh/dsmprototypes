@@ -8,44 +8,45 @@ import dsm.common.DSMException;
 /**
  * ConfigurationFileParsingException class defines exception will be thrown on
  * DSM tester configuration file parsing failure.
- * 
+ *
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
 public class ConfigurationFileParsingException extends DSMException {
-    
+
     /**
-     * ConfigurationFileParsingException constructor
+     * ConfigurationFileParsingException constructor.
      */
     public ConfigurationFileParsingException() {
         super();
     }
 
     /**
-     * ConfigurationFileParsingException constructor
-     * 
+     * ConfigurationFileParsingException constructor.
+     *
      * @param message the detail message
      */
-    public ConfigurationFileParsingException(String message) {
+    public ConfigurationFileParsingException(final String message) {
         super(message);
     }
 
     /**
-     * ConfigurationFileParsingException constructor
-     * 
+     * ConfigurationFileParsingException constructor.
+     *
      * @param message the detail message
      * @param cause the cause
      */
-    public ConfigurationFileParsingException(String message, Throwable cause) {
+    public ConfigurationFileParsingException(final String message,
+                                             final Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * ConfigurationFileParsingException constructor
-     * 
+     * ConfigurationFileParsingException constructor.
+     *
      * @param cause the cause
      */
-    public ConfigurationFileParsingException(Throwable cause) {
+    public ConfigurationFileParsingException(final Throwable cause) {
         super(cause);
     }
 }

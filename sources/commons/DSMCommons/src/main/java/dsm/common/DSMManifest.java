@@ -15,21 +15,18 @@ package dsm.common;
 public class DSMManifest extends Object {
 
     /**
-     * DSM object unique ID
+     * DSM object unique ID.
      */
     protected String uniqueId = "00000000-0000-0000-0000-000000000000";
-
     /**
-     * DSM object friendly name
+     * DSM object friendly name.
      */
     protected String friendlyName = "No name specified yet!!!";
-
     /**
      * DSMManifest Constructor
      */
     public DSMManifest() {
     }
-    
     /**
      * DSMManifest Constructor
      * 
@@ -38,7 +35,6 @@ public class DSMManifest extends Object {
     public DSMManifest(String szUniqueId) {
         this.uniqueId = szUniqueId;
     }
-
     /**
      * DSMManifest Constructor
      * 
@@ -49,7 +45,6 @@ public class DSMManifest extends Object {
         this.uniqueId = szUniqueId;
         this.friendlyName = szFriendlyName;
     }
-
     /**
      * Returns DSM object unique identifier.
      * 
@@ -58,7 +53,6 @@ public class DSMManifest extends Object {
     public String getDSMUniqueIdentifier() {
         return this.uniqueId;
     }
-
     /**
      * Sets DSM object unique identifier.
      * 
@@ -67,7 +61,6 @@ public class DSMManifest extends Object {
     protected void setDSMUniqueIdentifier(String szUniqueId) {
         this.uniqueId = szUniqueId;
     }
-
     /**
      * Returns DSM object friendly name.
      * 
@@ -76,7 +69,6 @@ public class DSMManifest extends Object {
     public String getFriendlyName() {
         return this.friendlyName;
     }
-
     /**
      * Sets DSM object friendly name.
      * 
