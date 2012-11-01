@@ -15,49 +15,52 @@ import org.xml.sax.SAXException;
 /**
  * RepositoryParserSAXContentHandler class implements required method to handle
  * read XML file attributes and elements.
- * 
+ *
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public class ConfigurationFileParserSAXContentHandler implements ContentHandler {
+public final class ConfigurationFileParserSAXContentHandler implements ContentHandler {
 
     /**
-     * Reference to DSM tester configuration reader object
+     * Exception message for parsing failure.
      */
-    private ConfigurationReader dsmTesterConfigurationReader;
+    private static final transient String FAILED_TO_PARSE_EXCEPTION_MESSAGE = "Error: Failed to parse Repository XML file. It contains wrong tags.";
 
     /**
-     * Cached repository info
+     * Reference to DSM tester configuration reader object.
      */
-    private RepositoryInfo cachedRepositoryInfo;
+    private transient ConfigurationReader dsmTesterConfigurationReader = null;
+
+    /**
+     * Cached repository info.
+     */
+    private transient RepositoryInfo cachedRepositoryInfo = null;
     
     /**
-     * XML Repository parsing depth
+     * XML Repository parsing depth.
      */
-    private int parsedDepth;
+    private int parsedDepth = 0;
 
     /**
-     * SAX locator
+     * SAX locator.
      */
-    private Locator saxLocator = null;
+    private transient Locator saxLocator = null;
     
     /**
-     * RepositoryParserSAXContentHandler constructor
-     * 
-     * @param refDSMTesterConfigurationReader Reference to DSM tester configuration reader object
+     * RepositoryParserSAXContentHandler constructor.
+     *
+     * @param dsmTesterConfigurationReader Reference to DSM tester configuration reader object
      */
-    public ConfigurationFileParserSAXContentHandler(ConfigurationReader refDSMTesterConfigurationReader) {
-        if (refDSMTesterConfigurationReader == null)
-            throw new NullPointerException("Error: Passed refDSMTesterConfigurationReader reference is null.");
+    public ConfigurationFileParserSAXContentHandler(final ConfigurationReader dsmTesterConfigurationReader) {
+        if (dsmTesterConfigurationReader == null) {
+            throw new IllegalArgumentException("dsmTesterConfigurationReader");
+        }
 
-        this.dsmTesterConfigurationReader = refDSMTesterConfigurationReader;
-        this.cachedRepositoryInfo = null;
-
-        this.parsedDepth = 0;
+        this.dsmTesterConfigurationReader = dsmTesterConfigurationReader;
     }
     
     @Override
-    public void setDocumentLocator(Locator locator) {
+    public void setDocumentLocator(final Locator locator) {
         this.saxLocator = locator;
     }
 
@@ -70,79 +73,91 @@ public class ConfigurationFileParserSAXContentHandler implements ContentHandler 
     }
 
     @Override
-    public void startPrefixMapping(String prefix, String uri) throws SAXException {
+    public void startPrefixMapping(final String prefix, final String uri) throws SAXException {
     }
 
     @Override
-    public void endPrefixMapping(String prefix) throws SAXException {
+    public void endPrefixMapping(final String prefix) throws SAXException {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-        if (uri == null)
-            throw new NullPointerException("Error: Passed uri reference is null.");
+    public void startElement(final String uri, final String localName, final String qName, final Attributes atts) throws SAXException {
+        if (uri == null) {
+            throw new IllegalArgumentException("uri");
+        }
 
-        if (localName == null)
-            throw new NullPointerException("Error: Passed localName reference is null.");
+        if (localName == null) {
+            throw new IllegalArgumentException("localName");
+        }
 
-        if (qName == null)
-            throw new NullPointerException("Error: Passed qName reference is null.");
+        if (qName == null) {
+            throw new IllegalArgumentException("qName");
+        }
 
-        qName = qName.trim();
+        final String name = qName.trim();
 
-        if (qName.equalsIgnoreCase("configuration")) {
-            if (this.parsedDepth != 0)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
-
-            this.parsedDepth++;
-        } else if (qName.equalsIgnoreCase("repository_files")) {
-            if (this.parsedDepth != 1)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
-
-            this.parsedDepth++;
-        } else if (qName.equalsIgnoreCase("repository_file")) {
-            if (this.parsedDepth != 2)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+        if (name.equalsIgnoreCase("configuration")) {
+            if (this.parsedDepth != 0) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
             this.parsedDepth++;
+        } else if (name.equalsIgnoreCase("repository_files")) {
+            if (this.parsedDepth != 1) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
-            String value;
+            this.parsedDepth++;
+        } else if (name.equalsIgnoreCase("repository_file")) {
+            if (this.parsedDepth != 2) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
+
+            this.parsedDepth++;
+
+            String value = atts.getValue("repository_file_full_path");
             
-            if ((value = atts.getValue("repository_file_full_path")) != null) {
+            if (value != null) {
                 value = value.trim();
 
-                if (!value.isEmpty())
+                if (!value.isEmpty()) {
                     this.dsmTesterConfigurationReader.addRepositoryFileFullPath(value);
+                }
             }
         } else if (qName.equalsIgnoreCase("repository_parser")) {
-            if (this.parsedDepth != 1)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+            if (this.parsedDepth != 1) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
             this.parsedDepth++;
 
-            RepositoryParserStartupInfo repositoryParserStartupInfo = new RepositoryParserStartupInfo();
+            final RepositoryParserStartupInfo repositoryParserStartupInfo = new RepositoryParserStartupInfo();
             
             String value;
             
-            if ((value = atts.getValue("name")) == null) {
+            value = atts.getValue("name");
+            if (value == null) {
                 repositoryParserStartupInfo.setName("");
             } else {
                 repositoryParserStartupInfo.setName(value.trim());
             }
             
-            if ((value = atts.getValue("library")) == null) {
+            value = atts.getValue("library");
+            if (value == null) {
                 throw new RepositoryFileParsingException("Error: \"library\" tag is not defined for daemon.");
             } else {
                 repositoryParserStartupInfo.setLibrary(value.trim());
             }
 
-            if ((value = atts.getValue("package_name")) == null) {
+            value = atts.getValue("package_name");
+            if (value == null) {
                 throw new RepositoryFileParsingException("Error: \"package_name\" tag is not defined for daemon.");
             } else {
                 repositoryParserStartupInfo.setPackageName(value.trim());
             }
 
-             if ((value = atts.getValue("class_name")) == null) {
+            value = atts.getValue("class_name");
+            if (value == null) {
                 throw new RepositoryFileParsingException("Error: \"class_name\" tag is not defined for daemon.");
             } else {
                 repositoryParserStartupInfo.setClassName(value.trim());
@@ -153,54 +168,61 @@ public class ConfigurationFileParserSAXContentHandler implements ContentHandler 
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (uri == null)
-            throw new NullPointerException("Error: Passed uri reference is null.");
-            
-        if (localName == null)
-            throw new NullPointerException("Error: Passed localName reference is null.");
+    public void endElement(final String uri, final String localName, final String qName) throws SAXException {
+        if (uri == null) {
+            throw new IllegalArgumentException("uri");
+        }
+
+        if (localName == null) {
+            throw new IllegalArgumentException("localName");
+        }
+
+        if (qName == null) {
+            throw new IllegalArgumentException("qName");
+        }
+
+        final String name = qName.trim();
         
-        if (qName == null)
-            throw new NullPointerException("Error: Passed qName reference is null.");
-        
-        qName = qName.trim();
-        
-        if (qName.equalsIgnoreCase("configuration")) {
-            if (this.parsedDepth != 1)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+        if (name.equalsIgnoreCase("configuration")) {
+            if (this.parsedDepth != 1) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
             this.parsedDepth--;
-        } else if (qName.equalsIgnoreCase("repository_files")) {
-            if (this.parsedDepth != 2)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+        } else if (name.equalsIgnoreCase("repository_files")) {
+            if (this.parsedDepth != 2) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
             this.parsedDepth--;
-        } else if (qName.equalsIgnoreCase("repository_file")) {
-            if (this.parsedDepth != 3)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+        } else if (name.equalsIgnoreCase("repository_file")) {
+            if (this.parsedDepth != 3) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
             this.parsedDepth--;
-        } else if (qName.equalsIgnoreCase("repository_parser")) {
-            if (this.parsedDepth != 2)
-                throw new ConfigurationFileParsingException("Error: Failed to parse Repository XML file. It contains wrong tags.");
+        } else if (name.equalsIgnoreCase("repository_parser")) {
+            if (this.parsedDepth != 2) {
+                throw new ConfigurationFileParsingException(ConfigurationFileParserSAXContentHandler.FAILED_TO_PARSE_EXCEPTION_MESSAGE);
+            }
 
             this.parsedDepth--;
         }
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(final char[] chars, final int start, final int length) throws SAXException {
     }
 
     @Override
-    public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
+    public void ignorableWhitespace(final char[] chars, final int start, final int length) throws SAXException {
     }
 
     @Override
-    public void processingInstruction(String target, String data) throws SAXException {
+    public void processingInstruction(final String target, final String data) throws SAXException {
     }
 
     @Override
-    public void skippedEntity(String name) throws SAXException {
+    public void skippedEntity(final String name) throws SAXException {
     }
 }

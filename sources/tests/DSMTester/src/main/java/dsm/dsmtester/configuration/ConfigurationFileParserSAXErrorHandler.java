@@ -10,41 +10,42 @@ import org.xml.sax.SAXParseException;
 /**
  * RepositoryParserSAXErrorHandler class implements required method to handle
  * errors occur during parsing repository XML file.
- * 
+ *
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public class ConfigurationFileParserSAXErrorHandler implements ErrorHandler {
+public final class ConfigurationFileParserSAXErrorHandler implements ErrorHandler {
 
     /**
-     * Reference to DSM tester configuration reader object
+     * Reference to DSM tester configuration reader object.
      */
-    private ConfigurationReader dsmTesterConfigurationReader;
+    private transient ConfigurationReader dsmTesterConfigurationReader = null;
     
     /**
-     * RepositoryParserSAXErrorHandler constructor
-     * 
-     * @param refDSMTesterConfigurationReader Reference to DSM tester configuration reader object
+     * RepositoryParserSAXErrorHandler constructor.
+     *
+     * @param dsmTesterConfigurationReader Reference to DSM tester configuration reader object.
      */
-    public ConfigurationFileParserSAXErrorHandler(ConfigurationReader refDSMTesterConfigurationReader) {
-        if (refDSMTesterConfigurationReader == null)
-            throw new NullPointerException("Error: Passed refDSMTesterConfigurationReader reference is null.");
+    public ConfigurationFileParserSAXErrorHandler(final ConfigurationReader dsmTesterConfigurationReader) {
+        if (dsmTesterConfigurationReader == null) {
+            throw new IllegalArgumentException("dsmTesterConfigurationReader");
+        }
 
-        this.dsmTesterConfigurationReader = refDSMTesterConfigurationReader;
+        this.dsmTesterConfigurationReader = dsmTesterConfigurationReader;
     }
     
     @Override
-    public void warning(SAXParseException exception) throws SAXException {
-        throw(exception);
+    public void warning(final SAXParseException exception) throws SAXException {
+        throw exception;
     }
 
     @Override
-    public void error(SAXParseException exception) throws SAXException {
-        throw(exception);
+    public void error(final SAXParseException exception) throws SAXException {
+        throw exception;
     }
 
     @Override
-    public void fatalError(SAXParseException exception) throws SAXException {
-        throw(exception);
+    public void fatalError(final SAXParseException exception) throws SAXException {
+        throw exception;
     }
 }

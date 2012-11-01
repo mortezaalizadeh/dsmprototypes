@@ -8,6 +8,7 @@ import dsm.common.repositoryparser.RepositoryParserStartupInfo;
 import dsm.dsmtester.exception.ConfigurationFileParsingException;
 import java.io.StringReader;
 import java.util.LinkedList;
+import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
@@ -20,17 +21,17 @@ import org.xml.sax.XMLReader;
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public class ConfigurationReader extends DSMManifest {
+public final class ConfigurationReader extends DSMManifest {
 
     /**
      * Repository file full path list.
      */
-    private LinkedList<String> repositoryFileFullPathList = null;
+    private transient List<String> repositoryFileFullPathList = null;
 
     /**
      * Repository parser startup information.
      */
-    private RepositoryParserStartupInfo repositoryParserStartupInfo = null;
+    private transient RepositoryParserStartupInfo repositoryParserStartupInfo = null;
 
     /**
      * ConfigurationReader Constructor.
@@ -44,9 +45,9 @@ public class ConfigurationReader extends DSMManifest {
      *
      * @param configurationFilePath Configuration file path
      */
-    public void loadCofigurationFromFile(String configurationFilePath) throws Exception {
+    public void loadCofigurationFromFile(final String configurationFilePath) {
         if (configurationFilePath == null) {
-            throw new IllegalArgumentException ("configurationFilePath");
+            throw new IllegalArgumentException("configurationFilePath");
         }
 
         if (configurationFilePath.trim().isEmpty()) {
@@ -61,9 +62,9 @@ public class ConfigurationReader extends DSMManifest {
      *
      * @param stringContent String content
      */
-    public void loadCofiguration(String stringContent) throws Exception {
+    public void loadCofiguration(final String stringContent) {
         if (stringContent == null) {
-            throw new IllegalArgumentException ("stringContent");
+            throw new IllegalArgumentException("stringContent");
         }
 
         if (stringContent.trim().isEmpty()) {
@@ -78,13 +79,13 @@ public class ConfigurationReader extends DSMManifest {
      *
      * @param inputSource Input source contains XML message
      */
-    public void loadCofiguration(InputSource inputSource) throws Exception {
+    public void loadCofiguration(final InputSource inputSource) {
         try {
             if (inputSource == null) {
-                throw new IllegalArgumentException ("inputSource");
+                throw new IllegalArgumentException("inputSource");
             }
 
-            SAXParserFactory spf = SAXParserFactory.newInstance();
+            final SAXParserFactory spf = SAXParserFactory.newInstance();
 
             spf.setValidating(false);
 
@@ -115,30 +116,30 @@ public class ConfigurationReader extends DSMManifest {
     /**
      * Adds new repository file full path to list of repository file full path.
      *
-     * @param szRepositoryFileFullPath New repository file full path
+     * @param repositoryFileFullPath New repository file full path
      */
-    public void addRepositoryFileFullPath(String szRepositoryFileFullPath)
-    {
-        if (szRepositoryFileFullPath == null)
-            throw new NullPointerException("Error: Passed szRepositoryFileFullPath reference is null.");
-        
-        szRepositoryFileFullPath = szRepositoryFileFullPath.trim();
-        
-        if (szRepositoryFileFullPath.isEmpty())
-            throw new NullPointerException("Error: Passed szRepositoryFileFullPath is empty.");
+    public void addRepositoryFileFullPath(final String repositoryFileFullPath) {
+        if (repositoryFileFullPath == null) {
+            throw new IllegalArgumentException("repositoryFileFullPath");
+        }
 
-        this.repositoryFileFullPathList.add(szRepositoryFileFullPath);
+        if (repositoryFileFullPath.trim().isEmpty()) {
+            throw new IllegalArgumentException("repositoryFileFullPath");
+        }
+
+        this.repositoryFileFullPathList.add(repositoryFileFullPath);
     }
 
     /**
      * Sets repository parser startup information.
      *
-     * @param newRepositoryParserStartupInfo New repository parser startup information
+     * @param newRepositoryParserStartupInfo New repository parser startup
+     * information.
      */
-    public void setRepositoryParserStartupInfo(RepositoryParserStartupInfo newRepositoryParserStartupInfo)
-    {
-        if (newRepositoryParserStartupInfo == null)
-            throw new NullPointerException("Error: Passed newRepositoryParserStartupInfo reference is null.");
+    public void setRepositoryParserStartupInfo(final RepositoryParserStartupInfo newRepositoryParserStartupInfo) {
+        if (newRepositoryParserStartupInfo == null) {
+            throw new IllegalArgumentException("newRepositoryParserStartupInfo");
+        }
 
         this.repositoryParserStartupInfo = newRepositoryParserStartupInfo;
     }
