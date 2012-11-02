@@ -4,45 +4,45 @@
 package dsm.common;
 
 /**
- * DSMException class defines general DSM exception.
+ * DsmException class defines general Dsm exception.
  *
  * @version 0.1, May 14, 2012
  * @author Morteza Alizadeh
  */
-public class DSMException extends RuntimeException {
+public class DsmException extends RuntimeException {
 
     /**
-     * DSMException constructor.
+     * DsmException constructor.
      */
-    public DSMException() {
+    public DsmException() {
         super();
     }
 
     /**
-     * DSMException constructor.
+     * DsmException constructor.
      *
      * @param message the detail message
      */
-    public DSMException(final String message) {
+    public DsmException(final String message) {
         super(message);
     }
 
     /**
-     * DSMException constructor.
+     * DsmException constructor.
      *
      * @param message the detail message
      * @param cause the cause
      */
-    public DSMException(final String message, final Throwable cause) {
+    public DsmException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * DSMException constructor.
+     * DsmException constructor.
      *
      * @param cause the cause
      */
-    public DSMException(final Throwable cause) {
+    public DsmException(final Throwable cause) {
         super(cause);
     }
 }

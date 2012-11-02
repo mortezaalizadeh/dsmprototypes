@@ -3,8 +3,9 @@
  */
 package dsm.common.argument;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * ArgumentContainer.
@@ -12,10 +13,13 @@ import java.util.HashMap;
  * @version 0.1, April 14, 2012
  * @author Morteza Alizadeh
  */
-public class ArgumentContainer extends DSMManifest {
+public class ArgumentContainer extends DsmManifest {
 
-    HashMap argumentList = null;
-    
+    /**
+     * List of current stored arguments.
+     */
+    private transient Map<String, Object> argumentList = null;
+
     /**
      * MultiArguments Constructor
      */
@@ -26,14 +30,15 @@ public class ArgumentContainer extends DSMManifest {
     /**
      * Adds/Modifies argument to/in argument list.
      * 
-     * @param szName Argument name
+     * @param name Argument name
      * @param value Argument value
      */
-    public void setArgument(String szName, Object value) {
-        if (this.argumentList == null)
-            this.argumentList = new HashMap();
+    public void setArgument(final String name, final Object value) {
+        if (this.argumentList == null) {
+            this.argumentList = new HashMap<String, Object>();
+        }
         
-        this.argumentList.put(szName, value);
+        this.argumentList.put(name, value);
     }
 
     /**
@@ -42,23 +47,30 @@ public class ArgumentContainer extends DSMManifest {
      * @param szName Argument name to retrieve value
      * @return Returns argument value
      */
-    public Object getArgument(String szName) {
-        if (this.argumentList == null)
-            return null;
+    public Object getArgument(final String name) {
+        Object foundValue = null;
         
-        if (this.argumentList.isEmpty())
-            return null;
+        do {
+            if (this.argumentList == null) {
+                break;
+            }
+
+            if (this.argumentList.isEmpty()) {
+                break;
+            }
+
+            foundValue = this.argumentList.get(name);
+        }while(false);
         
-        return this.argumentList.get(szName);
+        return foundValue;
     }
 
     /**
      * Clears all already stored arguments.
      */
     public void clear() {
-        if (this.argumentList != null)
+        if (this.argumentList != null) {
             this.argumentList.clear();
-        
-        this.argumentList = null;
+        }
     }
 }
