@@ -3,7 +3,7 @@
  */
 package dsm.daemon.common;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 
 /**
 * DaemonInfo class is an entity class represent a daemon.
@@ -11,7 +11,7 @@ import dsm.common.DSMManifest;
 * @version 0.1, April 16, 2012
   * @author Morteza Alizadeh
  */
-public class DaemonStartupInfo extends DSMManifest {
+public class DaemonStartupInfo extends DsmManifest {
 
     /**
      * Daemon name

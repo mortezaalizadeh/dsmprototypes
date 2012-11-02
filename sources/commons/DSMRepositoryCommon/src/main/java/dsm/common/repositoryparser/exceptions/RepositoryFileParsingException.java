@@ -3,7 +3,7 @@
  */
 package dsm.common.repositoryparser.exceptions;
 
-import dsm.common.DSMException;
+import dsm.common.DsmException;
 
 /**
  * RepositoryFileParsingException class defines exception will be thrown on
@@ -12,7 +12,7 @@ import dsm.common.DSMException;
  * @version 0.1, May 14, 2012
  * @author Morteza Alizadeh
  */
-public class RepositoryFileParsingException extends DSMException {
+public class RepositoryFileParsingException extends DsmException {
     
     /**
      * RepositoryFileParsingException constructor

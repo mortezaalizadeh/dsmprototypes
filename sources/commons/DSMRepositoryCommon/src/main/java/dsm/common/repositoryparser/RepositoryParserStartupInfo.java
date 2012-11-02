@@ -3,7 +3,7 @@
  */
 package dsm.common.repositoryparser;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 
 /**
 * RepositoryParserStartupInfo class is an entity class represent a repository
@@ -12,7 +12,7 @@ import dsm.common.DSMManifest;
 * @version 0.1, May 22, 2012
   * @author Morteza Alizadeh
  */
-public class RepositoryParserStartupInfo extends DSMManifest {
+public class RepositoryParserStartupInfo extends DsmManifest {
 
     /**
      * Repository parser name

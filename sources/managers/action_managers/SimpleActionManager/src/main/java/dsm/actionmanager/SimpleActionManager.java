@@ -4,7 +4,7 @@
 package dsm.actionmanager;
 
 import dsm.action.manager.common.ActionManager;
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 
 /**
  * SimpleActionManager is a simple action manager.
@@ -12,7 +12,7 @@ import dsm.common.DSMManifest;
  * @version 0.1, May 21, 2012
  * @author Morteza Alizadeh
  */
-public class SimpleActionManager extends DSMManifest implements ActionManager {
+public class SimpleActionManager extends DsmManifest implements ActionManager {
     
     /**
      * Action manager name

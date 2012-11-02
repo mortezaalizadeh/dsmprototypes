@@ -3,7 +3,7 @@
  */
 package dsm.action.common;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import dsm.common.argument.ArgumentContainer;
 
 /**
@@ -16,7 +16,7 @@ import dsm.common.argument.ArgumentContainer;
  * @version 0.1, April 10, 2012
  * @author Morteza Alizadeh
  */
-public abstract class AtomicAction extends DSMManifest implements Action {
+public abstract class AtomicAction extends DsmManifest implements Action {
 
     /**
      * Action name

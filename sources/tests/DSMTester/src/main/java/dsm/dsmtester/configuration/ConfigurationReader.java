@@ -3,7 +3,7 @@
  */
 package dsm.dsmtester.configuration;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import dsm.common.repositoryparser.RepositoryParserStartupInfo;
 import dsm.dsmtester.exception.ConfigurationFileParsingException;
 import java.io.StringReader;
@@ -21,7 +21,7 @@ import org.xml.sax.XMLReader;
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public final class ConfigurationReader extends DSMManifest {
+public final class ConfigurationReader extends DsmManifest {
 
     /**
      * Repository file full path list.

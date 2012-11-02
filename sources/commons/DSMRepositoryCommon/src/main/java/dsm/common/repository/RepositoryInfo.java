@@ -5,7 +5,7 @@ package dsm.common.repository;
 
 import dsm.action.common.ActionStartupInfo;
 import dsm.action.manager.common.ActionManagerStartupInfo;
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import dsm.daemon.common.DaemonStartupInfo;
 import java.util.LinkedList;
 
@@ -16,7 +16,7 @@ import java.util.LinkedList;
 * @version 0.1, April 15, 2012
   * @author Morteza Alizadeh
  */
-public class RepositoryInfo extends DSMManifest {
+public class RepositoryInfo extends DsmManifest {
 
     /**
      * Repository name

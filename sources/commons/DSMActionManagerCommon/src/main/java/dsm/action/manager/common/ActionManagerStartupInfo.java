@@ -3,7 +3,7 @@
  */
 package dsm.action.manager.common;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 
 /**
 * ActionManagerInfo class is an entity class represent a action manager startup
@@ -12,7 +12,7 @@ import dsm.common.DSMManifest;
 * @version 0.1, May 20, 2012
   * @author Morteza Alizadeh
  */
-public class ActionManagerStartupInfo extends DSMManifest {
+public class ActionManagerStartupInfo extends DsmManifest {
 
     /**
      * Action manager name

@@ -3,7 +3,7 @@
  */
 package dsm.dsmtester.exception;
 
-import dsm.common.DSMException;
+import dsm.common.DsmException;
 
 /**
  * ConfigurationFileParsingException class defines exception will be thrown on
@@ -12,7 +12,7 @@ import dsm.common.DSMException;
  * @version 0.1, May 22, 2012
  * @author Morteza Alizadeh
  */
-public class ConfigurationFileParsingException extends DSMException {
+public class ConfigurationFileParsingException extends DsmException {
 
     /**
      * ConfigurationFileParsingException constructor.

@@ -3,7 +3,7 @@
  */
 package dsm.dsmtester.daemon;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import dsm.dsmtester.configuration.ConfigurationReader;
 
 /**
@@ -13,7 +13,7 @@ import dsm.dsmtester.configuration.ConfigurationReader;
  * @version 0.1, May 23, 2012
  * @author Morteza Alizadeh
  */
-public final class DaemonManager extends DSMManifest {
+public final class DaemonManager extends DsmManifest {
 
     /**
      * Singleton object of DaemonManager class.

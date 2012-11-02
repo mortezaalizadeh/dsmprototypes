@@ -3,7 +3,7 @@
  */
 package dsm.repositoryparser;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import dsm.common.repository.RepositoryInfo;
 import dsm.common.repositoryparser.RepositoryParser;
 import dsm.common.repositoryparser.exceptions.RepositoryFileParsingException;
@@ -21,7 +21,7 @@ import org.xml.sax.XMLReader;
  * @version 0.1, April 15, 2012
  * @author Morteza Alizadeh
  */
-public class SimpleRepositoryParser extends DSMManifest implements RepositoryParser {
+public class SimpleRepositoryParser extends DsmManifest implements RepositoryParser {
 
     /**
      * Repository list

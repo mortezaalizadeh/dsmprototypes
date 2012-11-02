@@ -3,7 +3,7 @@
  */
 package dsm.daemon.dsmdaemon;
 
-import dsm.common.DSMManifest;
+import dsm.common.DsmManifest;
 import dsm.daemon.common.Daemon;
 
 /**
@@ -12,7 +12,7 @@ import dsm.daemon.common.Daemon;
  * @version 0.1, April 14, 2012
  * @author Morteza Alizadeh
  */
-public class DSMDaemon extends DSMManifest implements Daemon {
+public class DSMDaemon extends DsmManifest implements Daemon {
     
     /**
      * Daemon name
