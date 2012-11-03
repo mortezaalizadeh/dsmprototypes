@@ -56,8 +56,7 @@ public class DsmManifest extends Object {
     /**
      * Sets Dsm object unique identifier.
      *
-     * @param newDsmUniqueIdentifier Refers to Dsm object unique identifier to
-     * be set
+     * @param newDsmUniqueIdentifier New Dsm object unique identifier
      */
     public final void setDsmUniqueIdentifier(final String newDsmUniqueIdentifier) {
         this.dsmUniqueIdentifier = newDsmUniqueIdentifier;
@@ -75,7 +74,7 @@ public class DsmManifest extends Object {
     /**
      * Sets Dsm object friendly name.
      *
-     * @param newDsmFriendlyName Refers to Dsm object friendly name to be set
+     * @param newDsmFriendlyName New Dsm object friendly name
      */
     public final void setDsmFriendlyName(final String newDsmFriendlyName) {
         this.dsmFriendlyName = newDsmFriendlyName;
