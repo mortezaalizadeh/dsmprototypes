@@ -17,12 +17,12 @@ public class DsmManifest extends Object {
     /**
      * Dsm object unique identifier.
      */
-    protected String dsmUniqueIdentifier = "00000000-0000-0000-0000-000000000000";
+    private String dsmUniqueIdentifier = "00000000-0000-0000-0000-000000000000";
 
     /**
      * Dsm object friendly name.
      */
-    protected String dsmFriendlyName = "No name specified yet!!!";
+    private String dsmFriendlyName = "No name specified yet!!!";
 
     /**
      * DsmManifest Constructor.
@@ -34,42 +34,33 @@ public class DsmManifest extends Object {
     /**
      * DsmManifest Constructor.
      *
-     * @param dsmUniqueIdentifier Dsm object unique identifier.
+     * @param newDsmUniqueIdentifier Dsm object unique identifier
+     * @param newDsmFriendlyName Dsm object friendly name
      */
-    public DsmManifest(final String dsmUniqueIdentifier) {
+    public DsmManifest(final String newDsmUniqueIdentifier, final String newDsmFriendlyName) {
         this();
-        
-        this.dsmUniqueIdentifier = dsmUniqueIdentifier;
-    }
 
-    /**
-     * DsmManifest Constructor.
-     *
-     * @param dsmUniqueIdentifier Dsm object unique identifier.
-     * @param friendlyName Dsm object friendly name.
-     */
-    public DsmManifest(final String dsmUniqueIdentifier, final String dsmFriendlyName) {
-        this(dsmUniqueIdentifier);
-
-        this.dsmFriendlyName = dsmFriendlyName;
+        this.dsmUniqueIdentifier = newDsmUniqueIdentifier;
+        this.dsmFriendlyName = newDsmFriendlyName;
     }
 
     /**
      * Returns Dsm object unique identifier.
      *
-     * @return Returns Dsm object unique identifier.
+     * @return Returns Dsm object unique identifier
      */
-    public String getDsmUniqueIdentifier() {
+    public final String getDsmUniqueIdentifier() {
         return this.dsmUniqueIdentifier;
     }
 
     /**
      * Sets Dsm object unique identifier.
      *
-     * @param dsmUniqueIdentifier Refers to Dsm object unique identifier to be set.
+     * @param newDsmUniqueIdentifier Refers to Dsm object unique identifier to
+     * be set
      */
-    protected void setDsmUniqueIdentifier(final String dsmUniqueIdentifier) {
-        this.dsmUniqueIdentifier = dsmUniqueIdentifier;
+    public final void setDsmUniqueIdentifier(final String newDsmUniqueIdentifier) {
+        this.dsmUniqueIdentifier = newDsmUniqueIdentifier;
     }
 
     /**
@@ -77,16 +68,16 @@ public class DsmManifest extends Object {
      *
      * @return Returns Dsm object friendly name.
      */
-    public String getDsmFriendlyName() {
+    public final String getDsmFriendlyName() {
         return this.dsmFriendlyName;
     }
 
     /**
      * Sets Dsm object friendly name.
      *
-     * @param dsmFriendlyName Refers to Dsm object friendly name to be set.
+     * @param newDsmFriendlyName Refers to Dsm object friendly name to be set
      */
-    protected void setDsmFriendlyName(final String dsmFriendlyName) {
-        this.dsmFriendlyName = dsmFriendlyName;
+    public final void setDsmFriendlyName(final String newDsmFriendlyName) {
+        this.dsmFriendlyName = newDsmFriendlyName;
     }
 }
