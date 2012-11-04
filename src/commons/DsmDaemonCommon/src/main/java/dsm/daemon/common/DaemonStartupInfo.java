@@ -63,7 +63,7 @@ public class DaemonStartupInfo extends DsmManifest {
     /**
      * Set daemon name.
      *
-     * @param newName New daemon name to set
+     * @param newName New daemon name
      */
     public final void setName(final String newName) {
         this.name = newName;
@@ -81,7 +81,7 @@ public class DaemonStartupInfo extends DsmManifest {
     /**
      * Set daemon library.
      *
-     * @param newLibrary New daemon library to set
+     * @param newLibrary New daemon library
      */
     public final void setLibrary(final String newLibrary) {
         this.library = newLibrary;
@@ -99,7 +99,7 @@ public class DaemonStartupInfo extends DsmManifest {
     /**
      * Set daemon package name.
      *
-     * @param newPackageName New daemon package name to set
+     * @param newPackageName New daemon package name
      */
     public final void setPackageName(final String newPackageName) {
         this.packageName = newPackageName;
@@ -117,7 +117,7 @@ public class DaemonStartupInfo extends DsmManifest {
     /**
      * Set daemon class name.
      *
-     * @param newClassName New daemon class name to set
+     * @param newClassName New daemon class name
      */
     public final void setClassName(final String newClassName) {
         this.className = newClassName;
@@ -135,7 +135,7 @@ public class DaemonStartupInfo extends DsmManifest {
     /**
      * Set daemon configuration file full path.
      *
-     * @param newConfigurationFileFullPath New daemon configuration file full path to set
+     * @param newConfigurationFileFullPath New daemon configuration file full path
      */
     public final void setConfigurationFileFullPath(final String newConfigurationFileFullPath) {
         this.configurationFileFullPath = newConfigurationFileFullPath;
