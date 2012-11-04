@@ -37,5 +37,5 @@ public interface Action {
      *
      * @param argumentContainer Argument container
      */
-    void executeAction(ArgumentContainer argumentContainer);
+    void executeAction(final ArgumentContainer argumentContainer);
 }
