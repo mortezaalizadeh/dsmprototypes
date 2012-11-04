@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dsm</groupId>
-  <artifactId>SimpleAtomicActions</artifactId>
+  <artifactId>SimpleDistributedActions</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>SimpleAtomicActions</name>
+  <name>SimpleDistributedActions</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -23,18 +23,12 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>DsmActionCommon</artifactId>
+      <artifactId>DsmCommon</artifactId>
       <version>${project.version}</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>DsmCommon</artifactId>
-          <groupId>dsm</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>DsmCommon</artifactId>
+      <artifactId>DsmActionCommon</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
