@@ -74,6 +74,11 @@ public final class RepositoryParserSAXContentHandler implements ContentHandler {
     private transient RepositoryInfo cachedRepositoryInfo = null;
 
     /**
+     * Cached repository info validity flag.
+     */
+    private transient boolean cachedRepositoryInfoValidityFlag = false;
+
+    /**
      * XML Repository parsing depth.
      */
     private transient int parsedDepth = 0;
@@ -87,19 +92,19 @@ public final class RepositoryParserSAXContentHandler implements ContentHandler {
      * RepositoryParserSAXContentHandler constructor.
      *
      * @param repositoryParser Reference to simple repository parser object
-     * @param loadStartupRepositories Determines whether startup repositories should be loaded.
-     * @param loadNoneStartupRepositories Determines whether none startup repositories should be loaded.
+     * @param initialLoadStartupRepositories Determines whether startup repositories should be loaded.
+     * @param initialLoadNoneStartupRepositories Determines whether none startup repositories should be loaded.
      */
     public RepositoryParserSAXContentHandler(final SimpleRepositoryParser repositoryParser,
-                                             final boolean loadStartupRepositories,
-                                             final boolean loadNoneStartupRepositories) {
+                                             final boolean initialLoadStartupRepositories,
+                                             final boolean initialLoadNoneStartupRepositories) {
         if (repositoryParser == null) {
             throw new IllegalArgumentException("repositoryParser");
         }
 
         this.simpleRepositoryParser = repositoryParser;
-        this.loadStartupRepositories = loadStartupRepositories;
-        this.loadNoneStartupRepositories = loadNoneStartupRepositories;
+        this.loadStartupRepositories = initialLoadStartupRepositories;
+        this.loadNoneStartupRepositories = initialLoadNoneStartupRepositories;
     }
 
     @Override
@@ -128,229 +133,233 @@ public final class RepositoryParserSAXContentHandler implements ContentHandler {
                              final String localName,
                              final String qName,
                              final Attributes atts) throws SAXException {
-        if (uri == null) {
-            throw new IllegalArgumentException("uri");
-        }
-
-        if (localName == null) {
-            throw new IllegalArgumentException("localName");
-        }
-
-        if (qName == null) {
-            throw new IllegalArgumentException("qName");
-        }
-
-        final String name = qName.trim();
-
-        if (name.equalsIgnoreCase("repository")) {
-            if (this.parsedDepth != 0) {
-                throw new RepositoryFileParsingException(
-                        RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
+        do {
+            if (uri == null) {
+                throw new IllegalArgumentException("uri");
             }
 
-            this.parsedDepth++;
-
-            final RepositoryInfo tmpRepositoryInfo = new RepositoryInfo();
-
-            String value;
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"name\" tag is not defined for repository.");
-            } else {
-                tmpRepositoryInfo.setName(value.trim());
+            if (localName == null) {
+                throw new IllegalArgumentException("localName");
             }
 
-            value = atts.getValue("unique_identifier");
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"unique_identifier\" tag is not defined for repository.");
-            } else {
-                tmpRepositoryInfo.setUniqueIdentifier(value.trim());
+            if (qName == null) {
+                throw new IllegalArgumentException("qName");
             }
 
-            value = atts.getValue("include_in_startup");
-            if (value == null) {
-                tmpRepositoryInfo.setIncludeInStartup(false);
-            } else {
-                if (value.equalsIgnoreCase("Yes")
-                    || value.equalsIgnoreCase("Y")
-                    || value.equalsIgnoreCase("True")
-                    || value.equalsIgnoreCase("T")) {
-                    tmpRepositoryInfo.setIncludeInStartup(true);
-                } else {
-                    tmpRepositoryInfo.setIncludeInStartup(false);
+            final String name = qName.trim();
+
+            if (name.equalsIgnoreCase("repository")) {
+                if (this.parsedDepth != 0) {
+                    throw new RepositoryFileParsingException(
+                            RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
                 }
+
+                this.parsedDepth++;
+
+                final RepositoryInfo tmpRepositoryInfo = new RepositoryInfo();
+
+                String value;
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"name\" tag is not defined for repository.");
+                } else {
+                    tmpRepositoryInfo.setName(value.trim());
+                }
+
+                value = atts.getValue("unique_identifier");
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"unique_identifier\" tag is not defined for repository.");
+                } else {
+                    tmpRepositoryInfo.setUniqueIdentifier(value.trim());
+                }
+
+                value = atts.getValue("include_in_startup");
+                if (value == null) {
+                    tmpRepositoryInfo.setIncludeInStartup(false);
+                } else {
+                    if (value.equalsIgnoreCase("Yes")
+                        || value.equalsIgnoreCase("Y")
+                        || value.equalsIgnoreCase("True")
+                        || value.equalsIgnoreCase("T")) {
+                        tmpRepositoryInfo.setIncludeInStartup(true);
+                    } else {
+                        tmpRepositoryInfo.setIncludeInStartup(false);
+                    }
+                }
+
+                if (this.loadStartupRepositories && tmpRepositoryInfo.isIncludeInStartup()) {
+                    this.cachedRepositoryInfo = tmpRepositoryInfo;
+                    this.cachedRepositoryInfoValidityFlag = true;
+                } else if (this.loadNoneStartupRepositories && !tmpRepositoryInfo.isIncludeInStartup()) {
+                    this.cachedRepositoryInfo = tmpRepositoryInfo;
+                    this.cachedRepositoryInfoValidityFlag = true;
+                } else {
+                    this.cachedRepositoryInfoValidityFlag = false;
+                }
+            } else if (name.equalsIgnoreCase("daemon")) {
+                if (this.parsedDepth != 1) {
+                    throw new RepositoryFileParsingException(
+                            RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
+                }
+
+                this.parsedDepth++;
+
+                if (!this.cachedRepositoryInfoValidityFlag) {
+                    break;
+                }
+
+                final DaemonStartupInfo info = new DaemonStartupInfo();
+                String value;
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
+                if (value == null) {
+                    info.setName("");
+                } else {
+                    info.setName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.LIBRARY_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"library\" tag is not defined for daemon.");
+                } else {
+                    info.setLibrary(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.PACKAGE_NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"package_name\" tag is not defined for daemon.");
+                } else {
+                    info.setPackageName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.CLASS_NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"class_name\" tag is not defined for daemon.");
+                } else {
+                    info.setClassName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.CONFIGURATION_FILE_FULL_PATH_TAG);
+                if (value == null) {
+                    info.setConfigurationFileFullPath("");
+                } else {
+                    info.setConfigurationFileFullPath(value.trim());
+                }
+
+                this.cachedRepositoryInfo.addDaemon(info);
+            } else if (name.equalsIgnoreCase("action_manager")) {
+                if (this.parsedDepth != 1) {
+                    throw new RepositoryFileParsingException(
+                            RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
+                }
+
+                this.parsedDepth++;
+
+                if (!this.cachedRepositoryInfoValidityFlag) {
+                    break;
+                }
+
+                final ActionManagerStartupInfo info = new ActionManagerStartupInfo();
+                String value;
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
+                if (value == null) {
+                    info.setName("");
+                } else {
+                    info.setName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.LIBRARY_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"library\" tag is not defined for action manager.");
+                } else {
+                    info.setLibrary(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.PACKAGE_NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"package_name\" tag is not defined for action manager.");
+                } else {
+                    info.setPackageName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.CLASS_NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException(
+                            "Error: \"class_name\" tag is not defined for action manager.");
+                } else {
+                    info.setClassName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.CONFIGURATION_FILE_FULL_PATH_TAG);
+                if (value == null) {
+                    info.setConfigurationFileFullPath("");
+                } else {
+                    info.setConfigurationFileFullPath(value.trim());
+                }
+
+                this.cachedRepositoryInfo.addActionManager(info);
+            } else if (name.equalsIgnoreCase("action")) {
+                if (this.parsedDepth != 1) {
+                    throw new RepositoryFileParsingException(
+                            RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
+                }
+
+                this.parsedDepth++;
+
+                if (!this.cachedRepositoryInfoValidityFlag) {
+                    break;
+                }
+
+                final ActionStartupInfo info = new ActionStartupInfo();
+                String value;
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
+                if (value == null) {
+                    info.setName("");
+                } else {
+                    info.setName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.LIBRARY_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException("Error: \"library\" tag is not defined for action.");
+                } else {
+                    info.setLibrary(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.PACKAGE_NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException("Error: \"package_name\" tag is not defined for action.");
+                } else {
+                    info.setPackageName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.CLASS_NAME_TAG);
+                if (value == null) {
+                    throw new RepositoryFileParsingException("Error: \"class_name\" tag is not defined for action.");
+                } else {
+                    info.setClassName(value.trim());
+                }
+
+                value = atts.getValue(RepositoryParserSAXContentHandler.CONFIGURATION_FILE_FULL_PATH_TAG);
+                if (value == null) {
+                    info.setConfigurationFileFullPath("");
+                } else {
+                    info.setConfigurationFileFullPath(value.trim());
+                }
+
+                this.cachedRepositoryInfo.addAction(info);
             }
-
-            if (this.loadStartupRepositories && tmpRepositoryInfo.isIncludeInStartup()) {
-                this.cachedRepositoryInfo = tmpRepositoryInfo;
-            } else if (this.loadNoneStartupRepositories && !tmpRepositoryInfo.isIncludeInStartup()) {
-                this.cachedRepositoryInfo = tmpRepositoryInfo;
-            } else {
-                this.cachedRepositoryInfo = null;
-            }
-        } else if (name.equalsIgnoreCase("daemon")) {
-            if (this.parsedDepth != 1) {
-                throw new RepositoryFileParsingException(
-                        RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
-            }
-
-            this.parsedDepth++;
-
-            if (this.cachedRepositoryInfo == null) {
-                return;
-            }
-
-            final DaemonStartupInfo info = new DaemonStartupInfo();
-            String value;
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
-            if (value == null) {
-                info.setName("");
-            } else {
-                info.setName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.LIBRARY_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"library\" tag is not defined for daemon.");
-            } else {
-                info.setLibrary(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.PACKAGE_NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"package_name\" tag is not defined for daemon.");
-            } else {
-                info.setPackageName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.CLASS_NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"class_name\" tag is not defined for daemon.");
-            } else {
-                info.setClassName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.CONFIGURATION_FILE_FULL_PATH_TAG);
-            if (value == null) {
-                info.setConfigurationFileFullPath("");
-            } else {
-                info.setConfigurationFileFullPath(value.trim());
-            }
-
-            this.cachedRepositoryInfo.addDaemon(info);
-        } else if (name.equalsIgnoreCase("action_manager")) {
-            if (this.parsedDepth != 1) {
-                throw new RepositoryFileParsingException(
-                        RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
-            }
-
-            this.parsedDepth++;
-
-            if(this.cachedRepositoryInfo == null) {
-                return;
-            }
-
-            final ActionManagerStartupInfo info = new ActionManagerStartupInfo();
-            String value;
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
-            if (value == null) {
-                info.setName("");
-            } else {
-                info.setName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.LIBRARY_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"library\" tag is not defined for action manager.");
-            } else {
-                info.setLibrary(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.PACKAGE_NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"package_name\" tag is not defined for action manager.");
-            } else {
-                info.setPackageName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.CLASS_NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException(
-                        "Error: \"class_name\" tag is not defined for action manager.");
-            } else {
-                info.setClassName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.CONFIGURATION_FILE_FULL_PATH_TAG);
-            if (value == null) {
-                info.setConfigurationFileFullPath("");
-            } else {
-                info.setConfigurationFileFullPath(value.trim());
-            }
-
-            this.cachedRepositoryInfo.addActionManager(info);
-        } else if (name.equalsIgnoreCase("action")) {
-            if (this.parsedDepth != 1) {
-                throw new RepositoryFileParsingException(
-                        RepositoryParserSAXContentHandler.FAILED_TO_PARSE_REPOSITORY_MESSAGE);
-            }
-
-            this.parsedDepth++;
-
-            if(this.cachedRepositoryInfo == null) {
-                return;
-            }
-
-            final ActionStartupInfo info = new ActionStartupInfo();
-            String value;
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.NAME_TAG);
-            if (value == null) {
-                info.setName("");
-            } else {
-                info.setName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.LIBRARY_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException("Error: \"library\" tag is not defined for action.");
-            } else {
-                info.setLibrary(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.PACKAGE_NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException("Error: \"package_name\" tag is not defined for action.");
-            } else {
-                info.setPackageName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.CLASS_NAME_TAG);
-            if (value == null) {
-                throw new RepositoryFileParsingException("Error: \"class_name\" tag is not defined for action.");
-            } else {
-                info.setClassName(value.trim());
-            }
-
-            value = atts.getValue(RepositoryParserSAXContentHandler.CONFIGURATION_FILE_FULL_PATH_TAG);
-            if (value == null) {
-                info.setConfigurationFileFullPath("");
-            } else {
-                info.setConfigurationFileFullPath(value.trim());
-            }
-
-            this.cachedRepositoryInfo.addAction(info);
-        }
+        } while(false);
     }
 
     @Override
