@@ -23,15 +23,15 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${org.apache.commons-io.version}</version>
+    </dependency>
+    <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>TestCommon</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>${org.apache.commons-io.version}</version>
     </dependency>
   </dependencies>
 </project>
