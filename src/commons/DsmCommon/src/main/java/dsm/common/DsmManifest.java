@@ -22,7 +22,7 @@ public class DsmManifest extends Object {
     /**
      * Dsm object friendly name.
      */
-    private String dsmFriendlyName = "No name specified yet!!!";
+    private String dsmFriendlyName = "No friendly name specified yet!!!";
 
     /**
      * DsmManifest Constructor.

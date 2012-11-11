@@ -17,7 +17,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Positive testing for DsmFriendlyName constructor.
+     * Positive testing to test DsmFriendlyName constructor.
      */
     @Test
     @Category(dsm.common.DsmManifest.class)
@@ -36,7 +36,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Positive testing for DsmUniqueIdentifier get and set methods.
+     * Positive testing to test DsmUniqueIdentifier get and set methods.
      */
     @Test
     @Category(dsm.common.DsmManifest.class)
@@ -52,7 +52,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Negative testing for DsmFriendlyName constructor.
+     * Negative testing to test DsmFriendlyName constructor.
      */
     @Test(expected = IllegalArgumentException.class)
     @Category(dsm.common.DsmManifest.class)
@@ -63,7 +63,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Negative testing for DsmFriendlyName constructor.
+     * Negative testing to test DsmFriendlyName constructor.
      */
     @Test(expected = IllegalArgumentException.class)
     @Category(dsm.common.DsmManifest.class)
@@ -74,7 +74,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Negative testing for DsmFriendlyName constructor.
+     * Negative testing to test DsmFriendlyName constructor.
      */
     @Test(expected = IllegalArgumentException.class)
     @Category(dsm.common.DsmManifest.class)
@@ -85,7 +85,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Positive testing for DsmFriendlyName get and set methods.
+     * Positive testing to test DsmFriendlyName get and set methods.
      */
     @Test
     @Category(dsm.common.DsmManifest.class)
@@ -101,7 +101,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Negative testing for DsmFriendlyName get and set methods.
+     * Negative testing to test DsmFriendlyName get and set methods.
      */
     @Test(expected = IllegalArgumentException.class)
     @Category(dsm.common.DsmManifest.class)
@@ -112,7 +112,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Negative testing for DsmFriendlyName get and set methods.
+     * Negative testing to test DsmFriendlyName get and set methods.
      */
     @Test(expected = IllegalArgumentException.class)
     @Category(dsm.common.DsmManifest.class)
@@ -123,7 +123,7 @@ public class AppTest extends AbstractAppTestBase {
     }
 
     /**
-     * Negative testing for DsmFriendlyName get and set methods.
+     * Negative testing to test DsmFriendlyName get and set methods.
      */
     @Test(expected = IllegalArgumentException.class)
     @Category(dsm.common.DsmManifest.class)
@@ -131,5 +131,14 @@ public class AppTest extends AbstractAppTestBase {
         (new DsmManifest()).setDsmFriendlyName(" ");
 
         Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+    }
+
+    /**
+     * Positive testing to read entire text file content.
+     */
+    @Test
+    @Category(dsm.common.file.DsmFileHelper.class)
+    public final void testPositiveReadEntireTextFileContent01() {
+        
     }
 }
