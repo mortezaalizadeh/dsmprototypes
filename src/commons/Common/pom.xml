@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dsm</groupId>
-  <artifactId>common</artifactId>
+  <artifactId>Common</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>common</name>
+  <name>Common</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -24,7 +24,7 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>commontest</artifactId>
+      <artifactId>TestCommon</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
