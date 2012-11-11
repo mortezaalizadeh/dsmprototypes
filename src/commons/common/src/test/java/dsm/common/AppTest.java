@@ -132,13 +132,4 @@ public class AppTest extends AbstractAppTestBase {
 
         Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
-
-    /**
-     * Positive testing to read entire text file content.
-     */
-    @Test
-    @Category(dsm.common.file.DsmFileHelper.class)
-    public final void testPositiveReadEntireTextFileContent01() {
-        
-    }
 }

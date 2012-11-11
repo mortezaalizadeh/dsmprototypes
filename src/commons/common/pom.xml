@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <org.apache.commons-io.version>2.4</org.apache.commons-io.version>
   </properties>
 
   <dependencies>
@@ -26,6 +27,11 @@
       <artifactId>commontest</artifactId>
       <version>${project.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${org.apache.commons-io.version}</version>
     </dependency>
   </dependencies>
 </project>

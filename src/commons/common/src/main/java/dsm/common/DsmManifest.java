@@ -17,12 +17,14 @@ public class DsmManifest extends Object {
     /**
      * Dsm object unique identifier.
      */
-    private String dsmUniqueIdentifier = "00000000-0000-0000-0000-000000000000";
+    private String dsmUniqueIdentifier =
+            "00000000-0000-0000-0000-000000000000";
 
     /**
      * Dsm object friendly name.
      */
-    private String dsmFriendlyName = "No friendly name specified yet!!!";
+    private String dsmFriendlyName =
+            "No friendly name specified yet!!!";
 
     /**
      * DsmManifest Constructor.
