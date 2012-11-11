@@ -10,13 +10,6 @@ import org.junit.experimental.categories.Category;
  */
 public class AppTest extends AbstractAppTestBase {
     /**
-     * AppTest Constructor.
-     */
-    public AppTest() {
-        super();
-    }
-
-    /**
      * Positive testing to test DsmFriendlyName constructor.
      */
     @Test
