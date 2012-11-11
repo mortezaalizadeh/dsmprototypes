@@ -7,6 +7,8 @@ package dsm.common.argument;
  * ArgumentContainer interface defines methods require to implement variable
  * size of input/output arguments.
  *
+ * This interface must be implemented by all ArgumentContainter implementations.
+ *
  * @version 0.1, November 11, 2012
  * @author Morteza Alizadeh
  */
