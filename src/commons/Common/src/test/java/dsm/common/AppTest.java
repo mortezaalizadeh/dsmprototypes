@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 /**
- * Unit test for common project.
+ * Unit test for Common project.
  */
 public class AppTest extends AbstractAppTestBase {
     /**
