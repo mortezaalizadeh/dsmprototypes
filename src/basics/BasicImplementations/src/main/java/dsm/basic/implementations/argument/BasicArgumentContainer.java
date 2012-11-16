@@ -1,7 +1,7 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.basic.implementations;
+package dsm.basic.implementations.argument;
 
 import dsm.common.DsmManifest;
 import dsm.common.argument.ArgumentContainer;

@@ -36,65 +36,65 @@ public class DsmManifest extends Object {
     /**
      * DsmManifest Constructor.
      *
-     * @param newDsmUniqueIdentifier Dsm object unique identifier
-     * @param newDsmFriendlyName Dsm object friendly name
+     * @param dui Dsm unique identifier
+     * @param dfn Dsm friendly name
      */
-    public DsmManifest(final String newDsmUniqueIdentifier, final String newDsmFriendlyName) {
+    public DsmManifest(final String dui, final String dfn) {
         this();
 
-        setDsmUniqueIdentifier(newDsmUniqueIdentifier);
-        setDsmFriendlyName(newDsmFriendlyName);
+        setDsmUniqueIdentifier(dui);
+        setDsmFriendlyName(dfn);
     }
 
     /**
-     * Returns Dsm object unique identifier.
+     * Returns Dsm unique identifier.
      *
-     * @return Returns Dsm object unique identifier
+     * @return Returns Dsm unique identifier
      */
     public final String getDsmUniqueIdentifier() {
         return this.dsmUniqueIdentifier;
     }
 
     /**
-     * Sets Dsm object unique identifier.
+     * Sets Dsm unique identifier.
      *
-     * @param newDsmUniqueIdentifier New Dsm object unique identifier
+     * @param dui New Dsm unique identifier
      */
-    public final void setDsmUniqueIdentifier(final String newDsmUniqueIdentifier) {
-        if (newDsmUniqueIdentifier == null) {
-            throw new IllegalArgumentException("newDsmUniqueIdentifier");
+    public final void setDsmUniqueIdentifier(final String dui) {
+        if (dui == null) {
+            throw new IllegalArgumentException("dui");
         }
 
-        if (newDsmUniqueIdentifier.trim().compareTo("") == 0) {
-            throw new IllegalArgumentException("newDsmUniqueIdentifier");
+        if (dui.trim().compareTo("") == 0) {
+            throw new IllegalArgumentException("dui");
         }
 
-        this.dsmUniqueIdentifier = newDsmUniqueIdentifier;
+        this.dsmUniqueIdentifier = dui;
     }
 
     /**
-     * Returns Dsm object friendly name.
+     * Returns Dsm friendly name.
      *
-     * @return Returns Dsm object friendly name.
+     * @return Returns Dsm friendly name.
      */
     public final String getDsmFriendlyName() {
         return this.dsmFriendlyName;
     }
 
     /**
-     * Sets Dsm object friendly name.
+     * Sets Dsm friendly name.
      *
-     * @param newDsmFriendlyName New Dsm object friendly name
+     * @param dfn New Dsm friendly name
      */
-    public final void setDsmFriendlyName(final String newDsmFriendlyName) {
-        if (newDsmFriendlyName == null) {
-            throw new IllegalArgumentException("newDsmFriendlyName");
+    public final void setDsmFriendlyName(final String dfn) {
+        if (dfn == null) {
+            throw new IllegalArgumentException("dfn");
         }
 
-        if (newDsmFriendlyName.trim().compareTo("") == 0) {
-            throw new IllegalArgumentException("newDsmFriendlyName");
+        if (dfn.trim().compareTo("") == 0) {
+            throw new IllegalArgumentException("dfn");
         }
 
-        this.dsmFriendlyName = newDsmFriendlyName;
+        this.dsmFriendlyName = dfn;
     }
 }
