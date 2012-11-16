@@ -12,6 +12,7 @@ import org.junit.experimental.categories.Category;
  * Unit test for Basic Implementations project.
  */
 public class AppTest extends AbstractAppTestBase {
+
     /**
      * Positive testing to test BasicArgumentContainer.
      */
