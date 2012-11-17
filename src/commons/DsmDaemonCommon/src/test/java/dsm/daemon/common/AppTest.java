@@ -1,33 +1,9 @@
 package dsm.daemon.common;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import dsm.common.test.AbstractAppTestBase;
 
 /**
- * Unit test for DsmDaemonCommon package.
+ * Unit test for DsmDaemonCommon project.
  */
-public class AppTest extends TestCase {
-    /**
-     * Create the test case.
-     *
-     * @param testName name of the test case
-     */
-    public AppTest(final String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(AppTest.class);
-    }
-
-    /**
-     * Rigorous Test.
-     */
-    public final void testApp() {
-        assertTrue(true);
-    }
+public class AppTest extends AbstractAppTestBase {
 }
