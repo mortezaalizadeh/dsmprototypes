@@ -23,7 +23,7 @@ public class AppTest extends AbstractAppTestBase {
         final ArgumentContainer argumentContainer = injector.getInstance(ArgumentContainer.class);
 
         final Integer firstArgument = Integer.valueOf(10);
-        final Integer secondArgument = Integer.valueOf(20);
+        final Double secondArgument = Double.valueOf(20.36);
         final Integer thirdArgument = Integer.valueOf(30);
 
         argumentContainer.setArgument("Arg01", firstArgument);
@@ -32,7 +32,7 @@ public class AppTest extends AbstractAppTestBase {
 
         final Integer thirdRetArgument = (Integer) argumentContainer.getArgument("Arg03");
         final Integer firstRetArgument = (Integer) argumentContainer.getArgument("Arg01");
-        final Integer secondRetArgument = (Integer) argumentContainer.getArgument("Arg02");
+        final Double secondRetArgument = (Double) argumentContainer.getArgument("Arg02");
 
         Assert.assertEquals(firstArgument, firstRetArgument);
         Assert.assertEquals(secondArgument, secondRetArgument);
