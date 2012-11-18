@@ -12,19 +12,19 @@ public class AppTest extends Object {
     /**
      * DSMManifest unique identifier to be used during test.
      */
-    public static final String DSM_UNIQUE_IDENTIFIER =
+    private static final String DSM_UNIQUE_IDENTIFIER =
             "2a605f21-0abf-402c-83e1-0ac95bad9bac";
 
     /**
      * DSMManifest friendly name to be used during test.
      */
-    public static final String DSM_FRIDNELY_NAME =
+    private static final String DSM_FRIDNELY_NAME =
             "Test Object";
 
     /**
      * IllegalArgumentException expected exception message.
      */
-    public static final String ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE =
+    private static final String ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE =
             "Expected an IllegalArgumentException.";
 
     /**
@@ -37,13 +37,8 @@ public class AppTest extends Object {
                 new DsmManifest(AppTest.DSM_UNIQUE_IDENTIFIER,
                                 AppTest.DSM_FRIDNELY_NAME);
 
-        if (dsmManifest.getDsmUniqueIdentifier().compareTo(AppTest.DSM_UNIQUE_IDENTIFIER) != 0) {
-            Assert.fail("DsmUniqueIdentifier did not match.");
-        }
-
-        if (dsmManifest.getDsmFriendlyName().compareTo(AppTest.DSM_FRIDNELY_NAME) != 0) {
-            Assert.fail("DsmFriendlyName did not match.");
-        }
+        Assert.assertEquals(dsmManifest.getDsmUniqueIdentifier().compareTo(AppTest.DSM_UNIQUE_IDENTIFIER), 0);
+        Assert.assertEquals(dsmManifest.getDsmFriendlyName().compareTo(AppTest.DSM_FRIDNELY_NAME), 0);
     }
 
     /**
@@ -57,9 +52,7 @@ public class AppTest extends Object {
 
         dsmManifest.setDsmUniqueIdentifier(AppTest.DSM_UNIQUE_IDENTIFIER);
 
-        if (dsmManifest.getDsmUniqueIdentifier().compareTo(AppTest.DSM_UNIQUE_IDENTIFIER) != 0) {
-            Assert.fail("DsmUniqueIdentifier did not match.");
-        }
+        Assert.assertEquals(dsmManifest.getDsmUniqueIdentifier().compareTo(AppTest.DSM_UNIQUE_IDENTIFIER), 0);
     }
 
     /**
@@ -106,9 +99,7 @@ public class AppTest extends Object {
 
         dsmManifest.setDsmFriendlyName(AppTest.DSM_FRIDNELY_NAME);
 
-        if (dsmManifest.getDsmFriendlyName().compareTo(AppTest.DSM_FRIDNELY_NAME) != 0) {
-            Assert.fail("DsmFriendlyName did not match.");
-        }
+        Assert.assertEquals(dsmManifest.getDsmFriendlyName().compareTo(AppTest.DSM_FRIDNELY_NAME), 0);
     }
 
     /**

@@ -3,6 +3,7 @@ package dsm.basicimplementations;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import dsm.common.argument.ArgumentContainer;
+import dsm.daemon.common.DaemonStartupInfo;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,6 +12,36 @@ import org.junit.experimental.categories.Category;
  * Unit test for Basic Implementations project.
  */
 public class AppTest extends Object {
+
+    /**
+     * Daemon Startup Info Name to be used during test.
+     */
+    private static final String DAEMON_STARTUP_INFO_NAME =
+            "This is a test daemon startup info Name.";
+
+    /**
+     * Daemon Startup Info Library to be used during test.
+     */
+    private static final String DAEMON_STARTUP_INFO_LIBRARY =
+            "This is a test daemon startup info Library.";
+
+    /**
+     * Daemon Startup Info PackageName to be used during test.
+     */
+    private static final String DAEMON_STARTUP_INFO_PACKAGE_NAME =
+            "This is a test daemon startup info PackageName.";
+
+    /**
+     * Daemon Startup Info ClassName to be used during test.
+     */
+    private static final String DAEMON_STARTUP_INFO_CLASS_NAME =
+            "This is a test daemon startup info ClassName.";
+
+    /**
+     * Daemon Startup Info ConfigurationFileFullPath to be used during test.
+     */
+    private static final String DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH =
+            "This is a test daemon startup info ConfigurationFileFullPath.";
 
     /**
      * Positive testing to test BasicArgumentContainer.
@@ -36,5 +67,37 @@ public class AppTest extends Object {
         Assert.assertEquals(firstArgument, firstRetArgument);
         Assert.assertEquals(secondArgument, secondRetArgument);
         Assert.assertEquals(thirdArgument, thirdRetArgument);
+    }
+
+    /**
+     * Positive testing to test BasicDaemonStartupInfo.
+     */
+    @Test
+    @Category(dsm.basicimplementations.daemon.common.BasicDaemonStartupInfo.class)
+    public final void testPositiveBasicDaemonStartupInfo01() {
+        final Injector injector = Guice.createInjector(new BasicGuiceInjectorModule());
+        final DaemonStartupInfo daemonStartupInfo = injector.getInstance(DaemonStartupInfo.class);
+
+        daemonStartupInfo.setName(AppTest.DAEMON_STARTUP_INFO_NAME);
+        daemonStartupInfo.setLibrary(AppTest.DAEMON_STARTUP_INFO_LIBRARY);
+        daemonStartupInfo.setPackageName(AppTest.DAEMON_STARTUP_INFO_PACKAGE_NAME);
+        daemonStartupInfo.setClassName(AppTest.DAEMON_STARTUP_INFO_CLASS_NAME);
+        daemonStartupInfo.setConfigurationFileFullPath(AppTest.DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH);
+
+        Assert.assertEquals(daemonStartupInfo.getName().compareTo(
+                AppTest.DAEMON_STARTUP_INFO_NAME),
+                0);
+        Assert.assertEquals(daemonStartupInfo.getLibrary().compareTo(
+                AppTest.DAEMON_STARTUP_INFO_LIBRARY),
+                0);
+        Assert.assertEquals(daemonStartupInfo.getPackageName().compareTo(
+                AppTest.DAEMON_STARTUP_INFO_PACKAGE_NAME),
+                0);
+        Assert.assertEquals(daemonStartupInfo.getClassName().compareTo(
+                AppTest.DAEMON_STARTUP_INFO_CLASS_NAME),
+                0);
+        Assert.assertEquals(daemonStartupInfo.getConfigurationFileFullPath().compareTo(
+                AppTest.DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH),
+                0);
     }
 }
