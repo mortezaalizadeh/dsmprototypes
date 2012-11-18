@@ -3,7 +3,6 @@ package dsm.basicimplementations;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import dsm.common.argument.ArgumentContainer;
-import dsm.common.test.AbstractAppTestBase;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,7 +10,7 @@ import org.junit.experimental.categories.Category;
 /**
  * Unit test for Basic Implementations project.
  */
-public class AppTest extends AbstractAppTestBase {
+public class AppTest extends Object {
 
     /**
      * Positive testing to test BasicArgumentContainer.
