@@ -5,7 +5,9 @@ package dsm.basicimplementations;
 
 import com.google.inject.AbstractModule;
 import dsm.basicimplementations.common.argument.BasicArgumentContainer;
+import dsm.basicimplementations.daemon.common.BasicDaemonStartupInfo;
 import dsm.common.argument.ArgumentContainer;
+import dsm.daemon.common.DaemonStartupInfo;
 
 /**
  * BasicGuiceInjectorModule class defines interfaces and implementations
@@ -20,5 +22,6 @@ public class BasicGuiceInjectorModule extends AbstractModule {
      */
     protected final void configure() {
         bind(ArgumentContainer.class).to(BasicArgumentContainer.class);
+        bind(DaemonStartupInfo.class).to(BasicDaemonStartupInfo.class);
     }
 }
