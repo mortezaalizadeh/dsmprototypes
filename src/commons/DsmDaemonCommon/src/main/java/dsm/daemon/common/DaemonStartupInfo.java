@@ -4,7 +4,10 @@
 package dsm.daemon.common;
 
 /**
-* DaemonInfo class is an entity class represent a daemon.
+* DaemonStartupInfo interface represents Daemon Startup Information.
+*
+* It must be implemented by all daemon startup information classes
+* implementation.
 *
 * @version 0.1, April 16, 2012
   * @author Morteza Alizadeh
