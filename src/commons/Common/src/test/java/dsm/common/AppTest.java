@@ -1,6 +1,5 @@
 package dsm.common;
 
-import dsm.common.test.AbstractAppTestBase;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -8,7 +7,26 @@ import org.junit.experimental.categories.Category;
 /**
  * Unit test for Common project.
  */
-public class AppTest extends AbstractAppTestBase {
+public class AppTest extends Object {
+
+    /**
+     * DSMManifest unique identifier to be used during test.
+     */
+    public static final String DSM_UNIQUE_IDENTIFIER =
+            "2a605f21-0abf-402c-83e1-0ac95bad9bac";
+
+    /**
+     * DSMManifest friendly name to be used during test.
+     */
+    public static final String DSM_FRIDNELY_NAME =
+            "Test Object";
+
+    /**
+     * IllegalArgumentException expected exception message.
+     */
+    public static final String ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE =
+            "Expected an IllegalArgumentException.";
+
     /**
      * Positive testing to test DsmFriendlyName constructor.
      */
@@ -16,14 +34,14 @@ public class AppTest extends AbstractAppTestBase {
     @Category(dsm.common.DsmManifest.class)
     public final void testPositiveDsmManifestConstructor01() {
         final DsmManifest dsmManifest =
-                new DsmManifest(AbstractAppTestBase.DSM_UNIQUE_IDENTIFIER,
-                                AbstractAppTestBase.DSM_FRIDNELY_NAME);
+                new DsmManifest(AppTest.DSM_UNIQUE_IDENTIFIER,
+                                AppTest.DSM_FRIDNELY_NAME);
 
-        if (dsmManifest.getDsmUniqueIdentifier().compareTo(AbstractAppTestBase.DSM_UNIQUE_IDENTIFIER) != 0) {
+        if (dsmManifest.getDsmUniqueIdentifier().compareTo(AppTest.DSM_UNIQUE_IDENTIFIER) != 0) {
             Assert.fail("DsmUniqueIdentifier did not match.");
         }
 
-        if (dsmManifest.getDsmFriendlyName().compareTo(AbstractAppTestBase.DSM_FRIDNELY_NAME) != 0) {
+        if (dsmManifest.getDsmFriendlyName().compareTo(AppTest.DSM_FRIDNELY_NAME) != 0) {
             Assert.fail("DsmFriendlyName did not match.");
         }
     }
@@ -37,9 +55,9 @@ public class AppTest extends AbstractAppTestBase {
         final DsmManifest dsmManifest =
                 new DsmManifest();
 
-        dsmManifest.setDsmUniqueIdentifier(AbstractAppTestBase.DSM_UNIQUE_IDENTIFIER);
+        dsmManifest.setDsmUniqueIdentifier(AppTest.DSM_UNIQUE_IDENTIFIER);
 
-        if (dsmManifest.getDsmUniqueIdentifier().compareTo(AbstractAppTestBase.DSM_UNIQUE_IDENTIFIER) != 0) {
+        if (dsmManifest.getDsmUniqueIdentifier().compareTo(AppTest.DSM_UNIQUE_IDENTIFIER) != 0) {
             Assert.fail("DsmUniqueIdentifier did not match.");
         }
     }
@@ -52,7 +70,7 @@ public class AppTest extends AbstractAppTestBase {
     public final void testNegativeDsmUniqueIdentifierGetAndSetMethods01() {
         (new DsmManifest()).setDsmUniqueIdentifier(null);
 
-        Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+        Assert.fail(AppTest.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
 
     /**
@@ -63,7 +81,7 @@ public class AppTest extends AbstractAppTestBase {
     public final void testNegativeDsmUniqueIdentifierGetAndSetMethods02() {
         (new DsmManifest()).setDsmUniqueIdentifier("");
 
-        Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+        Assert.fail(AppTest.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
 
     /**
@@ -74,7 +92,7 @@ public class AppTest extends AbstractAppTestBase {
     public final void testNegativeDsmUniqueIdentifierGetAndSetMethods03() {
         (new DsmManifest()).setDsmUniqueIdentifier(" ");
 
-        Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+        Assert.fail(AppTest.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
 
     /**
@@ -86,9 +104,9 @@ public class AppTest extends AbstractAppTestBase {
         final DsmManifest dsmManifest =
                 new DsmManifest();
 
-        dsmManifest.setDsmFriendlyName(AbstractAppTestBase.DSM_FRIDNELY_NAME);
+        dsmManifest.setDsmFriendlyName(AppTest.DSM_FRIDNELY_NAME);
 
-        if (dsmManifest.getDsmFriendlyName().compareTo(AbstractAppTestBase.DSM_FRIDNELY_NAME) != 0) {
+        if (dsmManifest.getDsmFriendlyName().compareTo(AppTest.DSM_FRIDNELY_NAME) != 0) {
             Assert.fail("DsmFriendlyName did not match.");
         }
     }
@@ -101,7 +119,7 @@ public class AppTest extends AbstractAppTestBase {
     public final void testNegativeDsmFriendlyNameGetAndSetMethods01() {
         (new DsmManifest()).setDsmFriendlyName(null);
 
-        Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+        Assert.fail(AppTest.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
 
     /**
@@ -112,7 +130,7 @@ public class AppTest extends AbstractAppTestBase {
     public final void testNegativeDsmFriendlyNameGetAndSetMethods02() {
         (new DsmManifest()).setDsmFriendlyName("");
 
-        Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+        Assert.fail(AppTest.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
 
     /**
@@ -123,6 +141,6 @@ public class AppTest extends AbstractAppTestBase {
     public final void testNegativeDsmFriendlyNameGetAndSetMethods03() {
         (new DsmManifest()).setDsmFriendlyName(" ");
 
-        Assert.fail(AbstractAppTestBase.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
+        Assert.fail(AppTest.ILLEGAL_ARGUMENT_EXCEPTION_EXPECTED_MESSAGE);
     }
 }
