@@ -19,7 +19,7 @@ public class BasicArgumentContainer extends DsmManifest implements ArgumentConta
     /**
      * List of current stored arguments.
      */
-    private transient Map<String, Object> argumentList = null;
+    private Map<String, Object> argumentList = null;
 
     /**
      * MultiArguments Constructor.
@@ -34,7 +34,7 @@ public class BasicArgumentContainer extends DsmManifest implements ArgumentConta
      * @param name Argument name
      * @param value Argument value
      */
-    public final void setArgument(final String name, final Object value) {
+    public void setArgument(final String name, final Object value) {
         if (this.argumentList == null) {
             this.argumentList = new HashMap<String, Object>();
         }
@@ -48,7 +48,7 @@ public class BasicArgumentContainer extends DsmManifest implements ArgumentConta
      * @param name Argument name to retrieve value
      * @return Returns argument value
      */
-    public final Object getArgument(final String name) {
+    public Object getArgument(final String name) {
         Object foundValue = null;
 
         do {
@@ -69,9 +69,27 @@ public class BasicArgumentContainer extends DsmManifest implements ArgumentConta
     /**
      * Clears all already stored arguments.
      */
-    public final void clear() {
+    public void clear() {
         if (this.argumentList != null) {
             this.argumentList.clear();
         }
+    }
+
+    /**
+     * Returns argument list.
+     *
+     * @return Returns argument list
+     */
+    protected Map<String, Object> getArgumentList() {
+        return this.argumentList;
+    }
+
+    /**
+     * Sets argument list.
+     *
+     * @param newArgumentList New argument list
+     */
+    protected void setArgumentList(final Map<String, Object> newArgumentList) {
+        argumentList = newArgumentList;
     }
 }

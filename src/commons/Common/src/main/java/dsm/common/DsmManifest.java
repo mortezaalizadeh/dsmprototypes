@@ -36,14 +36,14 @@ public class DsmManifest extends Object {
     /**
      * DsmManifest Constructor.
      *
-     * @param dui Dsm unique identifier
-     * @param dfn Dsm friendly name
+     * @param newDsmUniqueIdentifier Dsm unique identifier
+     * @param newDsmFriendlyName Dsm friendly name
      */
-    public DsmManifest(final String dui, final String dfn) {
+    public DsmManifest(final String newDsmUniqueIdentifier, final String newDsmFriendlyName) {
         this();
 
-        setDsmUniqueIdentifier(dui);
-        setDsmFriendlyName(dfn);
+        setDsmUniqueIdentifierInternal(newDsmUniqueIdentifier);
+        setDsmFriendlyNameInternal(newDsmFriendlyName);
     }
 
     /**
@@ -51,25 +51,34 @@ public class DsmManifest extends Object {
      *
      * @return Returns Dsm unique identifier
      */
-    public final String getDsmUniqueIdentifier() {
+    public String getDsmUniqueIdentifier() {
         return this.dsmUniqueIdentifier;
     }
 
     /**
      * Sets Dsm unique identifier.
      *
-     * @param dui New Dsm unique identifier
+     * @param newDsmUniqueIdentifier New Dsm unique identifier
      */
-    public final void setDsmUniqueIdentifier(final String dui) {
-        if (dui == null) {
-            throw new IllegalArgumentException("dui");
+    public void setDsmUniqueIdentifier(final String newDsmUniqueIdentifier) {
+        setDsmUniqueIdentifierInternal(newDsmUniqueIdentifier);
+    }
+
+    /**
+     * Internal method to set Dsm unique identifier.
+     *
+     * @param newDsmUniqueIdentifier New Dsm unique identifier
+     */
+    private void setDsmUniqueIdentifierInternal(final String newDsmUniqueIdentifier) {
+        if (newDsmUniqueIdentifier == null) {
+            throw new IllegalArgumentException("newDsmUniqueIdentifier");
         }
 
-        if (dui.trim().compareTo("") == 0) {
-            throw new IllegalArgumentException("dui");
+        if (newDsmUniqueIdentifier.trim().compareTo("") == 0) {
+            throw new IllegalArgumentException("newDsmUniqueIdentifier");
         }
 
-        this.dsmUniqueIdentifier = dui;
+        this.dsmUniqueIdentifier = newDsmUniqueIdentifier;
     }
 
     /**
@@ -77,24 +86,33 @@ public class DsmManifest extends Object {
      *
      * @return Returns Dsm friendly name.
      */
-    public final String getDsmFriendlyName() {
+    public String getDsmFriendlyName() {
         return this.dsmFriendlyName;
     }
 
     /**
      * Sets Dsm friendly name.
      *
-     * @param dfn New Dsm friendly name
+     * @param newDsmFriendlyName New Dsm friendly name
      */
-    public final void setDsmFriendlyName(final String dfn) {
-        if (dfn == null) {
-            throw new IllegalArgumentException("dfn");
+    public void setDsmFriendlyName(final String newDsmFriendlyName) {
+        setDsmFriendlyNameInternal(newDsmFriendlyName);
+    }
+
+    /**
+     * Internal method to set Dsm friendly name.
+     *
+     * @param newDsmFriendlyName New Dsm friendly name
+     */
+    private void setDsmFriendlyNameInternal(final String newDsmFriendlyName) {
+        if (newDsmFriendlyName == null) {
+            throw new IllegalArgumentException("newDsmFriendlyName");
         }
 
-        if (dfn.trim().compareTo("") == 0) {
-            throw new IllegalArgumentException("dfn");
+        if (newDsmFriendlyName.trim().compareTo("") == 0) {
+            throw new IllegalArgumentException("newDsmFriendlyName");
         }
 
-        this.dsmFriendlyName = dfn;
+        this.dsmFriendlyName = newDsmFriendlyName;
     }
 }
