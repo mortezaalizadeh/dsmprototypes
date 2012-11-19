@@ -4,13 +4,13 @@
 package dsm.daemon.common;
 
 /**
-* DaemonStartupInfo interface represents Daemon Startup Information.
-*
-* It must be implemented by all daemon startup information classes
-* implementation.
-*
-* @version 0.1, April 16, 2012
-  * @author Morteza Alizadeh
+ * DaemonStartupInfo interface represents Daemon Startup Information.
+ *
+ * It must be implemented by all daemon startup information classes
+ * implementation.
+ *
+ * @version 0.1, April 16, 2012
+ * @author Morteza Alizadeh
  */
 public interface DaemonStartupInfo {
 

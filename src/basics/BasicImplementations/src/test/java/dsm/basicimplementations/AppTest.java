@@ -2,6 +2,7 @@ package dsm.basicimplementations;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import dsm.action.common.ActionStartupInfo;
 import dsm.common.argument.ArgumentContainer;
 import dsm.daemon.common.DaemonStartupInfo;
 import junit.framework.Assert;
@@ -12,6 +13,36 @@ import org.junit.experimental.categories.Category;
  * Unit test for Basic Implementations project.
  */
 public class AppTest extends Object {
+
+    /**
+     * Daemon Startup Info Name to be used during test.
+     */
+    private static final String ACTION_STARTUP_INFO_NAME =
+            "This is a test action startup info Name.";
+
+    /**
+     * Daemon Startup Info Library to be used during test.
+     */
+    private static final String ACTION_STARTUP_INFO_LIBRARY =
+            "This is a test action startup info Library.";
+
+    /**
+     * Daemon Startup Info PackageName to be used during test.
+     */
+    private static final String ACTION_STARTUP_INFO_PACKAGE_NAME =
+            "This is a test action startup info PackageName.";
+
+    /**
+     * Daemon Startup Info ClassName to be used during test.
+     */
+    private static final String ACTION_STARTUP_INFO_CLASS_NAME =
+            "This is a test action startup info ClassName.";
+
+    /**
+     * Daemon Startup Info ConfigurationFileFullPath to be used during test.
+     */
+    private static final String ACTION_STARTUP_INFO_CONFIGURATION_FILE_PATH =
+            "This is a test action startup info ConfigurationFileFullPath.";
 
     /**
      * Daemon Startup Info Name to be used during test.
@@ -42,6 +73,38 @@ public class AppTest extends Object {
      */
     private static final String DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH =
             "This is a test daemon startup info ConfigurationFileFullPath.";
+
+    /**
+     * Positive testing to test BasicActionStartupInfo.
+     */
+    @Test
+    @Category(dsm.basicimplementations.action.common.BasicActionStartupInfo.class)
+    public final void testPositiveBasicActionStartupInfo01() {
+        final Injector injector = Guice.createInjector(new BasicGuiceInjectorModule());
+        final ActionStartupInfo actionStartupInfo = injector.getInstance(ActionStartupInfo.class);
+
+        actionStartupInfo.setName(AppTest.ACTION_STARTUP_INFO_NAME);
+        actionStartupInfo.setLibrary(AppTest.ACTION_STARTUP_INFO_LIBRARY);
+        actionStartupInfo.setPackageName(AppTest.ACTION_STARTUP_INFO_PACKAGE_NAME);
+        actionStartupInfo.setClassName(AppTest.ACTION_STARTUP_INFO_CLASS_NAME);
+        actionStartupInfo.setConfigurationFileFullPath(AppTest.ACTION_STARTUP_INFO_CONFIGURATION_FILE_PATH);
+
+        Assert.assertEquals(actionStartupInfo.getName().compareTo(
+                AppTest.ACTION_STARTUP_INFO_NAME),
+                0);
+        Assert.assertEquals(actionStartupInfo.getLibrary().compareTo(
+                AppTest.ACTION_STARTUP_INFO_LIBRARY),
+                0);
+        Assert.assertEquals(actionStartupInfo.getPackageName().compareTo(
+                AppTest.ACTION_STARTUP_INFO_PACKAGE_NAME),
+                0);
+        Assert.assertEquals(actionStartupInfo.getClassName().compareTo(
+                AppTest.ACTION_STARTUP_INFO_CLASS_NAME),
+                0);
+        Assert.assertEquals(actionStartupInfo.getConfigurationFileFullPath().compareTo(
+                AppTest.ACTION_STARTUP_INFO_CONFIGURATION_FILE_PATH),
+                0);
+    }
 
     /**
      * Positive testing to test BasicArgumentContainer.

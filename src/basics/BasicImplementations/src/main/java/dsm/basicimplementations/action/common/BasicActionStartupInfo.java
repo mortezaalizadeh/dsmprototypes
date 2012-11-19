@@ -1,49 +1,49 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.basicimplementations.daemon.common;
+package dsm.basicimplementations.action.common;
 
+import dsm.action.common.ActionStartupInfo;
 import dsm.common.DsmManifest;
-import dsm.daemon.common.DaemonStartupInfo;
 
 /**
- * BasicDaemonStartupInfo is a basic implementation as an DaemonStartupInfo.
+ * BasicActionStartupInfo is a basic implementation as an ActionStartupInfo.
  *
- * @version 0.1, November 17, 2012
+ * @version 0.1, November 19, 2012
  * @author Morteza Alizadeh
  */
-public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartupInfo {
+public class BasicActionStartupInfo  extends DsmManifest implements ActionStartupInfo {
 
     /**
-     * Daemon name.
+     * Action name.
      */
     private String name;
 
     /**
-     * Daemon library.
+     * Action library.
      */
     private String library;
 
     /**
-     * Daemon package name.
+     * Action package name.
      */
     private String packageName;
 
     /**
-     * Daemon class name.
+     * Action class name.
      */
     private String className;
 
     /**
-     * Daemon configuration file full path.
+     * Action configuration file full path.
      */
     private String configurationFileFullPath;
 
     /**
-     * DaemonInfo constructor.
+     * ActionManagerInfo constructor.
      */
-    public BasicDaemonStartupInfo() {
-        super("634b7eab-c77f-494b-b10a-a646288ca16a", "Basic Daemon Startup Info");
+    public BasicActionStartupInfo() {
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe4", "Basic Action Startup Info");
 
         this.name = "";
         this.library = "";
@@ -53,90 +53,90 @@ public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartup
     }
 
     /**
-     * Returns daemon name.
+     * Returns action name.
      *
-     * @return Daemon name
+     * @return Action name
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Set daemon name.
+     * Set action name.
      *
-     * @param newName New daemon name
+     * @param newName New action name
      */
     public void setName(final String newName) {
         this.name = newName;
     }
 
     /**
-     * Returns daemon library.
+     * Returns action library.
      *
-     * @return Daemon library
+     * @return Action library
      */
     public String getLibrary() {
         return this.library;
     }
 
     /**
-     * Set daemon library.
+     * Set action library.
      *
-     * @param newLibrary New daemon library
+     * @param newLibrary New action library
      */
     public void setLibrary(final String newLibrary) {
         this.library = newLibrary;
     }
 
     /**
-     * Returns daemon package name.
+     * Returns action package name.
      *
-     * @return Daemon package name
+     * @return Action package name
      */
     public String getPackageName() {
         return this.packageName;
     }
 
     /**
-     * Set daemon package name.
+     * Set action package name.
      *
-     * @param newPackageName New daemon package name
+     * @param newPackageName New action package name
      */
     public void setPackageName(final String newPackageName) {
         this.packageName = newPackageName;
     }
 
     /**
-     * Returns daemon class name.
+     * Returns action class name.
      *
-     * @return Daemon class name
+     * @return Action class name
      */
     public String getClassName() {
         return this.className;
     }
 
     /**
-     * Set daemon class name.
+     * Set action class name.
      *
-     * @param newClassName New daemon class name
+     * @param newClassName New action class name
      */
     public void setClassName(final String newClassName) {
         this.className = newClassName;
     }
 
     /**
-     * Returns daemon configuration file full path.
+     * Returns action configuration file full path.
      *
-     * @return Daemon configuration file full path
+     * @return Action configuration file full path
      */
     public String getConfigurationFileFullPath() {
         return this.configurationFileFullPath;
     }
 
     /**
-     * Set daemon configuration file full path.
+     * Set action configuration file full path.
      *
-     * @param newConfigurationFileFullPath New daemon configuration file full path
+     * @param newConfigurationFileFullPath New action configuration file full path
      */
     public void setConfigurationFileFullPath(final String newConfigurationFileFullPath) {
         this.configurationFileFullPath = newConfigurationFileFullPath;

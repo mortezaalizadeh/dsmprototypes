@@ -48,7 +48,7 @@ public abstract class AbstractAtomicAction extends DsmManifest implements Action
      *
      * @return Action name
      */
-    public final String getActionName() {
+    public String getActionName() {
         return this.actionName;
     }
 
@@ -57,7 +57,7 @@ public abstract class AbstractAtomicAction extends DsmManifest implements Action
      *
      * @param newActionName New action name
      */
-    public final void setActionName(final String newActionName) {
+    public void setActionName(final String newActionName) {
         this.actionName = newActionName;
     }
 
@@ -66,7 +66,7 @@ public abstract class AbstractAtomicAction extends DsmManifest implements Action
      *
      * @return Action type
      */
-    public final ActionType getActionType() {
+    public ActionType getActionType() {
         return this.actionType;
     }
 
@@ -75,7 +75,7 @@ public abstract class AbstractAtomicAction extends DsmManifest implements Action
      *
      * @param newActionType New action type
      */
-    public final void setActionType(final ActionType newActionType) {
+    public void setActionType(final ActionType newActionType) {
         this.actionType = newActionType;
     }
 
