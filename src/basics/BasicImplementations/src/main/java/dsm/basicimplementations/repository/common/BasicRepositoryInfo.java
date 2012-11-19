@@ -146,7 +146,7 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
      *
      * @return Returns daemon list
      */
-    public List<DaemonStartupInfo> getDaemonList() {
+    protected List<DaemonStartupInfo> getDaemonList() {
         return this.daemonList;
     }
 
@@ -155,7 +155,7 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
      *
      * @param newDaemonList New daemon list
      */
-    public void setDaemonList(final List<DaemonStartupInfo> newDaemonList) {
+    protected void setDaemonList(final List<DaemonStartupInfo> newDaemonList) {
         this.daemonList = newDaemonList;
     }
 
@@ -164,7 +164,7 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
      *
      * @return Returns action manager list
      */
-    public List<ActionManagerStartupInfo> getActionManagerList() {
+    protected List<ActionManagerStartupInfo> getActionManagerList() {
         return this.actionManagerList;
     }
 
@@ -173,7 +173,7 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
      *
      * @param newActionManagerList New action manager list
      */
-    public void setActionManagerList(final List<ActionManagerStartupInfo> newActionManagerList) {
+    protected void setActionManagerList(final List<ActionManagerStartupInfo> newActionManagerList) {
         this.actionManagerList = newActionManagerList;
     }
 
@@ -182,7 +182,7 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
      *
      * @return Returns action list
      */
-    public List<ActionStartupInfo> getActionList() {
+    protected List<ActionStartupInfo> getActionList() {
         return this.actionList;
     }
 
@@ -191,7 +191,7 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
      *
      * @param newActionList New action list
      */
-    public void setActionList(final List<ActionStartupInfo> newActionList) {
+    protected void setActionList(final List<ActionStartupInfo> newActionList) {
         this.actionList = newActionList;
     }
 }
