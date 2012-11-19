@@ -7,7 +7,7 @@ import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.DsmManifest;
 
 /**
- * BasicActionManagerStartupInfo is a basic implementation as an
+ * BasicActionManagerStartupInfo is a basic implementation for
  * ActionManagerStartupInfo.
  *
  * @version 0.1, November 19, 2012

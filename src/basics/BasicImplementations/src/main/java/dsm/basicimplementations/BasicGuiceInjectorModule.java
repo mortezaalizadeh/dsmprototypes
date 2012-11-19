@@ -10,8 +10,12 @@ import dsm.basicimplementations.action.common.BasicActionStartupInfo;
 import dsm.basicimplementations.action.manager.common.BasicActionManagerStartupInfo;
 import dsm.basicimplementations.common.argument.BasicArgumentContainer;
 import dsm.basicimplementations.daemon.common.BasicDaemonStartupInfo;
+import dsm.basicimplementations.repository.common.BasicRepositoryInfo;
+import dsm.basicimplementations.repositoryparser.common.BasicRepositoryParserStartupInfo;
 import dsm.common.argument.ArgumentContainer;
 import dsm.daemon.common.DaemonStartupInfo;
+import dsm.repository.common.RepositoryInfo;
+import dsm.repositoryparser.common.RepositoryParserStartupInfo;
 
 /**
  * BasicGuiceInjectorModule class defines interfaces and implementations
@@ -29,5 +33,7 @@ public class BasicGuiceInjectorModule extends AbstractModule {
         bind(ActionManagerStartupInfo.class).to(BasicActionManagerStartupInfo.class);
         bind(ArgumentContainer.class).to(BasicArgumentContainer.class);
         bind(DaemonStartupInfo.class).to(BasicDaemonStartupInfo.class);
+        bind(RepositoryParserStartupInfo.class).to(BasicRepositoryParserStartupInfo.class);
+        bind(RepositoryInfo.class).to(BasicRepositoryInfo.class);
     }
 }

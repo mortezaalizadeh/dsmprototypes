@@ -7,7 +7,7 @@ import dsm.common.DsmManifest;
 import dsm.daemon.common.DaemonStartupInfo;
 
 /**
- * BasicDaemonStartupInfo is a basic implementation as an DaemonStartupInfo.
+ * BasicDaemonStartupInfo is a basic implementation for DaemonStartupInfo.
  *
  * @version 0.1, November 17, 2012
  * @author Morteza Alizadeh

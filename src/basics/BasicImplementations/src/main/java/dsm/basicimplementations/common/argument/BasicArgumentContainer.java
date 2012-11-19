@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * BasicArgumentContainer is a basic implementation as an ArgumentContainer.
+ * BasicArgumentContainer is a basic implementation for ArgumentContainer.
  *
  * @version 0.1, November 14, 2012
  * @author Morteza Alizadeh
