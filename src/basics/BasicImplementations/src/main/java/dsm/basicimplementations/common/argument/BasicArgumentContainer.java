@@ -22,7 +22,7 @@ public class BasicArgumentContainer extends DsmManifest implements ArgumentConta
     private Map<String, Object> argumentList = null;
 
     /**
-     * MultiArguments Constructor.
+     * BasicArgumentContainer Constructor.
      */
     public BasicArgumentContainer() {
         super("e5320f27-fcda-407e-9016-3c43c547ba80", "Basic Argument Contianter");

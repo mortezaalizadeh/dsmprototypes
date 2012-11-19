@@ -31,14 +31,14 @@ public abstract class AbstractAtomicAction extends DsmManifest implements Action
     /**
      * AuthorityModality Constructor.
      *
-     * @param dsmUniqueIdentifier DSM object unique identifier
-     * @param dsmFriendlyName DSM object friendly name
+     * @param newDsmUniqueIdentifier DSM object unique identifier
+     * @param newDsmFriendlyName DSM object friendly name
      * @param newActionName Action name
      */
-    public AbstractAtomicAction(final String dsmUniqueIdentifier,
-                                final String dsmFriendlyName,
+    public AbstractAtomicAction(final String newDsmUniqueIdentifier,
+                                final String newDsmFriendlyName,
                                 final String newActionName) {
-        super(dsmUniqueIdentifier, dsmFriendlyName);
+        super(newDsmUniqueIdentifier, newDsmFriendlyName);
 
         this.actionName = newActionName;
     }

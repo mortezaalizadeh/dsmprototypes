@@ -1,49 +1,50 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.basicimplementations.action.common;
+package dsm.basicimplementations.action.manager.common;
 
-import dsm.action.common.ActionStartupInfo;
+import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.DsmManifest;
 
 /**
- * BasicActionStartupInfo is a basic implementation as an ActionStartupInfo.
+ * BasicActionManagerStartupInfo is a basic implementation as an
+ * ActionManagerStartupInfo.
  *
  * @version 0.1, November 19, 2012
  * @author Morteza Alizadeh
  */
-public class BasicActionStartupInfo extends DsmManifest implements ActionStartupInfo {
+public class BasicActionManagerStartupInfo extends DsmManifest implements ActionManagerStartupInfo {
 
     /**
-     * Action name.
+     * Action manager name.
      */
     private String name;
 
     /**
-     * Action library.
+     * Action manager library.
      */
     private String library;
 
     /**
-     * Action package name.
+     * Action manager package name.
      */
     private String packageName;
 
     /**
-     * Action class name.
+     * Action manager class name.
      */
     private String className;
 
     /**
-     * Action configuration file full path.
+     * Action manager configuration file full path.
      */
     private String configurationFileFullPath;
 
     /**
-     * BasicActionStartupInfo constructor.
+     * BasicActionManagerStartupInfo constructor.
      */
-    public BasicActionStartupInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe4", "Basic Action Startup Info");
+    public BasicActionManagerStartupInfo() {
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe3", "Basic Action Manager Startup Info");
 
         this.name = "";
         this.library = "";
@@ -53,90 +54,90 @@ public class BasicActionStartupInfo extends DsmManifest implements ActionStartup
     }
 
     /**
-     * Returns action name.
+     * Returns action manager name.
      *
-     * @return Action name
+     * @return Action manager name
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Set action name.
+     * Set action manager name.
      *
-     * @param newName New action name
+     * @param newName New action manager name to set
      */
     public void setName(final String newName) {
         this.name = newName;
     }
 
     /**
-     * Returns action library.
+     * Returns action manager library.
      *
-     * @return Action library
+     * @return Action manager library
      */
     public String getLibrary() {
         return this.library;
     }
 
     /**
-     * Set action library.
+     * Set action manager library.
      *
-     * @param newLibrary New action library
+     * @param newLibrary New action manager library to set
      */
     public void setLibrary(final String newLibrary) {
         this.library = newLibrary;
     }
 
     /**
-     * Returns action package name.
+     * Returns action manager package name.
      *
-     * @return Action package name
+     * @return Action manager package name
      */
     public String getPackageName() {
         return this.packageName;
     }
 
     /**
-     * Set action package name.
+     * Set action manager package name.
      *
-     * @param newPackageName New action package name
+     * @param newPackageName New action manager package name to set
      */
     public void setPackageName(final String newPackageName) {
         this.packageName = newPackageName;
     }
 
     /**
-     * Returns action class name.
+     * Returns action manager class name.
      *
-     * @return Action class name
+     * @return Action manager class name
      */
     public String getClassName() {
         return this.className;
     }
 
     /**
-     * Set action class name.
+     * Set action manager class name.
      *
-     * @param newClassName New action class name
+     * @param newClassName New action manager class name to set
      */
     public void setClassName(final String newClassName) {
         this.className = newClassName;
     }
 
     /**
-     * Returns action configuration file full path.
+     * Returns action manager configuration file full path.
      *
-     * @return Action configuration file full path
+     * @return Action manager configuration file full path
      */
     public String getConfigurationFileFullPath() {
         return this.configurationFileFullPath;
     }
 
     /**
-     * Set action configuration file full path.
+     * Set action manager configuration file full path.
      *
-     * @param newConfigurationFileFullPath New action configuration file full path
+     * @param newConfigurationFileFullPath New action manager configuration file full path to set
      */
     public void setConfigurationFileFullPath(final String newConfigurationFileFullPath) {
         this.configurationFileFullPath = newConfigurationFileFullPath;

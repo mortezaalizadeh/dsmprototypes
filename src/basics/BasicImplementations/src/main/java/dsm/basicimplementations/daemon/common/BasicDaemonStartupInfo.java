@@ -40,7 +40,7 @@ public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartup
     private String configurationFileFullPath;
 
     /**
-     * DaemonInfo constructor.
+     * BasicDaemonStartupInfo constructor.
      */
     public BasicDaemonStartupInfo() {
         super("634b7eab-c77f-494b-b10a-a646288ca16a", "Basic Daemon Startup Info");

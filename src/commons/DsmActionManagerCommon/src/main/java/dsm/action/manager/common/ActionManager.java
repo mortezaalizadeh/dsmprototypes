@@ -33,7 +33,7 @@ public interface ActionManager {
      *
      * @param initializationParams Contains initializations parameters
      */
-    void init(String initializationParams);
+    void init(final String initializationParams);
 
     /**
      * Shutdown action manager.

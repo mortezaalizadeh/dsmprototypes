@@ -1,3 +1,6 @@
+/**
+ * @author Morteza Alizadeh
+ */
 package dsm.common;
 
 import junit.framework.Assert;
@@ -6,6 +9,9 @@ import org.junit.experimental.categories.Category;
 
 /**
  * Unit test for Common project.
+ *
+ * @version 0.1, November 19, 2012
+ * @author Morteza Alizadeh
  */
 public class AppTest extends Object {
 
