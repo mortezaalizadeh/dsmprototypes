@@ -1,34 +1,41 @@
+/**
+ * @author Morteza Alizadeh
+ */
 package dsm.daemon.dsmdaemon;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import dsm.basicimplementations.BasicGuiceInjectorModule;
+import dsm.common.argument.ArgumentContainer;
+import junit.framework.Assert;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
- * Unit test for DsmDaemonCommon package.
+ * Unit test for Basic Implementations project.
+ *
+ * @version 0.1, November 20, 2012
+ * @author Morteza Alizadeh
  */
-public class AppTest extends TestCase {
-    /**
-     * Create the test case.
-     *
-     * @param testName name of the test case
-     */
-    public AppTest(final String testName) {
-        super(testName);
-    }
+public class AppTest extends Object {
 
     /**
-     * @return the suite of tests being tested
+     * Positive testing to test BasicActionStartupInfo.
      */
-    public static Test suite() {
-        return new TestSuite(AppTest.class);
-    }
+    @Test
+    @Category(dsm.daemon.dsmdaemon.DsmDaemon.class)
+    public final void testPositiveBasicActionStartupInfo01() {
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final ArgumentContainer initializationParams = injector.getInstance(
+                ArgumentContainer.class);
 
-    /**
-     * Rigorous Test.
-     */
-    public final void testApp() {
-        assertTrue(true);
+        final DsmDaemon dsmDaemon = new DsmDaemon();
+
+        dsmDaemon.init(initializationParams);
+        Assert.assertTrue(dsmDaemon.isInited());
+
+        dsmDaemon.shutdown();
+        Assert.assertFalse(dsmDaemon.isInited());
     }
 }

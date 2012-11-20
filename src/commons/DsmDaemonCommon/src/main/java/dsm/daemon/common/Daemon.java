@@ -3,6 +3,8 @@
  */
 package dsm.daemon.common;
 
+import dsm.common.argument.ArgumentContainer;
+
 /**
  * Daemon interface defines general operations and attributes for a daemon.
  *
@@ -32,7 +34,7 @@ public interface Daemon {
      *
      * @param initializationParams Contains initializations parameters
      */
-    void init(final String initializationParams);
+    void init(final ArgumentContainer initializationParams);
 
     /**
      * Shutdown daemon.

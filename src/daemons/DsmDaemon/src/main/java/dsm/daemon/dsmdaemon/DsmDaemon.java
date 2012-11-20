@@ -4,6 +4,7 @@
 package dsm.daemon.dsmdaemon;
 
 import dsm.common.DsmManifest;
+import dsm.common.argument.ArgumentContainer;
 import dsm.daemon.common.Daemon;
 
 /**
@@ -36,7 +37,7 @@ public class DsmDaemon extends DsmManifest implements Daemon {
      *
      * @return Daemon name
      */
-    public final String getDaemonName() {
+    public String getDaemonName() {
         return DsmDaemon.DAEMON_NAME;
     }
 
@@ -45,7 +46,7 @@ public class DsmDaemon extends DsmManifest implements Daemon {
      *
      * @return Daemon initialization status
      */
-    public final boolean isInited() {
+    public boolean isInited() {
         return this.inited;
     }
 
@@ -54,14 +55,14 @@ public class DsmDaemon extends DsmManifest implements Daemon {
      *
      * @param initializationParams Contains initializations parameters
      */
-    public final void init(final String initializationParams) {
+    public void init(final ArgumentContainer initializationParams) {
         this.inited = true;
     }
 
     /**
      * Shutdown daemon.
      */
-    public final void shutdown() {
+    public void shutdown() {
         this.inited = false;
     }
 }
