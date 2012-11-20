@@ -3,6 +3,8 @@
  */
 package dsm.action.manager.common;
 
+import dsm.common.argument.ArgumentContainer;
+
 /**
  * ActionManager interface defines general operations and attributes for a
  * action manager.
@@ -33,7 +35,7 @@ public interface ActionManager {
      *
      * @param initializationParams Contains initializations parameters
      */
-    void init(final String initializationParams);
+    void init(final ArgumentContainer initializationParams);
 
     /**
      * Shutdown action manager.
