@@ -1,33 +1,13 @@
+/**
+ * @author Morteza Alizadeh
+ */
 package dsm.action.distributed.simpleactions;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 /**
- * Unit test for DsmDaemonCommon package.
+ * Unit test for SimpleDistributedActions project.
+ *
+ * @version 0.1, November 20, 2012
+ * @author Morteza Alizadeh
  */
-public class AppTest extends TestCase {
-    /**
-     * Create the test case.
-     *
-     * @param testName name of the test case
-     */
-    public AppTest(final String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(AppTest.class);
-    }
-
-    /**
-     * Rigorous Test.
-     */
-    public final void testApp() {
-        assertTrue(true);
-    }
+public class AppTest extends Object {
 }
