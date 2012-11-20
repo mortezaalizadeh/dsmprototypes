@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 /**
- * Unit test for Basic Implementations project.
+ * Unit test for DsmDaemon project.
  *
  * @version 0.1, November 20, 2012
  * @author Morteza Alizadeh

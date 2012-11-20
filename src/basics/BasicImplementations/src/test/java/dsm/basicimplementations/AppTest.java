@@ -16,7 +16,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 /**
- * Unit test for Basic Implementations project.
+ * Unit test for BasicImplementations project.
  *
  * @version 0.1, November 19, 2012
  * @author Morteza Alizadeh
