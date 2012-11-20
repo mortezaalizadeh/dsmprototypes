@@ -9,6 +9,8 @@ import dsm.action.common.ActionStartupInfo;
 import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.argument.ArgumentContainer;
 import dsm.daemon.common.DaemonStartupInfo;
+import dsm.repository.common.RepositoryInfo;
+import dsm.repositoryparser.common.RepositoryParserStartupInfo;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -22,94 +24,34 @@ import org.junit.experimental.categories.Category;
 public class AppTest extends Object {
 
     /**
-     * Action Startup Info Name to be used during test.
+     * Test Name to be used during test.
      */
-    private static final String ACTION_STARTUP_INFO_NAME =
-            "This is a test action startup info Name.";
+    private static final String TEST_NAME = "Name";
 
     /**
-     * Action Startup Info Library to be used during test.
+     * Test Library to be used during test.
      */
-    private static final String ACTION_STARTUP_INFO_LIBRARY =
-            "This is a test action startup info Library.";
+    private static final String TEST_LIBRARY = "Library";
 
     /**
-     * Action Startup Info PackageName to be used during test.
+     * Test PackageName to be used during test.
      */
-    private static final String ACTION_STARTUP_INFO_PACKAGE_NAME =
-            "This is a test action startup info PackageName.";
+    private static final String TEST_PACKAGE_NAME = "PackageName";
 
     /**
-     * Action Startup Info ClassName to be used during test.
+     * Test ClassName to be used during test.
      */
-    private static final String ACTION_STARTUP_INFO_CLASS_NAME =
-            "This is a test action startup info ClassName.";
+    private static final String TEST_CLASS_NAME = "ClassName";
 
     /**
-     * Action Startup Info ConfigurationFileFullPath to be used during test.
+     * Test ConfigurationFileFullPath to be used during test.
      */
-    private static final String ACTION_STARTUP_INFO_CONFIGURATION_FILE_PATH =
-            "This is a test action startup info ConfigurationFileFullPath.";
+    private static final String TEST_CONFIGURATION_FILE_PATH = "ConfigurationFileFullPath";
 
     /**
-     * Action Manager Startup Info Name to be used during test.
+     * Test UniqueIdentifier to be used during test.
      */
-    private static final String ACTION_MANAGER_STARTUP_INFO_NAME =
-            "This is a test action manager startup info Name.";
-
-    /**
-     * Action Manager Startup Info Library to be used during test.
-     */
-    private static final String ACTION_MANAGER_STARTUP_INFO_LIBRARY =
-            "This is a test action manager startup info Library.";
-
-    /**
-     * Action Manager Startup Info PackageName to be used during test.
-     */
-    private static final String ACTION_MANAGER_STARTUP_INFO_PACKAGE_NAME =
-            "This is a test action manager startup info PackageName.";
-
-    /**
-     * Action Manager Startup Info ClassName to be used during test.
-     */
-    private static final String ACTION_MANAGER_STARTUP_INFO_CLASS_NAME =
-            "This is a test action manager startup info ClassName.";
-
-    /**
-     * Action Manager Startup Info ConfigurationFileFullPath to be used during test.
-     */
-    private static final String ACTION_MANAGER_STARTUP_INFO_CONFIGURATION_FILE_PATH =
-            "This is a test action manager startup info ConfigurationFileFullPath.";
-
-    /**
-     * Daemon Startup Info Name to be used during test.
-     */
-    private static final String DAEMON_STARTUP_INFO_NAME =
-            "This is a test daemon startup info Name.";
-
-    /**
-     * Daemon Startup Info Library to be used during test.
-     */
-    private static final String DAEMON_STARTUP_INFO_LIBRARY =
-            "This is a test daemon startup info Library.";
-
-    /**
-     * Daemon Startup Info PackageName to be used during test.
-     */
-    private static final String DAEMON_STARTUP_INFO_PACKAGE_NAME =
-            "This is a test daemon startup info PackageName.";
-
-    /**
-     * Daemon Startup Info ClassName to be used during test.
-     */
-    private static final String DAEMON_STARTUP_INFO_CLASS_NAME =
-            "This is a test daemon startup info ClassName.";
-
-    /**
-     * Daemon Startup Info ConfigurationFileFullPath to be used during test.
-     */
-    private static final String DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH =
-            "This is a test daemon startup info ConfigurationFileFullPath.";
+    private static final String TEST_UNIQUE_IDENTIFIER = "bf932775-00c4-45ca-8fe6-4f4a9693efa4";
 
     /**
      * Positive testing to test BasicActionStartupInfo.
@@ -117,34 +59,31 @@ public class AppTest extends Object {
     @Test
     @Category(dsm.basicimplementations.action.common.BasicActionStartupInfo.class)
     public final void testPositiveBasicActionStartupInfo01() {
-        final Injector injector = Guice.createInjector(new BasicGuiceInjectorModule());
-        final ActionStartupInfo actionStartupInfo = injector.getInstance(ActionStartupInfo.class);
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final ActionStartupInfo actionStartupInfo = injector.getInstance(
+                ActionStartupInfo.class);
 
-        actionStartupInfo.setName(
-                AppTest.ACTION_STARTUP_INFO_NAME);
-        actionStartupInfo.setLibrary(
-                AppTest.ACTION_STARTUP_INFO_LIBRARY);
-        actionStartupInfo.setPackageName(
-                AppTest.ACTION_STARTUP_INFO_PACKAGE_NAME);
-        actionStartupInfo.setClassName(
-                AppTest.ACTION_STARTUP_INFO_CLASS_NAME);
-        actionStartupInfo.setConfigurationFileFullPath(
-                AppTest.ACTION_STARTUP_INFO_CONFIGURATION_FILE_PATH);
+        actionStartupInfo.setName(AppTest.TEST_NAME);
+        actionStartupInfo.setLibrary(AppTest.TEST_LIBRARY);
+        actionStartupInfo.setPackageName(AppTest.TEST_PACKAGE_NAME);
+        actionStartupInfo.setClassName(AppTest.TEST_CLASS_NAME);
+        actionStartupInfo.setConfigurationFileFullPath(AppTest.TEST_CONFIGURATION_FILE_PATH);
 
         Assert.assertEquals(actionStartupInfo.getName().compareTo(
-                AppTest.ACTION_STARTUP_INFO_NAME),
+                AppTest.TEST_NAME),
                 0);
         Assert.assertEquals(actionStartupInfo.getLibrary().compareTo(
-                AppTest.ACTION_STARTUP_INFO_LIBRARY),
+                AppTest.TEST_LIBRARY),
                 0);
         Assert.assertEquals(actionStartupInfo.getPackageName().compareTo(
-                AppTest.ACTION_STARTUP_INFO_PACKAGE_NAME),
+                AppTest.TEST_PACKAGE_NAME),
                 0);
         Assert.assertEquals(actionStartupInfo.getClassName().compareTo(
-                AppTest.ACTION_STARTUP_INFO_CLASS_NAME),
+                AppTest.TEST_CLASS_NAME),
                 0);
         Assert.assertEquals(actionStartupInfo.getConfigurationFileFullPath().compareTo(
-                AppTest.ACTION_STARTUP_INFO_CONFIGURATION_FILE_PATH),
+                AppTest.TEST_CONFIGURATION_FILE_PATH),
                 0);
     }
 
@@ -154,34 +93,31 @@ public class AppTest extends Object {
     @Test
     @Category(dsm.basicimplementations.action.manager.common.BasicActionManagerStartupInfo.class)
     public final void testPositiveBasicActionManagerStartupInfo01() {
-        final Injector injector = Guice.createInjector(new BasicGuiceInjectorModule());
-        final ActionManagerStartupInfo actionManagerStartupInfo = injector.getInstance(ActionManagerStartupInfo.class);
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final ActionManagerStartupInfo actionManagerStartupInfo = injector.getInstance(
+                ActionManagerStartupInfo.class);
 
-        actionManagerStartupInfo.setName(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_NAME);
-        actionManagerStartupInfo.setLibrary(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_LIBRARY);
-        actionManagerStartupInfo.setPackageName(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_PACKAGE_NAME);
-        actionManagerStartupInfo.setClassName(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_CLASS_NAME);
-        actionManagerStartupInfo.setConfigurationFileFullPath(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_CONFIGURATION_FILE_PATH);
+        actionManagerStartupInfo.setName(AppTest.TEST_NAME);
+        actionManagerStartupInfo.setLibrary(AppTest.TEST_LIBRARY);
+        actionManagerStartupInfo.setPackageName(AppTest.TEST_PACKAGE_NAME);
+        actionManagerStartupInfo.setClassName(AppTest.TEST_CLASS_NAME);
+        actionManagerStartupInfo.setConfigurationFileFullPath(AppTest.TEST_CONFIGURATION_FILE_PATH);
 
         Assert.assertEquals(actionManagerStartupInfo.getName().compareTo(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_NAME),
+                AppTest.TEST_NAME),
                 0);
         Assert.assertEquals(actionManagerStartupInfo.getLibrary().compareTo(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_LIBRARY),
+                AppTest.TEST_LIBRARY),
                 0);
         Assert.assertEquals(actionManagerStartupInfo.getPackageName().compareTo(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_PACKAGE_NAME),
+                AppTest.TEST_PACKAGE_NAME),
                 0);
         Assert.assertEquals(actionManagerStartupInfo.getClassName().compareTo(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_CLASS_NAME),
+                AppTest.TEST_CLASS_NAME),
                 0);
         Assert.assertEquals(actionManagerStartupInfo.getConfigurationFileFullPath().compareTo(
-                AppTest.ACTION_MANAGER_STARTUP_INFO_CONFIGURATION_FILE_PATH),
+                AppTest.TEST_CONFIGURATION_FILE_PATH),
                 0);
     }
 
@@ -191,8 +127,10 @@ public class AppTest extends Object {
     @Test
     @Category(dsm.basicimplementations.common.argument.BasicArgumentContainer.class)
     public final void testPositiveBasicArgumentContainer01() {
-        final Injector injector = Guice.createInjector(new BasicGuiceInjectorModule());
-        final ArgumentContainer argumentContainer = injector.getInstance(ArgumentContainer.class);
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final ArgumentContainer argumentContainer = injector.getInstance(
+                ArgumentContainer.class);
 
         final Integer firstArgument = Integer.valueOf(10);
         final Double secondArgument = Double.valueOf(20.36);
@@ -217,34 +155,165 @@ public class AppTest extends Object {
     @Test
     @Category(dsm.basicimplementations.daemon.common.BasicDaemonStartupInfo.class)
     public final void testPositiveBasicDaemonStartupInfo01() {
-        final Injector injector = Guice.createInjector(new BasicGuiceInjectorModule());
-        final DaemonStartupInfo daemonStartupInfo = injector.getInstance(DaemonStartupInfo.class);
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final DaemonStartupInfo daemonStartupInfo = injector.getInstance(
+                DaemonStartupInfo.class);
 
-        daemonStartupInfo.setName(
-                AppTest.DAEMON_STARTUP_INFO_NAME);
-        daemonStartupInfo.setLibrary(
-                AppTest.DAEMON_STARTUP_INFO_LIBRARY);
-        daemonStartupInfo.setPackageName(
-                AppTest.DAEMON_STARTUP_INFO_PACKAGE_NAME);
-        daemonStartupInfo.setClassName(
-                AppTest.DAEMON_STARTUP_INFO_CLASS_NAME);
-        daemonStartupInfo.setConfigurationFileFullPath(
-                AppTest.DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH);
+        daemonStartupInfo.setName(AppTest.TEST_NAME);
+        daemonStartupInfo.setLibrary(AppTest.TEST_LIBRARY);
+        daemonStartupInfo.setPackageName(AppTest.TEST_PACKAGE_NAME);
+        daemonStartupInfo.setClassName(AppTest.TEST_CLASS_NAME);
+        daemonStartupInfo.setConfigurationFileFullPath(AppTest.TEST_CONFIGURATION_FILE_PATH);
 
         Assert.assertEquals(daemonStartupInfo.getName().compareTo(
-                AppTest.DAEMON_STARTUP_INFO_NAME),
+                AppTest.TEST_NAME),
                 0);
         Assert.assertEquals(daemonStartupInfo.getLibrary().compareTo(
-                AppTest.DAEMON_STARTUP_INFO_LIBRARY),
+                AppTest.TEST_LIBRARY),
                 0);
         Assert.assertEquals(daemonStartupInfo.getPackageName().compareTo(
-                AppTest.DAEMON_STARTUP_INFO_PACKAGE_NAME),
+                AppTest.TEST_PACKAGE_NAME),
                 0);
         Assert.assertEquals(daemonStartupInfo.getClassName().compareTo(
-                AppTest.DAEMON_STARTUP_INFO_CLASS_NAME),
+                AppTest.TEST_CLASS_NAME),
                 0);
         Assert.assertEquals(daemonStartupInfo.getConfigurationFileFullPath().compareTo(
-                AppTest.DAEMON_STARTUP_INFO_CONFIGURATION_FILE_PATH),
+                AppTest.TEST_CONFIGURATION_FILE_PATH),
                 0);
+    }
+
+    /**
+     * Positive testing to test BasicRepositoryParserStartupInfo.
+     */
+    @Test
+    @Category(dsm.basicimplementations.repositoryparser.common.BasicRepositoryParserStartupInfo.class)
+    public final void testPositiveBasicRepositoryParserStartupInfo01() {
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final RepositoryParserStartupInfo repositoryParserStartupInfo = injector.getInstance(
+                RepositoryParserStartupInfo.class);
+
+        repositoryParserStartupInfo.setName(AppTest.TEST_NAME);
+        repositoryParserStartupInfo.setLibrary(AppTest.TEST_LIBRARY);
+        repositoryParserStartupInfo.setPackageName(AppTest.TEST_PACKAGE_NAME);
+        repositoryParserStartupInfo.setClassName(AppTest.TEST_CLASS_NAME);
+
+        Assert.assertEquals(repositoryParserStartupInfo.getName().compareTo(
+                AppTest.TEST_NAME),
+                0);
+        Assert.assertEquals(repositoryParserStartupInfo.getLibrary().compareTo(
+                AppTest.TEST_LIBRARY),
+                0);
+        Assert.assertEquals(repositoryParserStartupInfo.getPackageName().compareTo(
+                AppTest.TEST_PACKAGE_NAME),
+                0);
+        Assert.assertEquals(repositoryParserStartupInfo.getClassName().compareTo(
+                AppTest.TEST_CLASS_NAME),
+                0);
+    }
+
+    /**
+     * Positive testing to test BasicRepositoryInfo.
+     */
+    @Test
+    @Category(dsm.basicimplementations.repository.common.BasicRepositoryInfo.class)
+    public final void testPositiveBasicRepositoryInfo01() {
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final RepositoryInfo repositoryInfo = injector.getInstance(
+                RepositoryInfo.class);
+
+        repositoryInfo.setName(AppTest.TEST_NAME);
+        repositoryInfo.setUniqueIdentifier(AppTest.TEST_UNIQUE_IDENTIFIER);
+
+        Assert.assertEquals(repositoryInfo.getName().compareTo(
+                AppTest.TEST_NAME),
+                0);
+        Assert.assertEquals(repositoryInfo.getUniqueIdentifier().compareTo(
+                AppTest.TEST_UNIQUE_IDENTIFIER),
+                0);
+
+        /*****************************************************************************************/
+        final DaemonStartupInfo[] daemonStartupInfoArray =
+                new DaemonStartupInfo[] {injector.getInstance(DaemonStartupInfo.class),
+                                         injector.getInstance(DaemonStartupInfo.class),
+                                         injector.getInstance(DaemonStartupInfo.class),
+                                         injector.getInstance(DaemonStartupInfo.class),
+                                         injector.getInstance(DaemonStartupInfo.class)};
+
+        for (Integer idx = 0; idx < daemonStartupInfoArray.length; idx++) {
+            repositoryInfo.addDaemonStartupInfo(daemonStartupInfoArray[idx]);
+        }
+
+        Assert.assertEquals(repositoryInfo.getDaemonStartupInfoCount(), Integer.valueOf(daemonStartupInfoArray.length));
+
+        for (DaemonStartupInfo enumeratedStartupInfo : repositoryInfo.getDaemonStartupInfoList()) {
+            boolean foundStartupInfo = false;
+
+            for (Integer idx = 0; idx < daemonStartupInfoArray.length; idx++) {
+                if (daemonStartupInfoArray[idx] == enumeratedStartupInfo) {
+                    foundStartupInfo = true;
+
+                    break;
+                }
+            }
+
+            Assert.assertTrue(foundStartupInfo);
+        }
+        /*****************************************************************************************/
+
+        /*****************************************************************************************/
+        final ActionStartupInfo[] actionStartupInfoArray =
+                new ActionStartupInfo[] {injector.getInstance(ActionStartupInfo.class),
+                                         injector.getInstance(ActionStartupInfo.class),
+                                         injector.getInstance(ActionStartupInfo.class)};
+
+        for (Integer idx = 0; idx < actionStartupInfoArray.length; idx++) {
+            repositoryInfo.addActionStartupInfo(actionStartupInfoArray[idx]);
+        }
+
+        Assert.assertEquals(repositoryInfo.getActionStartupInfoCount(), Integer.valueOf(actionStartupInfoArray.length));
+
+        for (ActionStartupInfo enumeratedStartupInfo : repositoryInfo.getActionStartupInfoList()) {
+            boolean foundStartupInfo = false;
+
+            for (Integer idx = 0; idx < actionStartupInfoArray.length; idx++) {
+                if (actionStartupInfoArray[idx] == enumeratedStartupInfo) {
+                    foundStartupInfo = true;
+
+                    break;
+                }
+            }
+
+            Assert.assertTrue(foundStartupInfo);
+        }
+        /*****************************************************************************************/
+
+        /*****************************************************************************************/
+        final ActionManagerStartupInfo[] actionManagerStartupInfoArray =
+                new ActionManagerStartupInfo[] {injector.getInstance(ActionManagerStartupInfo.class),
+                                                injector.getInstance(ActionManagerStartupInfo.class)};
+
+        for (Integer idx = 0; idx < actionManagerStartupInfoArray.length; idx++) {
+            repositoryInfo.addActionManagerStartupInfo(actionManagerStartupInfoArray[idx]);
+        }
+
+        Assert.assertEquals(repositoryInfo.getActionManagerStartupInfoCount(), Integer.valueOf(actionManagerStartupInfoArray.length));
+
+        for (ActionManagerStartupInfo enumeratedStartupInfo : repositoryInfo.getActionManagerStartupInfoList()) {
+            boolean foundStartupInfo = false;
+
+            for (Integer idx = 0; idx < actionManagerStartupInfoArray.length; idx++) {
+                if (actionManagerStartupInfoArray[idx] == enumeratedStartupInfo) {
+                    foundStartupInfo = true;
+
+                    break;
+                }
+            }
+
+            Assert.assertTrue(foundStartupInfo);
+        }
+        /*****************************************************************************************/
     }
 }

@@ -37,27 +37,23 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
     /**
      * Daemon list.
      */
-    private List<DaemonStartupInfo> daemonList;
-
-    /**
-     * Action manager list.
-     */
-    private List<ActionManagerStartupInfo> actionManagerList;
+    private List<DaemonStartupInfo> daemonStartupInfoList = null;
 
     /**
      * Action list.
      */
-    private List<ActionStartupInfo> actionList;
+    private List<ActionStartupInfo> actionStartupInfoList = null;
+
+    /**
+     * Action manager list.
+     */
+    private List<ActionManagerStartupInfo> actionManagerStartupInfoList = null;
 
     /**
      * BasicRepositoryInfo constructor.
      */
     public BasicRepositoryInfo() {
         super("3400bc81-d2c1-4a9f-9ca8-97cedcbe515b", "Basic Repository Info");
-
-        daemonList = new LinkedList<DaemonStartupInfo>();
-        actionManagerList = new LinkedList<ActionManagerStartupInfo>();
-        actionList = new LinkedList<ActionStartupInfo>();
     }
 
     /**
@@ -115,83 +111,140 @@ public class BasicRepositoryInfo extends DsmManifest implements RepositoryInfo {
     }
 
     /**
-     * Adds new daemon to list of daemons.
+     * Adds new daemon startup info to list of daemons.
      *
      * @param daemonStartupInfo Daemon startup info
      */
-    public void addDaemon(final DaemonStartupInfo daemonStartupInfo) {
-        this.daemonList.add(daemonStartupInfo);
+    public void addDaemonStartupInfo(final DaemonStartupInfo daemonStartupInfo) {
+        this.getDaemonStartupInfoList().add(daemonStartupInfo);
     }
 
     /**
-     * Adds new action manager to list of daemons.
-     *
-     * @param actionManagerStartupInfo Action manager startup info
-     */
-    public void addActionManager(final ActionManagerStartupInfo actionManagerStartupInfo) {
-        this.actionManagerList.add(actionManagerStartupInfo);
-    }
-
-    /**
-     * Adds new action to list of daemons.
+     * Adds new action startup info to list of daemons.
      *
      * @param actionStartupInfo Action startup info
      */
-    public void addAction(final ActionStartupInfo actionStartupInfo) {
-        this.actionList.add(actionStartupInfo);
+    public void addActionStartupInfo(final ActionStartupInfo actionStartupInfo) {
+        this.getActionStartupInfoList().add(actionStartupInfo);
     }
 
     /**
-     * Returns daemon list.
+     * Adds new action manager startup info to list of daemons.
      *
-     * @return Returns daemon list
+     * @param actionManagerStartupInfo Action manager startup info
      */
-    protected List<DaemonStartupInfo> getDaemonList() {
-        return this.daemonList;
+    public void addActionManagerStartupInfo(final ActionManagerStartupInfo actionManagerStartupInfo) {
+        this.getActionManagerStartupInfoList().add(actionManagerStartupInfo);
     }
 
     /**
-     * Set daemon list.
+     * Returns the number of added daemon startup info.
      *
-     * @param newDaemonList New daemon list
+     * @return Returns the number of added daemon startup info
      */
-    protected void setDaemonList(final List<DaemonStartupInfo> newDaemonList) {
-        this.daemonList = newDaemonList;
+    public Integer getDaemonStartupInfoCount() {
+        Integer count = Integer.valueOf(0);
+
+        if (this.daemonStartupInfoList != null) {
+            count = this.daemonStartupInfoList.size();
+        }
+
+        return count;
     }
 
     /**
-     * Returns action manager list.
+     * Returns the number of added action startup info.
      *
-     * @return Returns action manager list
+     * @return Returns the number of added action startup info
      */
-    protected List<ActionManagerStartupInfo> getActionManagerList() {
-        return this.actionManagerList;
+    public Integer getActionStartupInfoCount() {
+        Integer count = Integer.valueOf(0);
+
+        if (this.actionStartupInfoList != null) {
+            count = this.actionStartupInfoList.size();
+        }
+
+        return count;
     }
 
     /**
-     * Set action manager list.
+     * Returns the number of added action manager startup info.
      *
-     * @param newActionManagerList New action manager list
+     * @return Returns the number of added action manager startup info
      */
-    protected void setActionManagerList(final List<ActionManagerStartupInfo> newActionManagerList) {
-        this.actionManagerList = newActionManagerList;
+    public Integer getActionManagerStartupInfoCount() {
+        Integer count = Integer.valueOf(0);
+
+        if (this.actionManagerStartupInfoList != null) {
+            count = this.actionManagerStartupInfoList.size();
+        }
+
+        return count;
     }
 
     /**
-     * Returns action list.
+     * Returns daemon startup info list.
      *
-     * @return Returns action list
+     * @return Returns daemon list startup info
      */
-    protected List<ActionStartupInfo> getActionList() {
-        return this.actionList;
+    public List<DaemonStartupInfo> getDaemonStartupInfoList() {
+        if (this.daemonStartupInfoList == null) {
+            this.daemonStartupInfoList = new LinkedList<DaemonStartupInfo>();
+        }
+
+        return this.daemonStartupInfoList;
     }
 
     /**
-     * Set action list.
+     * Set daemon list startup info.
      *
-     * @param newActionList New action list
+     * @param newDaemonStartupInfoList New daemon list startup info
      */
-    protected void setActionList(final List<ActionStartupInfo> newActionList) {
-        this.actionList = newActionList;
+    protected void setDaemonStartupInfoList(final List<DaemonStartupInfo> newDaemonStartupInfoList) {
+        this.daemonStartupInfoList = newDaemonStartupInfoList;
+    }
+
+    /**
+     * Returns action list startup info.
+     *
+     * @return Returns action list startup info
+     */
+    public List<ActionStartupInfo> getActionStartupInfoList() {
+        if (this.actionStartupInfoList == null) {
+            this.actionStartupInfoList = new LinkedList<ActionStartupInfo>();
+        }
+
+        return this.actionStartupInfoList;
+    }
+
+    /**
+     * Set action list startup info.
+     *
+     * @param newActionStartupInfoList New action list startup info
+     */
+    protected void setActionStartupInfoList(final List<ActionStartupInfo> newActionStartupInfoList) {
+        this.actionStartupInfoList = newActionStartupInfoList;
+    }
+
+    /**
+     * Returns action manager list startup info.
+     *
+     * @return Returns action manager list startup info
+     */
+    public List<ActionManagerStartupInfo> getActionManagerStartupInfoList() {
+        if (this.actionManagerStartupInfoList == null) {
+            this.actionManagerStartupInfoList = new LinkedList<ActionManagerStartupInfo>();
+        }
+
+        return this.actionManagerStartupInfoList;
+    }
+
+    /**
+     * Set action manager list startup info.
+     *
+     * @param newActionManagerStartupInfoList New action manager list startup info
+     */
+    protected void setActionManagerStartupInfoList(final List<ActionManagerStartupInfo> newActionManagerStartupInfoList) {
+        this.actionManagerStartupInfoList = newActionManagerStartupInfoList;
     }
 }
