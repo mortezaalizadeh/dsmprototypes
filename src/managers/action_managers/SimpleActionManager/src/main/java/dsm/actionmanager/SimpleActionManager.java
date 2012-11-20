@@ -5,6 +5,7 @@ package dsm.actionmanager;
 
 import dsm.action.manager.common.ActionManager;
 import dsm.common.DsmManifest;
+import dsm.common.argument.ArgumentContainer;
 
 /**
  * SimpleActionManager is a simple action manager.
@@ -54,7 +55,7 @@ public class SimpleActionManager extends DsmManifest implements ActionManager {
      *
      * @param initializationParams Contains initializations parameters
      */
-    public final void init(final String initializationParams) {
+    public final void init(final ArgumentContainer initializationParams) {
         this.inited = true;
     }
 

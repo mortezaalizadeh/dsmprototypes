@@ -20,11 +20,11 @@ import org.junit.experimental.categories.Category;
 public class AppTest extends Object {
 
     /**
-     * Positive testing to test BasicActionStartupInfo.
+     * Positive testing to test DsmDaemon.
      */
     @Test
     @Category(dsm.daemon.dsmdaemon.DsmDaemon.class)
-    public final void testPositiveBasicActionStartupInfo01() {
+    public final void testPositiveDsmDaemon01() {
         final Injector injector = Guice.createInjector(
                 new BasicGuiceInjectorModule());
         final ArgumentContainer initializationParams = injector.getInstance(
