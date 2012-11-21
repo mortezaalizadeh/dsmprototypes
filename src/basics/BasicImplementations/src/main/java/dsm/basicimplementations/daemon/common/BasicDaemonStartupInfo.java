@@ -15,6 +15,11 @@ import dsm.daemon.common.DaemonStartupInfo;
 public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartupInfo {
 
     /**
+     * Daemon unique identifier.
+     */
+    private String uniqueIdentifier;
+
+    /**
      * Daemon name.
      */
     private String name;
@@ -45,11 +50,30 @@ public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartup
     public BasicDaemonStartupInfo() {
         super("634b7eab-c77f-494b-b10a-a646288ca16a", "Basic Daemon Startup Info");
 
+        this.uniqueIdentifier = "";
         this.name = "";
         this.library = "";
         this.packageName = "";
         this.className = "";
         this.configurationFileFullPath = "";
+    }
+
+    /**
+     * Returns daemon unique identifier.
+     *
+     * @return Daemon unique identifier
+     */
+    public String getUniqueIdentifier() {
+        return this.uniqueIdentifier;
+    }
+
+    /**
+     * Set daemon unique identifier.
+     *
+     * @param newUniqueIdentifier New daemon unique identifier
+     */
+    public void setUniqueIdentifier(final String newUniqueIdentifier) {
+        this.uniqueIdentifier = newUniqueIdentifier;
     }
 
     /**

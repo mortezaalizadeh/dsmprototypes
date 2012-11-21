@@ -25,6 +25,11 @@ import org.junit.experimental.categories.Category;
 public class AppTest extends Object {
 
     /**
+     * Test Unique Identifier to be used during test.
+     */
+    private static final String TEST_UNIQUE_IDENTIFIER = "Unique Identifier";
+
+    /**
      * Test Name to be used during test.
      */
     private static final String TEST_NAME = "Name";
@@ -48,11 +53,6 @@ public class AppTest extends Object {
      * Test ConfigurationFileFullPath to be used during test.
      */
     private static final String TEST_CONFIGURATION_FILE_PATH = "ConfigurationFileFullPath";
-
-    /**
-     * Test UniqueIdentifier to be used during test.
-     */
-    private static final String TEST_UNIQUE_IDENTIFIER = "bf932775-00c4-45ca-8fe6-4f4a9693efa4";
 
     /**
      * Positive testing to test BasicActionStartupInfo.
@@ -161,12 +161,16 @@ public class AppTest extends Object {
         final DaemonStartupInfo daemonStartupInfo = injector.getInstance(
                 DaemonStartupInfo.class);
 
+        daemonStartupInfo.setUniqueIdentifier(AppTest.TEST_UNIQUE_IDENTIFIER);
         daemonStartupInfo.setName(AppTest.TEST_NAME);
         daemonStartupInfo.setLibrary(AppTest.TEST_LIBRARY);
         daemonStartupInfo.setPackageName(AppTest.TEST_PACKAGE_NAME);
         daemonStartupInfo.setClassName(AppTest.TEST_CLASS_NAME);
         daemonStartupInfo.setConfigurationFileFullPath(AppTest.TEST_CONFIGURATION_FILE_PATH);
 
+        Assert.assertEquals(daemonStartupInfo.getUniqueIdentifier().compareTo(
+                AppTest.TEST_UNIQUE_IDENTIFIER),
+                0);
         Assert.assertEquals(daemonStartupInfo.getName().compareTo(
                 AppTest.TEST_NAME),
                 0);

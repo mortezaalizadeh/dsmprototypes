@@ -15,6 +15,20 @@ package dsm.daemon.common;
 public interface DaemonStartupInfo {
 
     /**
+     * Returns daemon unique identifier.
+     *
+     * @return Daemon unique identifier
+     */
+    String getUniqueIdentifier();
+
+    /**
+     * Set daemon unique identifier.
+     *
+     * @param newUniqueIdentifier New daemon unique identifier
+     */
+    void setUniqueIdentifier(final String newUniqueIdentifier);
+
+    /**
      * Returns daemon name.
      *
      * @return Daemon name
