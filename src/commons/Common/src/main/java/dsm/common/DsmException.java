@@ -1,7 +1,7 @@
 /**
  * @author Morteza Alizadeh
  */
-package dsm.common.exception;
+package dsm.common;
 
 /**
  * DsmException class defines general Dsm exception.

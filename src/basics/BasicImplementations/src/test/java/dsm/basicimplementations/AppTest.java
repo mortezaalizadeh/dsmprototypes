@@ -8,6 +8,7 @@ import com.google.inject.Injector;
 import dsm.action.common.ActionStartupInfo;
 import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.argument.ArgumentContainer;
+import dsm.common.configuration.ConfigurationParser;
 import dsm.daemon.common.DaemonStartupInfo;
 import dsm.repository.common.RepositoryInfo;
 import dsm.repositoryparser.common.RepositoryParserStartupInfo;
@@ -315,5 +316,19 @@ public class AppTest extends Object {
             Assert.assertTrue(foundStartupInfo);
         }
         /*****************************************************************************************/
+    }
+
+    /**
+     * Positive testing to test BasicConfigurationParser.
+     */
+    @Test
+    @Category(dsm.basicimplementations.common.configuration.BasicConfigurationParser.class)
+    public final void testPositiveBasicConfigurationParser01() {
+        final Injector injector = Guice.createInjector(
+                new BasicGuiceInjectorModule());
+        final ConfigurationParser configurationParser = injector.getInstance(
+                ConfigurationParser.class);
+
+        configurationParser.readConfigurationsFromFile("configurations/configuration.xml");
     }
 }

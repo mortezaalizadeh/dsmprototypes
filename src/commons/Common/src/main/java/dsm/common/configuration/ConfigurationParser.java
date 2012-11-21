@@ -3,8 +3,6 @@
  */
 package dsm.common.configuration;
 
-import dsm.common.argument.ArgumentContainer;
-
 /**
  * ConfigurationParser interface defines methods require to implement a
  * configuration parser.
@@ -17,7 +15,12 @@ import dsm.common.argument.ArgumentContainer;
 public interface ConfigurationParser {
 
     /**
-     * Reads configurations.
+     * Reads configurations from the file.
+     *
+     * @param configurationFilePath Path to configuration file
+     * @exception IOException throws when this exception occurs
+     * @exception SAXException throws when this exception occurs
+     * @exception ParserConfigurationException throws when this exception occurs
      */
-    void readConfigurations(ArgumentContainer configurationParam);
+    void readConfigurationsFromFile(final String configurationFilePath);
 }

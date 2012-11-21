@@ -3,7 +3,7 @@
  */
 package dsm.repositoryparser.exceptions.common;
 
-import dsm.common.exception.DsmException;
+import dsm.common.DsmException;
 
 /**
  * RepositoryFileParsingException class defines exception will be thrown on

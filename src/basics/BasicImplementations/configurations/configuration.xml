@@ -1,63 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <startup>
+        <daemon_list>
+            <daemonn unique_identifier="00000000-0000-0000-0000-000000000001"/>
+            <daemonn unique_identifier="00000000-0000-0000-0000-000000000002"/>
+            <daemonn unique_identifier="00000000-0000-0000-0000-000000000003"/>
+            <daemonn unique_identifier="00000000-0000-0000-0000-000000000004"/>
+        </daemon_list>
+    </startup>
+
     <daemons>
-        <daemon unique_identifier="00000000-0000-0000-0000-000000000000"
+        <daemon unique_identifier="00000000-0000-0000-0000-000000000001"
                 name="Dsm Daemon"
                 library="DsmDaemon.jar"
                 package_name="dsm.daemon.dsmdaemon"
                 class_name="DsmDaemon"
                 configuration_file_full_path="">
             <action_manager_list>
-                <action_manager unique_identifier="00000000-0000-0000-0000-000000000000"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000003"/>
+            </action_manager_list>
+        </daemon>
+        <daemon unique_identifier="00000000-0000-0000-0000-000000000002"
+                name="Dsm Daemon"
+                library="DsmDaemon.jar"
+                package_name="dsm.daemon.dsmdaemon"
+                class_name="DsmDaemon"
+                configuration_file_full_path="">
+            <action_manager_list>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000003"/>
+            </action_manager_list>
+        </daemon>
+        <daemon unique_identifier="00000000-0000-0000-0000-000000000003"
+                name="Dsm Daemon"
+                library="DsmDaemon.jar"
+                package_name="dsm.daemon.dsmdaemon"
+                class_name="DsmDaemon"
+                configuration_file_full_path="">
+            <action_manager_list>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000003"/>
+            </action_manager_list>
+        </daemon>
+        <daemon unique_identifier="00000000-0000-0000-0000-000000000004"
+                name="Dsm Daemon"
+                library="DsmDaemon.jar"
+                package_name="dsm.daemon.dsmdaemon"
+                class_name="DsmDaemon"
+                configuration_file_full_path="">
+            <action_manager_list>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action_manager unique_identifier="00000000-0000-0000-0000-000000000003"/>
             </action_manager_list>
         </daemon>
     </daemons>
+
     <action_managers>
-        <action_manager unique_identifier="00000000-0000-0000-0000-000000000000"
+        <action_manager unique_identifier="00000000-0000-0000-0000-000000000001"
                         name="Simple Action Manager"
                         library="SimpleActionManager.jar"
                         package_name="dsm.actionmanager"
                         class_name="SimpleActionManager"
                         configuration_file_full_path="">
             <action_list>
-                <action unique_identifier="00000000-0000-0000-0000-000000000000"/>
-                <action unique_identifier="00000000-0000-0000-0000-000000000000"/>
-                <action unique_identifier="00000000-0000-0000-0000-000000000000"/>
-                <action unique_identifier="00000000-0000-0000-0000-000000000000"/>
-                <action unique_identifier="00000000-0000-0000-0000-000000000000"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000003"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000004"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000005"/>
+            </action_list>
+        </action_manager>
+        <action_manager unique_identifier="00000000-0000-0000-0000-000000000002"
+                        name="Simple Action Manager"
+                        library="SimpleActionManager.jar"
+                        package_name="dsm.actionmanager"
+                        class_name="SimpleActionManager"
+                        configuration_file_full_path="">
+            <action_list>
+                <action unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000003"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000004"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000005"/>
+            </action_list>
+        </action_manager>
+        <action_manager unique_identifier="00000000-0000-0000-0000-000000000003"
+                        name="Simple Action Manager"
+                        library="SimpleActionManager.jar"
+                        package_name="dsm.actionmanager"
+                        class_name="SimpleActionManager"
+                        configuration_file_full_path="">
+            <action_list>
+                <action unique_identifier="00000000-0000-0000-0000-000000000001"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000002"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000003"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000004"/>
+                <action unique_identifier="00000000-0000-0000-0000-000000000005"/>
             </action_list>
         </action_manager>
     </action_managers>
+
     <actions>
-        <action unique_identifier="00000000-0000-0000-0000-000000000000"
+        <action unique_identifier="00000000-0000-0000-0000-000000000001"
                 name=""
                 library="SimpleAtomicActions.jar"
                 package_name="dsm.action.atomic.simpleactions"
                 class_name="LocalTextFileReader"
                 configuration_file_full_path="" />
 
-        <action unique_identifier="00000000-0000-0000-0000-000000000000"
+        <action unique_identifier="00000000-0000-0000-0000-000000000002"
                 name=""
                 library="SimpleAtomicActions.jar"
                 package_name="dsm.action.atomic.simpleactions"
                 class_name="LocalTextFileWriter"
                 configuration_file_full_path="" />
 
-        <action unique_identifier="00000000-0000-0000-0000-000000000000"
+        <action unique_identifier="00000000-0000-0000-0000-000000000003"
                 name=""
                 library="SimpleDistributedActions.jar"
                 package_name="dsm.action.distributed.simpleactions"
                 class_name="NetworkTextFileReader"
                 configuration_file_full_path="" />
 
-        <action unique_identifier="00000000-0000-0000-0000-000000000000"
+        <action unique_identifier="00000000-0000-0000-0000-000000000004"
                 name=""
                 library="SimpleDistributedActions.jar"
                 package_name="dsm.action.distributed.simpleactions"
                 class_name="NetworkTextFileWriter"
                 configuration_file_full_path="" />
 
-        <action unique_identifier="00000000-0000-0000-0000-000000000000"
+        <action unique_identifier="00000000-0000-0000-0000-000000000005"
                 name=""
                 library="SimpleDistributedActions.jar"
                 package_name="dsm.action.distributed.simpleactions"
