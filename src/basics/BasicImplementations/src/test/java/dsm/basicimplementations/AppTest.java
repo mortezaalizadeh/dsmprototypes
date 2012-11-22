@@ -162,7 +162,6 @@ public class AppTest extends Object {
                 DaemonStartupInfo.class);
 
         daemonStartupInfo.setUniqueIdentifier(AppTest.TEST_UNIQUE_IDENTIFIER);
-        daemonStartupInfo.setName(AppTest.TEST_NAME);
         daemonStartupInfo.setLibrary(AppTest.TEST_LIBRARY);
         daemonStartupInfo.setPackageName(AppTest.TEST_PACKAGE_NAME);
         daemonStartupInfo.setClassName(AppTest.TEST_CLASS_NAME);
@@ -170,9 +169,6 @@ public class AppTest extends Object {
 
         Assert.assertEquals(daemonStartupInfo.getUniqueIdentifier().compareTo(
                 AppTest.TEST_UNIQUE_IDENTIFIER),
-                0);
-        Assert.assertEquals(daemonStartupInfo.getName().compareTo(
-                AppTest.TEST_NAME),
                 0);
         Assert.assertEquals(daemonStartupInfo.getLibrary().compareTo(
                 AppTest.TEST_LIBRARY),
@@ -333,6 +329,6 @@ public class AppTest extends Object {
         final ConfigurationParser configurationParser = injector.getInstance(
                 ConfigurationParser.class);
 
-        configurationParser.readConfigurationsFromFile("configurations/configuration.xml");
+        configurationParser.loadConfigurationsFromFile("configurations/configuration.xml");
     }
 }

@@ -29,20 +29,6 @@ public interface DaemonStartupInfo {
     void setUniqueIdentifier(final String newUniqueIdentifier);
 
     /**
-     * Returns daemon name.
-     *
-     * @return Daemon name
-     */
-    String getName();
-
-    /**
-     * Set daemon name.
-     *
-     * @param newName New daemon name
-     */
-    void setName(final String newName);
-
-    /**
      * Returns daemon library.
      *
      * @return Daemon library

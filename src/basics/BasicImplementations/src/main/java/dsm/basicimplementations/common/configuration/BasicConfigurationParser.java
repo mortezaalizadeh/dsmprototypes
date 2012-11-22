@@ -5,6 +5,7 @@ package dsm.basicimplementations.common.configuration;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.basicimplementations.BasicGuiceInjectorModule;
 import dsm.common.DsmManifest;
 import dsm.common.configuration.ConfigurationParser;
@@ -44,6 +45,36 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             new BasicGuiceInjectorModule());
 
     /**
+     * Daemon tag.
+     */
+    private static final String DAEMON_TAG = "daemon";
+
+    /**
+     * Unique identifier tag.
+     */
+    private static final String UNIQUE_IDENTIFIER_TAG = "unique_identifier";
+
+    /**
+     * Library tag.
+     */
+    private static final String LIBRARY_TAG = "library";
+
+    /**
+     * Package name tag.
+     */
+    private static final String PACKAGE_NAME_TAG = "package_name";
+
+    /**
+     * Class name tag.
+     */
+    private static final String CLASS_NAME_TAG = "class_name";
+
+    /**
+     * Configuration file full path tag.
+     */
+    private static final String CONFIGURATION_FILE_FULL_PATH_TAG = "configuration_file_full_path";
+
+    /**
      * BasicConfigurationParser Constructor.
      */
     public BasicConfigurationParser() {
@@ -51,11 +82,11 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
     }
 
     /**
-     * Reads configurations from the file.
+     * Loads configurations from the file.
      *
      * @param configurationFilePath Path to configuration file
      */
-    public void readConfigurationsFromFile(final String configurationFilePath) {
+    public void loadConfigurationsFromFile(final String configurationFilePath) {
         if (configurationFilePath == null) {
             throw new IllegalArgumentException("configurationFilePath");
         }
@@ -92,7 +123,7 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
      * Reads all daemons startup information from the document.
      *
      * @param document Reference to document object
-     * @param xpath Reference to document object
+     * @param xpath Reference to XPath object
      * @throws XPathExpressionException Throws in case exception occurs
      * @return Returns the list of read daemon startup information
      */
@@ -115,122 +146,12 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
 
         for (int idx = 0; idx < nodes.getLength(); idx++) {
             final Node node = nodes.item(idx);
-            String nodeName = node.getNodeName();
+            final DaemonStartupInfo daemonStartupInfo = validateAndReadDaemonStartupInfo(xpath, node);
 
-            if (nodeName == null) {
-                continue;
-            }
-
-            nodeName = nodeName.trim();
-
-            if (nodeName.compareToIgnoreCase("daemon") == 0) {
-                final NamedNodeMap attributes = node.getAttributes();
-                final DaemonStartupInfo daemonStartupInfo =
-                        dependecyInjector.getInstance(DaemonStartupInfo.class);
-                Node attr;
-                String attrValue;
-
-                if (attributes == null) {
-                    continue;
-                }
-
-                /****************************************************/
-                attr = attributes.getNamedItem("unique_identifier");
-
-                if (attr == null) {
-                    continue;
-                }
-
-                attrValue = attr.getNodeValue();
-
-                if (attrValue == null) {
-                    continue;
-                }
-
-                daemonStartupInfo.setUniqueIdentifier(attrValue);
-                /****************************************************/
-
-                /****************************************************/
-                attr = attributes.getNamedItem("name");
-
-                if (attr == null) {
-                    continue;
-                }
-
-                attrValue = attr.getNodeValue();
-
-                if (attrValue == null) {
-                    daemonStartupInfo.setName("");
-                } else {
-                    daemonStartupInfo.setName(attrValue);
-                }
-                /****************************************************/
-
-                /****************************************************/
-                attr = attributes.getNamedItem("library");
-
-                if (attr == null) {
-                    continue;
-                }
-
-                attrValue = attr.getNodeValue();
-
-                if (attrValue == null) {
-                    continue;
-                }
-
-                daemonStartupInfo.setLibrary(attrValue);
-                /****************************************************/
-
-                /****************************************************/
-                attr = attributes.getNamedItem("package_name");
-
-                if (attr == null) {
-                    continue;
-                }
-
-                attrValue = attr.getNodeValue();
-
-                if (attrValue == null) {
-                    continue;
-                }
-
-                daemonStartupInfo.setPackageName(attrValue);
-                /****************************************************/
-
-                /****************************************************/
-                attr = attributes.getNamedItem("class_name");
-
-                if (attr == null) {
-                    continue;
-                }
-
-                attrValue = attr.getNodeValue();
-
-                if (attrValue == null) {
-                    continue;
-                }
-
-                daemonStartupInfo.setClassName(attrValue);
-                /****************************************************/
-
-                /****************************************************/
-                attr = attributes.getNamedItem("configuration_file_full_path");
-
-                if (attr == null) {
-                    continue;
-                }
-
-                attrValue = attr.getNodeValue();
-
-                if (attrValue == null) {
-                    daemonStartupInfo.setConfigurationFileFullPath("");
-                } else {
-                    daemonStartupInfo.setConfigurationFileFullPath(attrValue);
-                }
-                /****************************************************/
-
+            if (daemonStartupInfo != null) {
                 tmpDaemonStartupInfoList.put(daemonStartupInfo.getUniqueIdentifier(), daemonStartupInfo);
+                
+                validateAndReadAllActionManagerStartupInfo(xpath, node, daemonStartupInfo);
             }
         }
 
@@ -238,10 +159,141 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
     }
 
     /**
+     * Validates and makes sure DaemonStartupInfo is valid, reads them and returns
+     * it.
+     *
+     * @param xpath Reference to XPath object
+     * @param node node in XML document to search for daemon startup information
+     * @return Reference to DaemonStartupInfo or null as failure
+     */
+    private DaemonStartupInfo validateAndReadDaemonStartupInfo(
+            final XPath xpath,
+            final Node node) {
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (node == null) {
+            throw new IllegalArgumentException("node");
+        }
+
+        DaemonStartupInfo result = null;
+
+        do {
+            String nodeName = node.getNodeName();
+
+            if (nodeName == null) {
+                break;
+            }
+
+            nodeName = nodeName.trim();
+
+            if (nodeName.compareToIgnoreCase(BasicConfigurationParser.DAEMON_TAG) != 0) {
+                break;
+            }
+
+            final NamedNodeMap attributes = node.getAttributes();
+            final DaemonStartupInfo daemonStartupInfo =
+                    dependecyInjector.getInstance(DaemonStartupInfo.class);
+
+            Node attr;
+            String attrValue;
+
+            if (attributes == null) {
+                break;
+            }
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.UNIQUE_IDENTIFIER_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            daemonStartupInfo.setUniqueIdentifier(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.LIBRARY_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            daemonStartupInfo.setLibrary(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.PACKAGE_NAME_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            daemonStartupInfo.setPackageName(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.CLASS_NAME_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            daemonStartupInfo.setClassName(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.CONFIGURATION_FILE_FULL_PATH_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                daemonStartupInfo.setConfigurationFileFullPath("");
+            } else {
+                daemonStartupInfo.setConfigurationFileFullPath(attrValue);
+            }
+            /****************************************************/
+
+            result = daemonStartupInfo;
+        } while (false);
+
+        return result;
+    }
+
+    /**
      * Reads all startup daemons from the document.
      *
      * @param document Reference to document object
-     * @param xpath Reference to document object
+     * @param xpath Reference to XPath object
      * @param daemonList List of all daemon startup information exist in the
      * passed document
      * @throws XPathExpressionException Throws in case exception occurs
@@ -283,7 +335,7 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             nodeName = nodeName.trim();
             nodeValue = nodeValue.trim();
 
-            if (nodeName.compareToIgnoreCase("daemon") == 0
+            if (nodeName.compareToIgnoreCase(BasicConfigurationParser.DAEMON_TAG) == 0
                     && !nodeValue.isEmpty()
                     && daemonList.containsKey(nodeValue)) {
                 startupDaemonList.add(nodeValue);
@@ -291,5 +343,32 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
         }
 
         return startupDaemonList;
+    }
+
+    /**
+     * Validates and reads all action manager startup information listed under
+     * a daemon.
+     *
+     * @param xpath Reference to XPath object
+     * @param node node in XML document to search for action manager startup
+     * information
+     * @param daemonStartupInfo Reference to DaemonStartupInfo to add read action
+     * manager startup information to
+     */
+    private void validateAndReadAllActionManagerStartupInfo(
+            final XPath xpath,
+            final Node node,
+            final DaemonStartupInfo daemonStartupInfo) {
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (daemonStartupInfo == null) {
+            throw new IllegalArgumentException("daemonStartupInfo");
+        }
+
+        if (node == null) {
+            throw new IllegalArgumentException("node");
+        }
     }
 }

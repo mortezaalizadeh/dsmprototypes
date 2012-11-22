@@ -20,11 +20,6 @@ public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartup
     private String uniqueIdentifier;
 
     /**
-     * Daemon name.
-     */
-    private String name;
-
-    /**
      * Daemon library.
      */
     private String library;
@@ -51,7 +46,6 @@ public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartup
         super("634b7eab-c77f-494b-b10a-a646288ca16a", "Basic Daemon Startup Info");
 
         this.uniqueIdentifier = "";
-        this.name = "";
         this.library = "";
         this.packageName = "";
         this.className = "";
@@ -74,24 +68,6 @@ public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartup
      */
     public void setUniqueIdentifier(final String newUniqueIdentifier) {
         this.uniqueIdentifier = newUniqueIdentifier;
-    }
-
-    /**
-     * Returns daemon name.
-     *
-     * @return Daemon name
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Set daemon name.
-     *
-     * @param newName New daemon name
-     */
-    public void setName(final String newName) {
-        this.name = newName;
     }
 
     /**

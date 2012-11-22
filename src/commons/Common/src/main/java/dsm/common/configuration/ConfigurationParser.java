@@ -15,12 +15,9 @@ package dsm.common.configuration;
 public interface ConfigurationParser {
 
     /**
-     * Reads configurations from the file.
+     * Loads configurations from the file.
      *
      * @param configurationFilePath Path to configuration file
-     * @exception IOException throws when this exception occurs
-     * @exception SAXException throws when this exception occurs
-     * @exception ParserConfigurationException throws when this exception occurs
      */
-    void readConfigurationsFromFile(final String configurationFilePath);
+    void loadConfigurationsFromFile(final String configurationFilePath);
 }
