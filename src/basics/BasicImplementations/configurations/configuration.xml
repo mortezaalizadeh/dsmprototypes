@@ -2,10 +2,10 @@
 <configuration>
     <startup>
         <daemon_list>
-            <daemonn unique_identifier="00000000-0000-0000-0000-000000000001"/>
-            <daemonn unique_identifier="00000000-0000-0000-0000-000000000002"/>
-            <daemonn unique_identifier="00000000-0000-0000-0000-000000000003"/>
-            <daemonn unique_identifier="00000000-0000-0000-0000-000000000004"/>
+            <daemon unique_identifier="00000000-0000-0000-0000-000000000001"/>
+            <daemon unique_identifier="00000000-0000-0000-0000-000000000002"/>
+            <daemon unique_identifier="00000000-0000-0000-0000-000000000003"/>
+            <daemon unique_identifier="00000000-0000-0000-0000-000000000004"/>
         </daemon_list>
     </startup>
 
