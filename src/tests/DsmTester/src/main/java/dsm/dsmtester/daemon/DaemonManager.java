@@ -4,7 +4,6 @@
 package dsm.dsmtester.daemon;
 
 import dsm.common.DsmManifest;
-import dsm.dsmtester.configuration.ConfigurationReader;
 
 /**
  * DaemonManager class launches daemons, manages their life cycle and keep track
@@ -24,11 +23,6 @@ public final class DaemonManager extends DsmManifest {
      * Daemon manager initialization state.
      */
     private transient boolean inited = false;
-
-    /**
-     * Configuration reader.
-     */
-    private ConfigurationReader configurationReader = null;
 
     /**
      * DaemonManager Constructor.
