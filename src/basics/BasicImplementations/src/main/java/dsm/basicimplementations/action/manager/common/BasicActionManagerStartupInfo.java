@@ -3,8 +3,11 @@
  */
 package dsm.basicimplementations.action.manager.common;
 
+import dsm.action.common.ActionStartupInfo;
 import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.DsmManifest;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * BasicActionManagerStartupInfo is a basic implementation for
@@ -16,130 +19,194 @@ import dsm.common.DsmManifest;
 public class BasicActionManagerStartupInfo extends DsmManifest implements ActionManagerStartupInfo {
 
     /**
-     * Action manager name.
+     * Unique identifier.
      */
-    private String name;
+    private String uniqueIdentifier = "";
 
     /**
-     * Action manager library.
+     * Library.
      */
-    private String library;
+    private String library = "";
 
     /**
-     * Action manager package name.
+     * Package name.
      */
-    private String packageName;
+    private String packageName = "";
 
     /**
-     * Action manager class name.
+     * Class name.
      */
-    private String className;
+    private String className = "";
 
     /**
-     * Action manager configuration file full path.
+     * Configuration file full path.
      */
-    private String configurationFileFullPath;
+    private String configurationFileFullPath = "";
+
+    /**
+     * List of action startup information.
+     */
+    private Set<ActionStartupInfo> actionStartupInfoList = null;
 
     /**
      * BasicActionManagerStartupInfo constructor.
      */
     public BasicActionManagerStartupInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe3", "Basic Action Manager Startup Info");
-
-        this.name = "";
-        this.library = "";
-        this.packageName = "";
-        this.className = "";
-        this.configurationFileFullPath = "";
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe3", "Basic Action Manager Startup Information");
     }
 
     /**
-     * Returns action manager name.
+     * Returns unique identifier.
      *
-     * @return Action manager name
+     * @return Unique identifier
      */
-    public String getName() {
-        return this.name;
+    public String getUniqueIdentifier() {
+        return this.uniqueIdentifier;
     }
 
     /**
-     * Set action manager name.
+     * Set unique identifier.
      *
-     * @param newName New action manager name to set
+     * @param newUniqueIdentifier New unique identifier
      */
-    public void setName(final String newName) {
-        this.name = newName;
+    public void setUniqueIdentifier(final String newUniqueIdentifier) {
+        this.uniqueIdentifier = newUniqueIdentifier;
     }
 
     /**
-     * Returns action manager library.
+     * Returns library.
      *
-     * @return Action manager library
+     * @return Library
      */
     public String getLibrary() {
         return this.library;
     }
 
     /**
-     * Set action manager library.
+     * Set library.
      *
-     * @param newLibrary New action manager library to set
+     * @param newLibrary New library
      */
     public void setLibrary(final String newLibrary) {
         this.library = newLibrary;
     }
 
     /**
-     * Returns action manager package name.
+     * Returns package name.
      *
-     * @return Action manager package name
+     * @return Package name
      */
     public String getPackageName() {
         return this.packageName;
     }
 
     /**
-     * Set action manager package name.
+     * Set package name.
      *
-     * @param newPackageName New action manager package name to set
+     * @param newPackageName New package name
      */
     public void setPackageName(final String newPackageName) {
         this.packageName = newPackageName;
     }
 
     /**
-     * Returns action manager class name.
+     * Returns class name.
      *
-     * @return Action manager class name
+     * @return Class name
      */
     public String getClassName() {
         return this.className;
     }
 
     /**
-     * Set action manager class name.
+     * Set class name.
      *
-     * @param newClassName New action manager class name to set
+     * @param newClassName New class name
      */
     public void setClassName(final String newClassName) {
         this.className = newClassName;
     }
 
     /**
-     * Returns action manager configuration file full path.
+     * Returns configuration file full path.
      *
-     * @return Action manager configuration file full path
+     * @return Configuration file full path
      */
     public String getConfigurationFileFullPath() {
         return this.configurationFileFullPath;
     }
 
     /**
-     * Set action manager configuration file full path.
+     * Set configuration file full path.
      *
-     * @param newConfigurationFileFullPath New action manager configuration file full path to set
+     * @param newConfigurationFileFullPath New configuration file full path
      */
     public void setConfigurationFileFullPath(final String newConfigurationFileFullPath) {
         this.configurationFileFullPath = newConfigurationFileFullPath;
+    }
+
+    /**
+     * Adds new action startup information.
+     *
+     * @param actionStartupInfo Reference to action startup
+     * information to add
+     */
+    public void addActionStartupInfo(final ActionStartupInfo actionStartupInfo) {
+        if (actionStartupInfo == null) {
+            throw new IllegalArgumentException("actionStartupInfo");
+        }
+
+        this.getActionStartupInfoList().add(actionStartupInfo);
+    }
+
+    /**
+     * Removes already added action startup information.
+     *
+     * @param actionStartupInfo Reference to action startup
+     * information to remove
+     */
+    public void removeActionStartupInfo(final ActionStartupInfo actionStartupInfo) {
+        if (actionStartupInfo == null) {
+            throw new IllegalArgumentException("actionStartupInfo");
+        }
+
+        this.getActionStartupInfoList().remove(actionStartupInfo);
+    }
+
+    /**
+     * Returns the number of added action startup information.
+     *
+     * @return Returns the number of added action startup information
+     */
+    public Integer getActionStartupInfoCount() {
+        Integer count = Integer.valueOf(0);
+
+        if (this.actionStartupInfoList != null) {
+            count = this.actionStartupInfoList.size();
+        }
+
+        return count;
+    }
+
+    /**
+     * Returns the list of action startup information.
+     *
+     * @return List of action startup information
+     */
+    public Set<ActionStartupInfo> getActionStartupInfoList() {
+        if (this.actionStartupInfoList == null) {
+            this.actionStartupInfoList = new HashSet<ActionStartupInfo>();
+        }
+
+        return this.actionStartupInfoList;
+    }
+
+    /**
+     * Sets list of action startup information.
+     *
+     * @param newActionStartupInfoList New action startup information list
+     */
+    protected void setActionStartupInfoList(final Set<ActionStartupInfo> newActionStartupInfoList) {
+        this.actionStartupInfoList = newActionStartupInfoList;
     }
 }

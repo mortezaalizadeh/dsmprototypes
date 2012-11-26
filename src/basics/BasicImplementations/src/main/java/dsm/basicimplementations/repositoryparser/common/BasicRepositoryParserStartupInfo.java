@@ -39,7 +39,7 @@ public class BasicRepositoryParserStartupInfo extends DsmManifest implements Rep
      * BasicRepositoryParserStartupInfo constructor.
      */
     public BasicRepositoryParserStartupInfo() {
-        super("2314398d-758a-412e-8d21-515c90b87667", "Basic Repository Parser Startup Info");
+        super("2314398d-758a-412e-8d21-515c90b87667", "Basic Repository Parser Startup Information");
 
         this.name = "";
         this.library = "";

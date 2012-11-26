@@ -5,6 +5,8 @@ package dsm.basicimplementations.common.configuration;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import dsm.action.common.ActionStartupInfo;
+import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.basicimplementations.BasicGuiceInjectorModule;
 import dsm.common.DsmManifest;
 import dsm.common.configuration.ConfigurationParser;
@@ -12,9 +14,7 @@ import dsm.common.configuration.ConfigurationParserException;
 import dsm.daemon.common.DaemonStartupInfo;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -41,11 +41,6 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
      */
     private static Injector dependecyInjector = Guice.createInjector(
             new BasicGuiceInjectorModule());
-
-    /**
-     * Daemon tag.
-     */
-    private static final String DAEMON_TAG = "daemon";
 
     /**
      * Unique identifier tag.
@@ -101,9 +96,14 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             final Document document = documentBuilder.parse(configurationFilePath);
             final XPath xpath = XPathFactory.newInstance().newXPath();
-
-            /* Reading the list of startup daemon unique identifiers... */
-            final Set<String> startupDaemonList = readStartupDaemon(document, xpath, readAllDaemonsStartupInfo(document, xpath));
+            final Map<String, ActionStartupInfo> actionStartupInfoList =
+                    readAllActionStartupInfo(document, xpath);
+            final Map<String, ActionManagerStartupInfo> actionManagerStartupInfoList =
+                    readAllActionManagerStartupInfo(document, xpath, actionStartupInfoList);
+            final Map<String, DaemonStartupInfo> daemonStartupInfoList =
+                    readAllDaemonStartupInfo(document, xpath, actionManagerStartupInfoList);
+            final Map<String, DaemonStartupInfo> startupDaemonList =
+                    readStartupDaemonList(document, xpath, daemonStartupInfoList);
         } catch (ParserConfigurationException ex) {
             throw new ConfigurationParserException(ex);
         } catch (SAXException ex) {
@@ -116,13 +116,14 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
     }
 
     /**
-     * Reads all daemons startup information from the document.
+     * Reads all action startup information from the document.
      *
      * @param document Reference to document object
      * @param xpath Reference to XPath object
-     * @return Returns the list of read daemon startup information
+     * @return Returns the list of read action startup information
+     * @throws XPathExpressionException Throws in case exception occurs
      */
-    private Map<String, DaemonStartupInfo> readAllDaemonsStartupInfo(
+    private Map<String, ActionStartupInfo> readAllActionStartupInfo(
             final Document document,
             final XPath xpath)
             throws XPathExpressionException {
@@ -134,9 +135,399 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             throw new IllegalArgumentException("xpath");
         }
 
-        final Map<String, DaemonStartupInfo> tmpDaemonStartupInfoList = new HashMap<String, DaemonStartupInfo>();
+        final Map<String, ActionStartupInfo> tmpActionStartupInfoList =
+                new HashMap<String, ActionStartupInfo>();
         final Object result =
-                xpath.evaluate("configuration//daemons/*",
+                xpath.evaluate("configuration//actions/action",
+                document,
+                XPathConstants.NODESET);
+        final NodeList nodes = (NodeList) result;
+
+        for (int idx = 0; idx < nodes.getLength(); idx++) {
+            final Node node = nodes.item(idx);
+            final ActionStartupInfo actionStartupInfo = validateAndReadActionStartupInfo(xpath, node);
+
+            if (actionStartupInfo != null) {
+                tmpActionStartupInfoList.put(actionStartupInfo.getUniqueIdentifier(), actionStartupInfo);
+            }
+        }
+
+        return tmpActionStartupInfoList;
+    }
+
+    /**
+     * Validates and makes sure ActionStartupInfo is valid, reads required
+     * information and returns it.
+     *
+     * @param xpath Reference to XPath object
+     * @param node node in XML document to search for action startup information
+     * @return Reference to ActionStartupInfo or null as failure
+     */
+    private ActionStartupInfo validateAndReadActionStartupInfo(
+            final XPath xpath,
+            final Node node) {
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (node == null) {
+            throw new IllegalArgumentException("node");
+        }
+
+        ActionStartupInfo result = null;
+
+        do {
+            final NamedNodeMap attributes = node.getAttributes();
+            final ActionStartupInfo actionStartupInfo =
+                    dependecyInjector.getInstance(ActionStartupInfo.class);
+
+            Node attr;
+            String attrValue;
+
+            if (attributes == null) {
+                break;
+            }
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.UNIQUE_IDENTIFIER_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionStartupInfo.setUniqueIdentifier(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.LIBRARY_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionStartupInfo.setLibrary(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.PACKAGE_NAME_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionStartupInfo.setPackageName(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.CLASS_NAME_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionStartupInfo.setClassName(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.CONFIGURATION_FILE_FULL_PATH_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                actionStartupInfo.setConfigurationFileFullPath("");
+            } else {
+                actionStartupInfo.setConfigurationFileFullPath(attrValue);
+            }
+            /****************************************************/
+
+            result = actionStartupInfo;
+        } while (false);
+
+        return result;
+    }
+
+    /**
+     * Reads all action manager startup information from the document.
+     *
+     * @param document Reference to document object
+     * @param xpath Reference to XPath object
+     * @param actionStartupInfoList Reference to list of registered action startup
+     * information
+     * @return Returns the list of read action manager startup information
+     * @throws XPathExpressionException Throws in case exception occurs
+     */
+    private Map<String, ActionManagerStartupInfo> readAllActionManagerStartupInfo(
+            final Document document,
+            final XPath xpath,
+            final Map<String, ActionStartupInfo> actionStartupInfoList)
+            throws XPathExpressionException {
+        if (document == null) {
+            throw new IllegalArgumentException("document");
+        }
+
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (actionStartupInfoList == null) {
+            throw new IllegalArgumentException("actionStartupInfoList");
+        }
+
+        final Map<String, ActionManagerStartupInfo> tmpActionManagerStartupInfoList =
+                new HashMap<String, ActionManagerStartupInfo>();
+        final Object result =
+                xpath.evaluate("configuration//action_managers/action_manager",
+                document,
+                XPathConstants.NODESET);
+        final NodeList nodes = (NodeList) result;
+
+        for (int idx = 0; idx < nodes.getLength(); idx++) {
+            final Node node = nodes.item(idx);
+            final ActionManagerStartupInfo actionManagerStartupInfo = validateAndReadActionManagerStartupInfo(xpath, node);
+
+            if (actionManagerStartupInfo != null) {
+                validateAndReadAllListedAction(
+                        xpath,
+                        node,
+                        actionManagerStartupInfo,
+                        actionStartupInfoList);
+
+                tmpActionManagerStartupInfoList.put(actionManagerStartupInfo.getUniqueIdentifier(), actionManagerStartupInfo);
+            }
+        }
+
+        return tmpActionManagerStartupInfoList;
+    }
+
+    /**
+     * Validates and makes sure ActionManagerStartupInfo is valid, reads required
+     * information and returns it.
+     *
+     * @param xpath Reference to XPath object
+     * @param node node in XML document to search for action manager startup information
+     * @return Reference to ActionManagerStartupInfo or null as failure
+     */
+    private ActionManagerStartupInfo validateAndReadActionManagerStartupInfo(
+            final XPath xpath,
+            final Node node) {
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (node == null) {
+            throw new IllegalArgumentException("node");
+        }
+
+        ActionManagerStartupInfo result = null;
+
+        do {
+            final NamedNodeMap attributes = node.getAttributes();
+            final ActionManagerStartupInfo actionManagerStartupInfo =
+                    dependecyInjector.getInstance(ActionManagerStartupInfo.class);
+
+            Node attr;
+            String attrValue;
+
+            if (attributes == null) {
+                break;
+            }
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.UNIQUE_IDENTIFIER_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionManagerStartupInfo.setUniqueIdentifier(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.LIBRARY_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionManagerStartupInfo.setLibrary(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.PACKAGE_NAME_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionManagerStartupInfo.setPackageName(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.CLASS_NAME_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                break;
+            }
+
+            actionManagerStartupInfo.setClassName(attrValue);
+            /****************************************************/
+
+            /****************************************************/
+            attr = attributes.getNamedItem(BasicConfigurationParser.CONFIGURATION_FILE_FULL_PATH_TAG);
+
+            if (attr == null) {
+                break;
+            }
+
+            attrValue = attr.getNodeValue();
+
+            if (attrValue == null) {
+                actionManagerStartupInfo.setConfigurationFileFullPath("");
+            } else {
+                actionManagerStartupInfo.setConfigurationFileFullPath(attrValue);
+            }
+            /****************************************************/
+
+            result = actionManagerStartupInfo;
+        } while (false);
+
+        return result;
+    }
+
+    /**
+     * Validates and reads all actions listed under a action manager.
+     *
+     * @param xpath Reference to XPath object
+     * @param node node in XML document to search for action startup information
+     * @param actionManagerStartupInfo Reference to ActionManagerStartupInfo to
+     * add action startup information to
+     * @param actionStartupInfoList Reference to list of registered action startup
+     * information
+     * @throws XPathExpressionException Throws in case exception occurs
+     */
+    private void validateAndReadAllListedAction(
+            final XPath xpath,
+            final Node node,
+            final ActionManagerStartupInfo actionManagerStartupInfo,
+            final Map<String, ActionStartupInfo> actionStartupInfoList)
+            throws XPathExpressionException {
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (node == null) {
+            throw new IllegalArgumentException("node");
+        }
+
+        if (actionManagerStartupInfo == null) {
+            throw new IllegalArgumentException("actionManagerStartupInfo");
+        }
+
+        if (actionStartupInfoList == null) {
+            throw new IllegalArgumentException("actionStartupInfoList");
+        }
+
+        final Object result =
+                xpath.evaluate("action_list/action/@unique_identifier",
+                node,
+                XPathConstants.NODESET);
+        final NodeList nodes = (NodeList) result;
+
+        for (int idx = 0; idx < nodes.getLength(); idx++) {
+            String nodeValue = nodes.item(idx).getNodeValue();
+
+            nodeValue = nodeValue.trim();
+
+            if (!nodeValue.isEmpty()
+                    && actionStartupInfoList.containsKey(nodeValue)) {
+                actionManagerStartupInfo.addActionStartupInfo(actionStartupInfoList.get(nodeValue));
+            }
+        }
+    }
+
+    /**
+     * Reads all daemon startup information from the document.
+     *
+     * @param document Reference to document object
+     * @param xpath Reference to XPath object
+     * @param actionManagerStartupInfoList Reference to list of registered action
+     * manager startup information
+     * @return Returns the list of read daemon startup information
+     * @throws XPathExpressionException Throws in case exception occurs
+     */
+    private Map<String, DaemonStartupInfo> readAllDaemonStartupInfo(
+            final Document document,
+            final XPath xpath,
+            final Map<String, ActionManagerStartupInfo> actionManagerStartupInfoList)
+            throws XPathExpressionException {
+        if (document == null) {
+            throw new IllegalArgumentException("document");
+        }
+
+        if (xpath == null) {
+            throw new IllegalArgumentException("xpath");
+        }
+
+        if (actionManagerStartupInfoList == null) {
+            throw new IllegalArgumentException("actionManagerStartupInfoList");
+        }
+
+        final Map<String, DaemonStartupInfo> tmpDaemonStartupInfoList =
+                new HashMap<String, DaemonStartupInfo>();
+        final Object result =
+                xpath.evaluate("configuration//daemons/daemon",
                 document,
                 XPathConstants.NODESET);
         final NodeList nodes = (NodeList) result;
@@ -146,9 +537,13 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             final DaemonStartupInfo daemonStartupInfo = validateAndReadDaemonStartupInfo(xpath, node);
 
             if (daemonStartupInfo != null) {
-                tmpDaemonStartupInfoList.put(daemonStartupInfo.getUniqueIdentifier(), daemonStartupInfo);
+                validateAndReadAllListedActionManager(
+                        xpath,
+                        node,
+                        daemonStartupInfo,
+                        actionManagerStartupInfoList);
 
-                validateAndReadAllActionManagerStartupInfo(xpath, node, daemonStartupInfo);
+                tmpDaemonStartupInfoList.put(daemonStartupInfo.getUniqueIdentifier(), daemonStartupInfo);
             }
         }
 
@@ -156,8 +551,8 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
     }
 
     /**
-     * Validates and makes sure DaemonStartupInfo is valid, reads them and returns
-     * it.
+     * Validates and makes sure DaemonStartupInfo is valid, reads required
+     * information and returns it.
      *
      * @param xpath Reference to XPath object
      * @param node node in XML document to search for daemon startup information
@@ -177,20 +572,8 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
         DaemonStartupInfo result = null;
 
         do {
-            String nodeName = node.getNodeName();
-
-            if (nodeName == null) {
-                break;
-            }
-
-            nodeName = nodeName.trim();
-
-            if (nodeName.compareToIgnoreCase(BasicConfigurationParser.DAEMON_TAG) != 0) {
-                break;
-            }
-
             final NamedNodeMap attributes = node.getAttributes();
-            final DaemonStartupInfo daemonStartupInfo =
+            final DaemonStartupInfo DaemonStartupInfo =
                     dependecyInjector.getInstance(DaemonStartupInfo.class);
 
             Node attr;
@@ -213,7 +596,7 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
                 break;
             }
 
-            daemonStartupInfo.setUniqueIdentifier(attrValue);
+            DaemonStartupInfo.setUniqueIdentifier(attrValue);
             /****************************************************/
 
             /****************************************************/
@@ -229,7 +612,7 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
                 break;
             }
 
-            daemonStartupInfo.setLibrary(attrValue);
+            DaemonStartupInfo.setLibrary(attrValue);
             /****************************************************/
 
             /****************************************************/
@@ -245,7 +628,7 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
                 break;
             }
 
-            daemonStartupInfo.setPackageName(attrValue);
+            DaemonStartupInfo.setPackageName(attrValue);
             /****************************************************/
 
             /****************************************************/
@@ -261,7 +644,7 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
                 break;
             }
 
-            daemonStartupInfo.setClassName(attrValue);
+            DaemonStartupInfo.setClassName(attrValue);
             /****************************************************/
 
             /****************************************************/
@@ -274,43 +657,49 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             attrValue = attr.getNodeValue();
 
             if (attrValue == null) {
-                daemonStartupInfo.setConfigurationFileFullPath("");
+                DaemonStartupInfo.setConfigurationFileFullPath("");
             } else {
-                daemonStartupInfo.setConfigurationFileFullPath(attrValue);
+                DaemonStartupInfo.setConfigurationFileFullPath(attrValue);
             }
             /****************************************************/
 
-            result = daemonStartupInfo;
+            result = DaemonStartupInfo;
         } while (false);
 
         return result;
     }
 
     /**
-     * Validates and reads all action manager startup information listed under
-     * a daemon.
+     * Validates and reads all actions manager listed under a daemon.
      *
      * @param xpath Reference to XPath object
-     * @param node node in XML document to search for action manager startup
-     * information
-     * @param daemonStartupInfo Reference to DaemonStartupInfo to add read action
-     * manager startup information to
+     * @param node node in XML document to search for action startup information
+     * @param daemonStartupInfo Reference to DaemonStartupInfo to
+     * add action manager startup information to
+     * @param actionManagerStartupInfoList Reference to list of registered action
+     * manger startup information
      * @throws XPathExpressionException Throws in case exception occurs
      */
-    private void validateAndReadAllActionManagerStartupInfo(
+    private void validateAndReadAllListedActionManager(
             final XPath xpath,
             final Node node,
-            final DaemonStartupInfo daemonStartupInfo) throws XPathExpressionException {
+            final DaemonStartupInfo daemonStartupInfo,
+            final Map<String, ActionManagerStartupInfo> actionManagerStartupInfoList)
+            throws XPathExpressionException {
         if (xpath == null) {
             throw new IllegalArgumentException("xpath");
+        }
+
+        if (node == null) {
+            throw new IllegalArgumentException("node");
         }
 
         if (daemonStartupInfo == null) {
             throw new IllegalArgumentException("daemonStartupInfo");
         }
 
-        if (node == null) {
-            throw new IllegalArgumentException("node");
+        if (actionManagerStartupInfoList == null) {
+            throw new IllegalArgumentException("actionManagerStartupInfoList");
         }
 
         final Object result =
@@ -324,7 +713,9 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
 
             nodeValue = nodeValue.trim();
 
-            if (!nodeValue.isEmpty()) {
+            if (!nodeValue.isEmpty()
+                    && actionManagerStartupInfoList.containsKey(nodeValue)) {
+                daemonStartupInfo.addActionManagerStartupInfo(actionManagerStartupInfoList.get(nodeValue));
             }
         }
     }
@@ -334,15 +725,15 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
      *
      * @param document Reference to document object
      * @param xpath Reference to XPath object
-     * @param daemonList List of all daemon startup information exist in the
-     * passed document
+     * @param daemonStartupInfoList Reference to list of registered daemon
+     * startup information
      * @throws XPathExpressionException Throws in case exception occurs
-     * @return Returns the list of read startup daemon unique identifiers
+     * @return Returns the list of read startup daemon
      */
-    private Set<String> readStartupDaemon(
+    private Map<String, DaemonStartupInfo> readStartupDaemonList(
             final Document document,
             final XPath xpath,
-            final Map<String, DaemonStartupInfo> daemonList)
+            final Map<String, DaemonStartupInfo> daemonStartupInfoList)
             throws XPathExpressionException {
         if (document == null) {
             throw new IllegalArgumentException("document");
@@ -352,12 +743,12 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             throw new IllegalArgumentException("xpath");
         }
 
-        if (daemonList == null) {
-            throw new IllegalArgumentException("daemonList");
+        if (daemonStartupInfoList == null) {
+            throw new IllegalArgumentException("daemonStartupInfoList");
         }
 
-        /* Using HashSet to remove duplicate unique identifiers */
-        final Set<String> startupDaemonList = new HashSet<String>();
+        final Map<String, DaemonStartupInfo> tmpDaemonStartupInfoList =
+                new HashMap<String, DaemonStartupInfo>();
         final Object result =
                 xpath.evaluate("configuration/startup//daemon_list/daemon/@unique_identifier",
                 document,
@@ -370,11 +761,13 @@ public class BasicConfigurationParser  extends DsmManifest implements Configurat
             nodeValue = nodeValue.trim();
 
             if (!nodeValue.isEmpty()
-                    && daemonList.containsKey(nodeValue)) {
-                startupDaemonList.add(nodeValue);
+                    && daemonStartupInfoList.containsKey(nodeValue)) {
+                final DaemonStartupInfo daemonStartupInfo = daemonStartupInfoList.get(nodeValue);
+
+                tmpDaemonStartupInfoList.put(daemonStartupInfo.getUniqueIdentifier(), daemonStartupInfo);
             }
         }
 
-        return startupDaemonList;
+        return tmpDaemonStartupInfoList;
     }
 }

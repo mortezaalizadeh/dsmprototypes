@@ -3,6 +3,9 @@
  */
 package dsm.daemon.common;
 
+import dsm.action.manager.common.ActionManagerStartupInfo;
+import java.util.Set;
+
 /**
  * DaemonStartupInfo interface represents Daemon Startup Information.
  *
@@ -15,72 +18,102 @@ package dsm.daemon.common;
 public interface DaemonStartupInfo {
 
     /**
-     * Returns daemon unique identifier.
+     * Returns unique identifier.
      *
-     * @return Daemon unique identifier
+     * @return Unique identifier
      */
     String getUniqueIdentifier();
 
     /**
-     * Set daemon unique identifier.
+     * Set unique identifier.
      *
-     * @param newUniqueIdentifier New daemon unique identifier
+     * @param newUniqueIdentifier New unique identifier
      */
     void setUniqueIdentifier(final String newUniqueIdentifier);
 
     /**
-     * Returns daemon library.
+     * Returns library.
      *
-     * @return Daemon library
+     * @return Library
      */
     String getLibrary();
 
     /**
-     * Set daemon library.
+     * Set library.
      *
-     * @param newLibrary New daemon library
+     * @param newLibrary New library
      */
     void setLibrary(final String newLibrary);
 
     /**
-     * Returns daemon package name.
+     * Returns package name.
      *
-     * @return Daemon package name
+     * @return Package name
      */
     String getPackageName();
 
     /**
-     * Set daemon package name.
+     * Set package name.
      *
-     * @param newPackageName New daemon package name
+     * @param newPackageName New package name
      */
     void setPackageName(final String newPackageName);
 
     /**
-     * Returns daemon class name.
+     * Returns class name.
      *
-     * @return Daemon class name
+     * @return Class name
      */
     String getClassName();
 
     /**
-     * Set daemon class name.
+     * Set class name.
      *
-     * @param newClassName New daemon class name
+     * @param newClassName New class name
      */
     void setClassName(final String newClassName);
 
     /**
-     * Returns daemon configuration file full path.
+     * Returns configuration file full path.
      *
-     * @return Daemon configuration file full path
+     * @return Configuration file full path
      */
     String getConfigurationFileFullPath();
 
     /**
-     * Set daemon configuration file full path.
+     * Set configuration file full path.
      *
-     * @param newConfigurationFileFullPath New daemon configuration file full path
+     * @param newConfigurationFileFullPath New configuration file full path
      */
     void setConfigurationFileFullPath(final String newConfigurationFileFullPath);
+
+    /**
+     * Adds new action manager startup information.
+     *
+     * @param actionManagerStartupInfo Reference to action manager startup
+     * information to add
+     */
+    void addActionManagerStartupInfo(final ActionManagerStartupInfo actionManagerStartupInfo);
+
+    /**
+     * Removes already added action manager startup information.
+     *
+     * @param actionManagerStartupInfo Reference to action manager startup
+     * information to remove
+     */
+    void removeActionManagerStartupInfo(final ActionManagerStartupInfo actionManagerStartupInfo);
+
+    /**
+     * Returns the number of added action manager startup information.
+     *
+     * @return Returns the number of added action manager startup information
+     */
+    Integer getActionManagerStartupInfoCount();
+
+    /**
+     * Returns the list of action manager startup information.
+     *
+     * @return List of action manager startup information
+     */
+    Set<ActionManagerStartupInfo> getActionManagerStartupInfoList();
 }

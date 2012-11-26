@@ -15,128 +15,122 @@ import dsm.common.DsmManifest;
 public class BasicActionStartupInfo extends DsmManifest implements ActionStartupInfo {
 
     /**
-     * Action name.
+     * Unique identifier.
      */
-    private String name;
+    private String uniqueIdentifier = "";
 
     /**
-     * Action library.
+     * Library.
      */
-    private String library;
+    private String library = "";
 
     /**
-     * Action package name.
+     * Package name.
      */
-    private String packageName;
+    private String packageName = "";
 
     /**
-     * Action class name.
+     * Class name.
      */
-    private String className;
+    private String className = "";
 
     /**
-     * Action configuration file full path.
+     * Configuration file full path.
      */
-    private String configurationFileFullPath;
+    private String configurationFileFullPath = "";
 
     /**
      * BasicActionStartupInfo constructor.
      */
     public BasicActionStartupInfo() {
-        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe4", "Basic Action Startup Info");
-
-        this.name = "";
-        this.library = "";
-        this.packageName = "";
-        this.className = "";
-        this.configurationFileFullPath = "";
+        super("70feef0d-bb9e-4bb2-998f-8bba70fbefe4", "Basic Action Startup Information");
     }
 
     /**
-     * Returns action name.
+     * Returns unique identifier.
      *
-     * @return Action name
+     * @return Unique identifier
      */
-    public String getName() {
-        return this.name;
+    public String getUniqueIdentifier() {
+        return this.uniqueIdentifier;
     }
 
     /**
-     * Set action name.
+     * Set unique identifier.
      *
-     * @param newName New action name
+     * @param newUniqueIdentifier New unique identifier
      */
-    public void setName(final String newName) {
-        this.name = newName;
+    public void setUniqueIdentifier(final String newUniqueIdentifier) {
+        this.uniqueIdentifier = newUniqueIdentifier;
     }
 
     /**
-     * Returns action library.
+     * Returns library.
      *
-     * @return Action library
+     * @return Library
      */
     public String getLibrary() {
         return this.library;
     }
 
     /**
-     * Set action library.
+     * Set library.
      *
-     * @param newLibrary New action library
+     * @param newLibrary New library
      */
     public void setLibrary(final String newLibrary) {
         this.library = newLibrary;
     }
 
     /**
-     * Returns action package name.
+     * Returns package name.
      *
-     * @return Action package name
+     * @return Package name
      */
     public String getPackageName() {
         return this.packageName;
     }
 
     /**
-     * Set action package name.
+     * Set package name.
      *
-     * @param newPackageName New action package name
+     * @param newPackageName New package name
      */
     public void setPackageName(final String newPackageName) {
         this.packageName = newPackageName;
     }
 
     /**
-     * Returns action class name.
+     * Returns class name.
      *
-     * @return Action class name
+     * @return Class name
      */
     public String getClassName() {
         return this.className;
     }
 
     /**
-     * Set action class name.
+     * Set class name.
      *
-     * @param newClassName New action class name
+     * @param newClassName New class name
      */
     public void setClassName(final String newClassName) {
         this.className = newClassName;
     }
 
     /**
-     * Returns action configuration file full path.
+     * Returns configuration file full path.
      *
-     * @return Action configuration file full path
+     * @return Configuration file full path
      */
     public String getConfigurationFileFullPath() {
         return this.configurationFileFullPath;
     }
 
     /**
-     * Set action configuration file full path.
+     * Set configuration file full path.
      *
-     * @param newConfigurationFileFullPath New action configuration file full path
+     * @param newConfigurationFileFullPath New configuration file full path
      */
     public void setConfigurationFileFullPath(final String newConfigurationFileFullPath) {
         this.configurationFileFullPath = newConfigurationFileFullPath;

@@ -6,7 +6,7 @@ package dsm.repository.common;
 import dsm.action.common.ActionStartupInfo;
 import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.daemon.common.DaemonStartupInfo;
-import java.util.List;
+import java.util.Set;
 
 /**
  * RepositoryInfo interface represents Repository Information.
@@ -61,65 +61,65 @@ public interface RepositoryInfo {
     void setIncludeInStartup(final boolean bIncludeInStartup);
 
     /**
-     * Adds new daemon startup info to list of daemons.
+     * Adds new daemon startup information to list of daemons.
      *
-     * @param daemonStartupInfo Daemon startup info
+     * @param daemonStartupInfo Daemon startup information
      */
     void addDaemonStartupInfo(final DaemonStartupInfo daemonStartupInfo);
 
     /**
-     * Adds new action startup info to list of daemons.
+     * Adds new action startup information to list of daemons.
      *
-     * @param actionStartupInfo Action startup info
+     * @param actionStartupInfo Action startup information
      */
     void addActionStartupInfo(final ActionStartupInfo actionStartupInfo);
 
     /**
-     * Adds new action manager startup info to list of daemons.
+     * Adds new action manager startup information to list of daemons.
      *
-     * @param actionManagerStartupInfo Action manager startup info
+     * @param actionManagerStartupInfo Action manager startup information
      */
     void addActionManagerStartupInfo(final ActionManagerStartupInfo actionManagerStartupInfo);
 
     /**
-     * Returns the number of added daemon startup info.
+     * Returns the number of added daemon startup information.
      *
-     * @return Returns the number of added daemon startup info
+     * @return Returns the number of added daemon startup information
      */
     Integer getDaemonStartupInfoCount();
 
     /**
-     * Returns the number of added action startup info.
+     * Returns the number of added action startup information.
      *
-     * @return Returns the number of added action startup info
+     * @return Returns the number of added action startup information
      */
     Integer getActionStartupInfoCount();
 
     /**
-     * Returns the number of added action manager startup info.
+     * Returns the number of added action manager startup information.
      *
-     * @return Returns the number of added action manager startup info
+     * @return Returns the number of added action manager startup information
      */
     Integer getActionManagerStartupInfoCount();
 
     /**
-     * Returns daemon startup info list.
+     * Returns list of daemon startup information.
      *
-     * @return Returns daemon list startup info
+     * @return Returns list of daemon startup information
      */
-    List<DaemonStartupInfo> getDaemonStartupInfoList();
+    Set<DaemonStartupInfo> getDaemonStartupInfoList();
 
     /**
-     * Returns action list startup info.
+     * Returns list of action startup information.
      *
-     * @return Returns action list startup info
+     * @return Returns list of action startup information
      */
-    List<ActionStartupInfo> getActionStartupInfoList();
+    Set<ActionStartupInfo> getActionStartupInfoList();
 
     /**
-     * Returns action manager list startup info.
+     * Returns list of action manager startup information.
      *
-     * @return Returns action manager list startup info
+     * @return Returns list of action manager startup information
      */
-    List<ActionManagerStartupInfo> getActionManagerStartupInfoList();
+    Set<ActionManagerStartupInfo> getActionManagerStartupInfoList();
 }

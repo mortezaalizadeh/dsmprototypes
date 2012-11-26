@@ -3,8 +3,11 @@
  */
 package dsm.basicimplementations.daemon.common;
 
+import dsm.action.manager.common.ActionManagerStartupInfo;
 import dsm.common.DsmManifest;
 import dsm.daemon.common.DaemonStartupInfo;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * BasicDaemonStartupInfo is a basic implementation for DaemonStartupInfo.
@@ -15,130 +18,194 @@ import dsm.daemon.common.DaemonStartupInfo;
 public class BasicDaemonStartupInfo extends DsmManifest implements DaemonStartupInfo {
 
     /**
-     * Daemon unique identifier.
+     * Unique identifier.
      */
-    private String uniqueIdentifier;
+    private String uniqueIdentifier = "";
 
     /**
-     * Daemon library.
+     * Library.
      */
-    private String library;
+    private String library = "";
 
     /**
-     * Daemon package name.
+     * Package name.
      */
-    private String packageName;
+    private String packageName = "";
 
     /**
-     * Daemon class name.
+     * Class name.
      */
-    private String className;
+    private String className = "";
 
     /**
-     * Daemon configuration file full path.
+     * Configuration file full path.
      */
-    private String configurationFileFullPath;
+    private String configurationFileFullPath = "";
+
+    /**
+     * List of action manager startup information.
+     */
+    private Set<ActionManagerStartupInfo> actionManagerStartupInfoList = null;
 
     /**
      * BasicDaemonStartupInfo constructor.
      */
     public BasicDaemonStartupInfo() {
-        super("634b7eab-c77f-494b-b10a-a646288ca16a", "Basic Daemon Startup Info");
-
-        this.uniqueIdentifier = "";
-        this.library = "";
-        this.packageName = "";
-        this.className = "";
-        this.configurationFileFullPath = "";
+        super("634b7eab-c77f-494b-b10a-a646288ca16a", "Basic Daemon Startup Information");
     }
 
     /**
-     * Returns daemon unique identifier.
+     * Returns unique identifier.
      *
-     * @return Daemon unique identifier
+     * @return Unique identifier
      */
     public String getUniqueIdentifier() {
         return this.uniqueIdentifier;
     }
 
     /**
-     * Set daemon unique identifier.
+     * Set unique identifier.
      *
-     * @param newUniqueIdentifier New daemon unique identifier
+     * @param newUniqueIdentifier New unique identifier
      */
     public void setUniqueIdentifier(final String newUniqueIdentifier) {
         this.uniqueIdentifier = newUniqueIdentifier;
     }
 
     /**
-     * Returns daemon library.
+     * Returns library.
      *
-     * @return Daemon library
+     * @return Library
      */
     public String getLibrary() {
         return this.library;
     }
 
     /**
-     * Set daemon library.
+     * Set library.
      *
-     * @param newLibrary New daemon library
+     * @param newLibrary New library
      */
     public void setLibrary(final String newLibrary) {
         this.library = newLibrary;
     }
 
     /**
-     * Returns daemon package name.
+     * Returns package name.
      *
-     * @return Daemon package name
+     * @return Package name
      */
     public String getPackageName() {
         return this.packageName;
     }
 
     /**
-     * Set daemon package name.
+     * Set package name.
      *
-     * @param newPackageName New daemon package name
+     * @param newPackageName New package name
      */
     public void setPackageName(final String newPackageName) {
         this.packageName = newPackageName;
     }
 
     /**
-     * Returns daemon class name.
+     * Returns class name.
      *
-     * @return Daemon class name
+     * @return Class name
      */
     public String getClassName() {
         return this.className;
     }
 
     /**
-     * Set daemon class name.
+     * Set class name.
      *
-     * @param newClassName New daemon class name
+     * @param newClassName New class name
      */
     public void setClassName(final String newClassName) {
         this.className = newClassName;
     }
 
     /**
-     * Returns daemon configuration file full path.
+     * Returns configuration file full path.
      *
-     * @return Daemon configuration file full path
+     * @return Configuration file full path
      */
     public String getConfigurationFileFullPath() {
         return this.configurationFileFullPath;
     }
 
     /**
-     * Set daemon configuration file full path.
+     * Set configuration file full path.
      *
-     * @param newConfigurationFileFullPath New daemon configuration file full path
+     * @param newConfigurationFileFullPath New configuration file full path
      */
     public void setConfigurationFileFullPath(final String newConfigurationFileFullPath) {
         this.configurationFileFullPath = newConfigurationFileFullPath;
+    }
+
+    /**
+     * Adds new action manager startup information.
+     *
+     * @param actionManagerStartupInfo Reference to action manager startup
+     * information to add
+     */
+    public void addActionManagerStartupInfo(final ActionManagerStartupInfo actionManagerStartupInfo) {
+        if (actionManagerStartupInfo == null) {
+            throw new IllegalArgumentException("actionManagerStartupInfo");
+        }
+
+        this.getActionManagerStartupInfoList().add(actionManagerStartupInfo);
+    }
+
+    /**
+     * Removes already added action manager startup information.
+     *
+     * @param actionManagerStartupInfo Reference to action manager startup
+     * information to remove
+     */
+    public void removeActionManagerStartupInfo(final ActionManagerStartupInfo actionManagerStartupInfo) {
+        if (actionManagerStartupInfo == null) {
+            throw new IllegalArgumentException("actionManagerStartupInfo");
+        }
+
+        this.getActionManagerStartupInfoList().remove(actionManagerStartupInfo);
+    }
+
+    /**
+     * Returns the number of added action manager startup information.
+     *
+     * @return Returns the number of added action manager startup information
+     */
+    public Integer getActionManagerStartupInfoCount() {
+        Integer count = Integer.valueOf(0);
+
+        if (this.actionManagerStartupInfoList != null) {
+            count = this.actionManagerStartupInfoList.size();
+        }
+
+        return count;
+    }
+
+    /**
+     * Returns the list of action manager startup information.
+     *
+     * @return List of action manager startup information
+     */
+    public Set<ActionManagerStartupInfo> getActionManagerStartupInfoList() {
+        if (this.actionManagerStartupInfoList == null) {
+            this.actionManagerStartupInfoList = new HashSet<ActionManagerStartupInfo>();
+        }
+
+        return this.actionManagerStartupInfoList;
+    }
+
+    /**
+     * Sets list of action manager startup information.
+     *
+     * @param newActionManagerStartupInfoList New action manager startup information list
+     */
+    protected void setActionManagerStartupInfoList(final Set<ActionManagerStartupInfo> newActionManagerStartupInfoList) {
+        this.actionManagerStartupInfoList = newActionManagerStartupInfoList;
     }
 }

@@ -3,6 +3,9 @@
  */
 package dsm.action.manager.common;
 
+import dsm.action.common.ActionStartupInfo;
+import java.util.Set;
+
 /**
  * ActionManagerStartupInfo interface represents Action Manager Startup
  * Information.
@@ -16,72 +19,102 @@ package dsm.action.manager.common;
 public interface ActionManagerStartupInfo {
 
     /**
-     * Returns action manager name.
+     * Returns unique identifier.
      *
-     * @return Action manager name
+     * @return Unique identifier
      */
-    String getName();
+    String getUniqueIdentifier();
 
     /**
-     * Set action manager name.
+     * Set unique identifier.
      *
-     * @param newName New action manager name to set
+     * @param newUniqueIdentifier New unique identifier
      */
-    void setName(final String newName);
+    void setUniqueIdentifier(final String newUniqueIdentifier);
 
     /**
-     * Returns action manager library.
+     * Returns library.
      *
-     * @return Action manager library
+     * @return Library
      */
     String getLibrary();
 
     /**
-     * Set action manager library.
+     * Set library.
      *
-     * @param newLibrary New action manager library to set
+     * @param newLibrary New library
      */
     void setLibrary(final String newLibrary);
 
     /**
-     * Returns action manager package name.
+     * Returns package name.
      *
-     * @return Action manager package name
+     * @return Package name
      */
     String getPackageName();
 
     /**
-     * Set action manager package name.
+     * Set package name.
      *
-     * @param newPackageName New action manager package name to set
+     * @param newPackageName New package name
      */
     void setPackageName(final String newPackageName);
 
     /**
-     * Returns action manager class name.
+     * Returns class name.
      *
-     * @return Action manager class name
+     * @return Class name
      */
     String getClassName();
 
     /**
-     * Set action manager class name.
+     * Set class name.
      *
-     * @param newClassName New action manager class name to set
+     * @param newClassName New class name
      */
     void setClassName(final String newClassName);
 
     /**
-     * Returns action manager configuration file full path.
+     * Returns configuration file full path.
      *
-     * @return Action manager configuration file full path
+     * @return Configuration file full path
      */
     String getConfigurationFileFullPath();
 
     /**
-     * Set action manager configuration file full path.
+     * Adds new action startup information.
      *
-     * @param newConfigurationFileFullPath New action manager configuration file full path to set
+     * @param actionStartupInfo Reference to action  startup
+     * information to add
+     */
+    void addActionStartupInfo(final ActionStartupInfo actionStartupInfo);
+
+    /**
+     * Removes already added action startup information.
+     *
+     * @param actionStartupInfo Reference to action startup
+     * information to remove
+     */
+    void removeActionStartupInfo(final ActionStartupInfo actionStartupInfo);
+
+    /**
+     * Returns the number of added action startup information.
+     *
+     * @return Returns the number of added action startup information
+     */
+    Integer getActionStartupInfoCount();
+
+    /**
+     * Returns the list of action startup information.
+     *
+     * @return List of action startup information
+     */
+    Set<ActionStartupInfo> getActionStartupInfoList();
+
+    /**
+     * Set configuration file full path.
+     *
+     * @param newConfigurationFileFullPath New configuration file full path
      */
     void setConfigurationFileFullPath(final String newConfigurationFileFullPath);
 }

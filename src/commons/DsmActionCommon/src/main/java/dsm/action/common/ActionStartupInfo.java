@@ -15,72 +15,72 @@ package dsm.action.common;
 public interface ActionStartupInfo {
 
     /**
-     * Returns action name.
+     * Returns unique identifier.
      *
-     * @return Action name
+     * @return Unique identifier
      */
-    String getName();
+    String getUniqueIdentifier();
 
     /**
-     * Set action name.
+     * Set unique identifier.
      *
-     * @param newName New action name
+     * @param newUniqueIdentifier New unique identifier
      */
-    void setName(final String newName);
+    void setUniqueIdentifier(final String newUniqueIdentifier);
 
     /**
-     * Returns action library.
+     * Returns library.
      *
-     * @return Action library
+     * @return Library
      */
     String getLibrary();
 
     /**
-     * Set action library.
+     * Set library.
      *
-     * @param newLibrary New action library
+     * @param newLibrary New library
      */
     void setLibrary(final String newLibrary);
 
     /**
-     * Returns action package name.
+     * Returns package name.
      *
-     * @return Action package name
+     * @return Package name
      */
     String getPackageName();
 
     /**
-     * Set action package name.
+     * Set package name.
      *
-     * @param newPackageName New action package name
+     * @param newPackageName New package name
      */
     void setPackageName(final String newPackageName);
 
     /**
-     * Returns action class name.
+     * Returns class name.
      *
-     * @return Action class name
+     * @return Class name
      */
     String getClassName();
 
     /**
-     * Set action class name.
+     * Set class name.
      *
-     * @param newClassName New action class name
+     * @param newClassName New class name
      */
     void setClassName(final String newClassName);
 
     /**
-     * Returns action configuration file full path.
+     * Returns configuration file full path.
      *
-     * @return Action configuration file full path
+     * @return Configuration file full path
      */
     String getConfigurationFileFullPath();
 
     /**
-     * Set action configuration file full path.
+     * Set configuration file full path.
      *
-     * @param newConfigurationFileFullPath New action configuration file full path
+     * @param newConfigurationFileFullPath New configuration file full path
      */
     void setConfigurationFileFullPath(final String newConfigurationFileFullPath);
 }
