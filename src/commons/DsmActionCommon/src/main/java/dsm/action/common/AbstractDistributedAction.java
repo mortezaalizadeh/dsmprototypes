@@ -31,8 +31,8 @@ public abstract class AbstractDistributedAction extends DsmManifest implements A
     /**
      * AuthorityModality Constructor.
      *
-     * @param newDsmUniqueIdentifier DSM object unique identifier
-     * @param newDsmFriendlyName DSM object friendly name
+     * @param newDsmUniqueIdentifier Dsm object unique identifier
+     * @param newDsmFriendlyName Dsm object friendly name
      * @param newActionName Action name
      */
     public AbstractDistributedAction(final String newDsmUniqueIdentifier,

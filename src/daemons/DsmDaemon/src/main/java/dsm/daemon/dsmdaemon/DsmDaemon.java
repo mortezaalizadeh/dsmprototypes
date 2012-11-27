@@ -29,7 +29,7 @@ public class DsmDaemon extends DsmManifest implements Daemon {
      * DsmDaemon Constructor.
      */
     public DsmDaemon() {
-        super("efae8bdb-2647-45e6-803e-c7ff2976a3e6", "DSM Daemon");
+        super("efae8bdb-2647-45e6-803e-c7ff2976a3e6", "Dsm Daemon");
     }
 
     /**
